@@ -10,12 +10,17 @@ Catalogue of Life https://github.com/CatalogueOfLife/coldp#schema
 World Flora Online https://list.worldfloraonline.org/
 ////
 
+[discrete]
 === Darwin Core
 
+[discrete]
 === Taxon Concept Schema
 
+[discrete]
 === Catalogue of Life
 
+[discrete]
 === World Flora Online
 
+[discrete]
 === Atlas of Living Australia
