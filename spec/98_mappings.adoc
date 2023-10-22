@@ -1,0 +1,21 @@
+== Mappings
+
+This section contains mappings of this model to other models/vocabularies.
+
+
+////
+Darwin Core https://dwc.tdwg.org/
+TDWG’s TCS https://github.com/tdwg/tcs2
+Catalogue of Life https://github.com/CatalogueOfLife/coldp#schema
+World Flora Online https://list.worldfloraonline.org/
+////
+
+=== Darwin Core
+
+=== Taxon Concept Schema
+
+=== Catalogue of Life
+
+=== World Flora Online
+
+=== Atlas of Living Australia

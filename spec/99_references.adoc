@@ -1,0 +1,37 @@
+== References
+
+[[GSP]] [GSP]:: Open Geospatial Consortium, _OGC GeoSPARQL - A Geographic Query Language for RDF Data_, OGC Implementation Standard. Car, N. J., & Homburg, T. (eds.) (2011). http://www.opengis.net/doc/IS/geosparql/1.1
+
+[[ISO19105]] [ISO19105]:: International Organization for Standardization, _ISO 19105: Geographic information — Conformance and testing_ (2022). https://www.iso.org/standard/76457.html
+
+[[ISO19156]] [ISO19156]:: International Organization for Standardization, _ISO 19156:2011 Geographic information – Observations and measurements_ (2011). DOI: https://doi.org/https://doi.org/10.13140%2F2.1.1142.3042[https://doi.org/10.13140%2F2.1.1142.3042]
+
+[[JSON-LD]] [JSON-LD]:: World Wide Web Consortium, _JSON-LD 1.1: A JSON-based Serialization for Linked Data_, W3C Recommendation (16 July 2020). https://www.w3.org/TR/json-ld11/
+
+[[OWL2]] [OWL2]:: World Wide Web Consortium, _OWL 2 Web Ontology Language Document Overview (Second Edition)_, W3C Recommendation (11 December 2012). https://www.w3.org/TR/owl2-overview/
+
+[[RDFSPEC]] [RDFSPEC]:: World Wide Web Consortium, _RDF 1.1 Concepts and Abstract Syntax_, W3C Recommendation (25 February 2014). https://www.w3.org/TR/rdf11-concepts/
+
+[[RFC2119]] [RFC2119]:: RFC 2119: _Key words for use in RFCs to Indicate Requirement Levels_, Internet Engineering Taskforce_ (March 1997). https://www.rfc-editor.org/info/rfc2119, DOI: https://doi.org/10.17487/RFC2119[10.17487/RFC2119]
+
+[[RFC3986]] [RFC3986]:: RFC 3986: _Uniform Resource Identifier (URI): Generic Syntax_, Internet Engineering Taskforce_ (January 2005). https://www.rfc-editor.org/info/rfc3986, DOI: https://doi.org/10.17487/RFC3986[10.17487/RFC3986]
+
+[[PROF]] [PROF]:: World Wide Web Consortium, _The Profiles Vocabulary_, W3C Working Group Note (18 December 2019). https://www.w3.org/TR/dx-prof/
+
+[[PROV]] [PROV]:: World Wide Web Consortium, _PROV-O: The PROV Ontology_, W3C Recommendation (30 February 2013). https://www.w3.org/TR/prov-o/
+
+[[QUDT]] [QUDT]:: _QUDT Consortium, _Quantities Units, Dimensions & Types Ontology_, https://qudt.org/
+
+[[TIME]] [TIME]:: World Wide Web Consortium, _Time Ontology in OWL_, W3C Candidate Recommendation (26 March 2020). https://www.w3.org/TR/owl-time/
+
+[[TURTLE]] [TURTLE]:: World Wide Web Consortium, _RDF 1.1 Turtle - Terse RDF Triple Language_, W3C Recommendation (25 February 2014). https://www.w3.org/TR/turtle/
+
+[[SDO]] [SDO]:: schema.org Consortium, _schema.org_, OWL vocabulary (26 June 2023). https://schema.org/
+
+[[SHACL]] [SHACL]:: World Wide Web Consortium, _Shapes Constraint Language (SHACL)_, W3C Recommendation (20 July 2017). https://www.w3.org/TR/shacl/
+
+[[SKOS]] [SKOS]:: World Wide Web Consortium, _SKOS Simple Knowledge Organization System Reference_, W3C Recommendation (18 August 2009). https://www.w3.org/TR/skos-reference/
+
+[[SOSA]] [SOSA]:: World Wide Web Consortium, _Sensor, Observation, Sample, and Actuator ontology_, within _Semantic Sensor Network Ontology_, W3C Recommendation (19 October 2017). https://www.w3.org/TR/vocab-ssn/
+
+[[XSD2]] [XSD2]:: World Wide Web Consortium, _XML Schema Part 2: Datatypes (Second Edition)_, W3C Recommendation (28 October 2004). https://www.w3.org/TR/xmlschema-2/
