@@ -43,7 +43,9 @@ SPARQL is a query language for RDF. The results of SPARQL queries can be result 
 
 === Diagram Conventions
 
-.Diagram Elements Key. Where `prefix:ElementID` is used, the `prefix` refers to entries in the <<Namespaces, Namespaces>> table
+The following elements are used in Conceptual and Logical model diagrams:
+
+.Diagram Elements Key. Where `prefix:ElementID` is used, the `prefix` refers to entries in the <<Namespaces, Namespaces>> table below
 image::../img/key.svg[Diagram Elements Key,align="center"]
 
 === Namespaces
@@ -59,6 +61,6 @@ Namespaces for model, vocabulary and validator elements are assigned the followi
 | `rdfs`: | http://www.w3.org/2000/01/rdf-schema# | <<RDFS, RDFS>> ontology
 | `sdo`: | https://schema.org/ | <<SDO, SDO>> vocabulary
 | `skos`: | http://www.w3.org/2004/02/skos/core# | <<SKOS, SKOS>> ontology
-| `sosa`: | http://www.w3.org/ns/sosa/ | SOSA ontology within <<SOSA, SOSA>>
+| `sosa`: | http://www.w3.org/ns/sosa/ | <<SOSA, SOSA>> ontology
 | `xsd`: | http://www.w3.org/2001/XMLSchema# | <<XSD2, XSD>> datatypes vocabulary
 |===
