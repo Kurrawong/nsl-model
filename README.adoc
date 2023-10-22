@@ -2,6 +2,10 @@
 
 This repository contains a https://www.w3.org/OWL/[Web Ontology Language (OWL)] data model of the contents of the National Species List database which is used to export its information in https://www.w3.org/wiki/LinkedData[Linked Data] form.
 
+This model is documented online at:
+
+* https://kurrawong.github.io/nsl-model/spec.html
+
 
 == License & Rights
 
