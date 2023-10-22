@@ -34,6 +34,11 @@ RDF Schema provides a data-modelling vocabulary for RDF data. RDF Schema is an e
 
 SPARQL is a query language for RDF. The results of SPARQL queries can be result sets or RDF graphs. <<SPARQL, SPARQL>>
 
+=== Diagram Conventions
+
+.Diagram Elements Key. Where `prefix:ElementID` is used, the `prefix` refers to entries in the <<Namespaces, Namespaces>> table
+image::../img/key.svg[Diagram Elements Key,align="center"]
+
 === Namespaces
 
 Namespaces for model, vocabulary and validator elements are assigned the following prefixes:
