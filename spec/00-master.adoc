@@ -20,12 +20,8 @@
 :source-highlighter: rouge
 
 [#overview]
-.An informal of this data model
+.An informal overview of this data model
 image::../img/overview.svg[Model Overview,align="center"]
-
-[#datasets]
-.The major Datasets of this Model
-image::../img/datasets.svg[The major Datasets of this Model,align="center"]
 
 == Metadata
 

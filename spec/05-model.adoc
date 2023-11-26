@@ -1,2 +1,5 @@
 == Model
 
+[#fig-classes-and-predicates,link=../img/classes-and-predicates.svg]
+.A formal overview of the auNSL OWL Data Model showing major Classes and Predicates. This figure extends Figure 3.
+image::../img/classes-and-predicates.svg[auNSL OWL Data Model overview,align="center"]

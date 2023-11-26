@@ -6,10 +6,10 @@ This data model represents the <<RDF, RDF>> / <<OWL, OWL>> expression of the str
 
 This model includes a `Taxon` class which represents "A group of organisms considered by taxonomists to form a homogeneous unit" and links to that a `Taxon Name` class which represents "Names applied to Taxa by people at points in time". It then
 
-An informal overview of this model is given in <<fig-overview, Figure 1>> below.
+An informal overview of this model is given in <<fig-overview, Figure 3>> below.
 
 [#fig-overview,link=../img/overview.svg]
-.An informal overview of the auNSL OWL Data Model showing major Classes and Predicates. See <<fig-classes-and-properties, Figure X>> for a formal diagram.
+.An informal overview of the auNSL OWL Data Model showing major Classes and Predicates. See <<fig-classes-and-predicates, Figure X>> for a formal diagram.
 image::../img/overview.svg[auNSL OWL Data Model overview,align="center"]
 
 === Model Context
@@ -37,6 +37,19 @@ While is no definitive set of these well-known models and the set will surely ch
 The next sections describes well-known model ruse by this model in formal terms and the <<Mappings, Mappings>> section describes this model's mappings to a number of Semantic Web and similar models that aren't directly.
 
 ==== Supermodel
+
+A 'Supermodel' is an overarching or enterprise model. The implementation of a focus model within a Supermodel context formally sets the broader context for the model by identifying and typing the other models that the focus model relates to and by defining the relations also.
+
+The general picture of a Supermodel is that it contains:
+
+* **Background Models**
+**  reference models - usually well-known Semantic Web models - that foreground models profile
+* **Vocabularies**
+** controlled lists of terms that foreground models use
+* **Component Models**
+** individual foregound models within the Supermodel that are likely not defined elsewhere
+* **Backbone Model**
+** a model that sets the minimum properties of model elements across component models for integration
 
 ==== Profiling
 
