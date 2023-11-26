@@ -1,10 +1,55 @@
 == Introduction
 
-=== Conceptual
+The Australian National Species List (auNSL) is a taxonomic resource that provides authoritative data for names and published taxon concepts for native and naturalised taxa in Australia. See https://biodiversity.org.au/nsl/ for further information.
 
-=== Logical
+This data model represents the <<RDF, RDF>> / <<OWL, OWL>> expression of the structure of the content of the auNSL.
 
-=== Physical
+This model includes a `Taxon` class which represents "A group of organisms considered by taxonomists to form a homogeneous unit" and links to that a `Taxon Name` class which represents "Names applied to Taxa by people at points in time". It then
 
-=== Profiles
+An informal overview of this model is given in <<fig-overview, Figure 1>> below.
 
+[#fig-overview,link=../img/overview.svg]
+.An informal overview of the auNSL OWL Data Model showing major Classes and Predicates. See <<fig-classes-and-properties, Figure X>> for a formal diagram.
+image::../img/overview.svg[auNSL OWL Data Model overview,align="center"]
+
+=== Model Context
+
+This section provides background information on the situation within which this model has been made.
+
+==== Semantic Web
+
+The _Semantic Web_ is the concept of a machine-readable, and perhaps more ambitiously, a machine-_understandable_ Internet.
+
+While the original coining of the phrase in 2001 described "an expected evolution of the existing Web to a Semantic Web" and by 2006 well-known Internet pioneers lamented it as being unrealised https://en.wikipedia.org/wiki/Semantic_Web[ref], in the 2020s, there are vast amounts of data on the Internet encoded in the form expected, in 2001, to be machine-_understandable_: <<RDF, RDF>>.
+
+In addition to RDF data on the Internet, there are many other machine-_understandable_ data encodings and originally the NSL was, and still is, encoded in another one, https://graphql.org/[GraphQL]. What those other forms of data encoding lack is the very granular, universal, identification of data elements and relationships that RDF has which make the meaning of all data elements in RDF explicit, leaving nothing ambiguous.
+
+By choosing the express the NSL's data model in RDF, a commitment is being made to expressing all the elements of the model in a form that can be understood without implicit knowledge of the NSL or anything else, since all RDF objects and their definitions are _dereferencable_ - their definitions and details may be obtained from the Internet.
+
+The Semantic Web, in the 2020s, relies on a few simple data models, such as <<RDF, RDF>> & <<RDFS, RDFS>> for its basic data structures and on <<OWL, OWL, the Web Ontology Language>> for its modelling paradigm. In addition to these fundamental _technical_ models, there are a series of well-known and often standardised generic domain models that are widely used by many datasets claiming to be part of the Semantic Web. For example, <<PROV, the Provenance Ontology>> is "...about entities, activities, and people involved in producing a piece of data or thing..." and is the Semantic Web's go-to model for process flow modelling. <<GSP, GeoSPARQL>> is the Semantic Web's most widely use spatial data model and <<SDO, schema.org>>.
+
+There is value in reusing well-known models is for human understanding - it's much easier to understand a new model if it is linked to things you already know - but also in model quality - many well-known modes are well-known because they are good and widely used.
+
+Here, expressing the NSL's data model as a Semantic Web model means not only modelling its concepts in OWL using RDF but also reusing, or at least deriving from and aligning to, these well-known models.
+
+While is no definitive set of these well-known models and the set will surely change over time (in the 202s, schema.org is increasingly being used in favour of the earlier and smaller <<DCTERMS, Dublin Core Terms>>), this model has derived from and extended are currently in wide use and some have been for a decade or are well-known within the taxonomy domain.
+
+The next sections describes well-known model ruse by this model in formal terms and the <<Mappings, Mappings>> section describes this model's mappings to a number of Semantic Web and similar models that aren't directly.
+
+==== Supermodel
+
+==== Profiling
+
+=== Modelling Methods
+
+==== Conceptual
+
+Modelling Paradigm
+
+==== Logical
+
+Model formalisms
+
+==== Physical
+
+Model technology

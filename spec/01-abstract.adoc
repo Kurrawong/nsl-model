@@ -1,2 +1,3 @@
 == Abstract
 
+This data model represents the <<RDF, RDF>> / <<OWL, OWL>> expression of the structure of the content of the https://biodiversity.org.au/nsl/[National Species List].

@@ -1,2 +1,17 @@
 == Patterns
 
+=== Supermodel Context
+
+Profiles Vocabulary
+
+=== Data Cataloguing
+
+DCAT
+
+=== Scholarly Citations
+
+SPAR
+
+=== Observations & Measurement
+
+SOSA - peripheral
