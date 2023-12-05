@@ -439,7 +439,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="book toc2 toc-left">
 <div id="header">
-<h1>National Species List - Model</h1>
+<h1>National Species List - Semantic Web Model</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
@@ -447,27 +447,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_abstract">2. Abstract</a></li>
 <li><a href="#_preamble">3. Preamble</a>
 <ul class="sectlevel2">
-<li><a href="#_terms_definitions">3.1. Terms &amp; Definitions</a></li>
-<li><a href="#_diagram_conventions">3.2. Diagram Conventions</a></li>
-<li><a href="#_namespaces">3.3. Namespaces</a></li>
+<li><a href="#_parts_of_this_model">3.1. Parts of this Model</a></li>
+<li><a href="#_terms_definitions">3.2. Terms &amp; Definitions</a></li>
+<li><a href="#_diagram_conventions">3.3. Diagram Conventions</a></li>
+<li><a href="#_namespaces">3.4. Namespaces</a></li>
 </ul>
 </li>
 <li><a href="#_introduction">4. Introduction</a>
 <ul class="sectlevel2">
-<li><a href="#_model_context">4.1. Model Context</a>
-<ul class="sectlevel3">
-<li><a href="#_semantic_web">4.1.1. Semantic Web</a></li>
-<li><a href="#_supermodel">4.1.2. Supermodel</a></li>
-<li><a href="#_profiling">4.1.3. Profiling</a></li>
-</ul>
-</li>
-<li><a href="#_modelling_methods">4.2. Modelling Methods</a>
-<ul class="sectlevel3">
-<li><a href="#_conceptual">4.2.1. Conceptual</a></li>
-<li><a href="#_logical">4.2.2. Logical</a></li>
-<li><a href="#_physical">4.2.3. Physical</a></li>
-</ul>
-</li>
+<li><a href="#_model_overview">4.1. Model Overview</a></li>
+<li><a href="#_model_context">4.2. Model Context</a></li>
+<li><a href="#_modelling_methods">4.3. Modelling Methods</a></li>
 </ul>
 </li>
 <li><a href="#_patterns">5. Patterns</a>
@@ -478,19 +468,27 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_observations_measurement">5.4. Observations &amp; Measurement</a></li>
 </ul>
 </li>
-<li><a href="#_model">6. Model</a></li>
-<li><a href="#_mappings">7. Mappings</a>
+<li><a href="#_model">6. Model</a>
 <ul class="sectlevel2">
-<li><a href="#_abis">7.1. ABIS</a></li>
-<li><a href="#_gbif_new_data_model">7.2. GBIF New Data Model</a></li>
-<li><a href="#_darwin_core">7.3. Darwin Core</a></li>
-<li><a href="#_taxon_concept_schema">7.4. Taxon Concept Schema</a></li>
-<li><a href="#_catalogue_of_life">7.5. Catalogue of Life</a></li>
-<li><a href="#_world_flora_online">7.6. World Flora Online</a></li>
-<li><a href="#_atlas_of_living_australia">7.7. Atlas of Living Australia</a></li>
+<li><a href="#_nsl_model">6.1. NSL Model</a></li>
+<li><a href="#_background_models">6.2. Background Models</a></li>
+<li><a href="#_profile_definition">6.3. Profile Definition</a></li>
 </ul>
 </li>
-<li><a href="#_references">8. References</a></li>
+<li><a href="#_vocabularies">7. Vocabularies</a></li>
+<li><a href="#_validators">8. Validators</a></li>
+<li><a href="#_mappings">9. Mappings</a>
+<ul class="sectlevel2">
+<li><a href="#_abis_2">9.1. ABIS</a></li>
+<li><a href="#_gbif_new_data_model">9.2. GBIF New Data Model</a></li>
+<li><a href="#_darwin_core">9.3. Darwin Core</a></li>
+<li><a href="#_taxon_concept_schema">9.4. Taxon Concept Schema</a></li>
+<li><a href="#_catalogue_of_life">9.5. Catalogue of Life</a></li>
+<li><a href="#_world_flora_online">9.6. World Flora Online</a></li>
+<li><a href="#_atlas_of_living_australia">9.7. Atlas of Living Australia</a></li>
+</ul>
+</li>
+<li><a href="#_references">10. References</a></li>
 </ul>
 </div>
 </div>
@@ -508,29 +506,56 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="_metadata"><a class="anchor" href="#_metadata"></a>1. Metadata</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all stripes-even" style="width: 50%;">
+<table class="tableblock frame-none grid-none stripes-even" style="width: 75%;">
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 66.6667%;">
 </colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Property</th>
-<th class="tableblock halign-left valign-top">Value</th>
-</tr>
-</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>IRI</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/nsl" class="bare">https://linked.data.gov.au/def/nsl</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">National Species List - Model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">National Species List - Semantic Web Model</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Version</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.0.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Definition</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This document is the normative specification of the Semantic Web data model of the National Species List</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Created</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-10-15</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Modified</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-12-04</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Issued</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Not Yet</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Version</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Creator</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/org/canbr">Centre for Australian National Biodiversity Research (CANBR)</a><br>
+within the <a href="https://linked.data.gov.au/org/anbg">Australian National Botanic Gardens</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Publisher</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/org/canbr">CANBR</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>License</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Contacts</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TBA</p></td>
 </tr>
 </tbody>
 </table>
@@ -540,7 +565,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_abstract"><a class="anchor" href="#_abstract"></a>2. Abstract</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This data model represents the <a href="#_rdf">RDF</a> / <a href="#_owl">OWL</a> expression of the structure of the content of the <a href="https://biodiversity.org.au/nsl/">National Species List</a>.</p>
+<p>This document presents the Semantic Web expression of the structure of the content of the <a href="https://biodiversity.org.au/nsl/">National Species List</a> as a data model.</p>
 </div>
 </div>
 </div>
@@ -548,46 +573,176 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_preamble"><a class="anchor" href="#_preamble"></a>3. Preamble</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_terms_definitions"><a class="anchor" href="#_terms_definitions"></a>3.1. Terms &amp; Definitions</h3>
-<h4 id="_iri" class="discrete">IRI</h4>
+<h3 id="_parts_of_this_model"><a class="anchor" href="#_parts_of_this_model"></a>3.1. Parts of this Model</h3>
 <div class="paragraph">
-<p>An <em>Internationalized Resource Identifier</em> is a web address-style URL that is used as an identifier for something. It may be for a real-world object, e.g. <code><a href="https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince" class="bare">https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince</a></code> identifies the Queensland Geological Feature <em>Anakie Province</em> or for data only, e.g. <code><a href="https://schema.org/marginOfError" class="bare">https://schema.org/marginOfError</a></code> which is for a predicate that links a margin of error value to a result.</p>
+<p>The NSL&#8217;s Semantic Web Model comprises the following parts:</p>
 </div>
-<div class="paragraph">
-<p>IRIs do not have to resolve - go somewhere online when clicked - but they do have to follow ll the rules for URLs such as having no spaces.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Model Specification</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>This document</p>
+</li>
+<li>
+<p>Describes the parts, patterns and mappings of the Model in human-readable form</p>
+</li>
+</ul>
 </div>
-<h4 id="_class" class="discrete">Class</h4>
-<div class="paragraph">
-<p>Within formal <a href="#_owl">OWL</a> modelling a class is a set of objects exhibiting common properties. For example, the set of all people who are studying could be defined as being within a <em>Student</em> class.</p>
+</li>
+<li>
+<p><strong>Profile Definition</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>The definition of how this Model inherits from other models</p>
+</li>
+<li>
+<p>This is described in the <a href="#_profile_definition">Profile Definition Section</a> but the machine-readable form of this definition is available separately</p>
+</li>
+</ul>
 </div>
-<h4 id="_owl" class="discrete">OWL</h4>
-<div class="paragraph">
-<p>The OWL 2 Web Ontology Language, informally OWL 2, is an ontology language for the Semantic Web with formally defined meaning. OWL 2 ontologies provide classes, properties, individuals, and data values and are stored as Semantic Web documents. OWL 2 ontologies can be used along with information written in RDF, and OWL 2 ontologies themselves are primarily exchanged as RDF documents. <a href="#OWL2">OWL</a></p>
+</li>
+<li>
+<p><strong>Vocabularies</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>The codelists/classifiers/concept schemes used by this model</p>
+</li>
+<li>
+<p>These are listed in the <a href="#_vocabularies">Vocabularies Section</a> in this document but are published independently of this model</p>
+</li>
+</ul>
 </div>
-<h4 id="_predicate" class="discrete">Predicate</h4>
-<div class="paragraph">
-<p>Predicates, within formal <a href="#_owl">OWL</a> modelling, are the defined relations between objects of different classes (see <a href="#_class">Class</a>) and also between objects and simple data values such as numbers and dates. For example, if <em>Person X</em> "knows" <em>Person Y</em>, then we can use a predicate of <code>knows</code> to relate them.</p>
+</li>
+<li>
+<p><strong>Validators</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Data 'shape' expressions files in the <a href="#SHACL">SHACL</a> format that can be used to automatically validate data claiming to conform to this model</p>
+</li>
+<li>
+<p>These are listed in the <a href="#_validators">Validators Section</a> in this document but are published independently of this model</p>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>Frequently we use predicates already defined in existing ontologies. "knows", for example, is defined in the schema.org ontology <a href="#SDO">SDO</a> to be "The most generic bi-directional social/work relation".</p>
+</li>
+<li>
+<p><strong>Mappings</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Mappings of this model to other models in its domain</p>
+</li>
+<li>
+<p>These are described in the <a href="#_mappings">Mappings Section</a> but are also available in machine-readable form</p>
+</li>
+</ul>
 </div>
-<h4 id="_rdf" class="discrete">RDF</h4>
-<div class="paragraph">
-<p>The Resource Description Framework (RDF) is a framework for representing information on the Web. RDF graphs are sets of subject-predicate-object triples, where the elements may be IRIs, unidentified nodes, or literals with specific datatypes. RDF expresses descriptions of resources. <a href="#RDFSPEC">RDFSPEC</a></p>
-</div>
-<h4 id="_rdfs" class="discrete">RDFS</h4>
-<div class="paragraph">
-<p>RDF Schema provides a data-modelling vocabulary for RDF data. RDF Schema is an extension of the basic RDF vocabulary. <a href="#_rdfs">RDFS</a></p>
-</div>
-<h4 id="_sparql" class="discrete">SPARQL</h4>
-<div class="paragraph">
-<p>SPARQL is a query language for RDF. The results of SPARQL queries can be result sets or RDF graphs. <a href="#_sparql">SPARQL</a></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_diagram_conventions"><a class="anchor" href="#_diagram_conventions"></a>3.2. Diagram Conventions</h3>
+<h3 id="_terms_definitions"><a class="anchor" href="#_terms_definitions"></a>3.2. Terms &amp; Definitions</h3>
 <div class="paragraph">
-<p>The following elements are used in Conceptual and Logical model diagrams:</p>
+<p>The following terms are used in this document</p>
+</div>
+<div id="IRI" class="dlist">
+<dl>
+<dt class="hdlist1">IRI</dt>
+<dd>
+<p>An <em>Internationalized Resource Identifier</em> is a web address-style URL that is used as an identifier for something. It may be for a real-world object, e.g. <code><a href="https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince" class="bare">https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince</a></code> identifies the Queensland Geological Feature <em>Anakie Province</em> or for data only, e.g. <code><a href="https://schema.org/marginOfError" class="bare">https://schema.org/marginOfError</a></code> which is for a predicate that links a margin of error value to a result.</p>
+<div class="paragraph">
+<p>IRIs do not have to resolve - go somewhere online when clicked - but they do have to follow ll the rules for URLs such as having no spaces.</p>
+</div>
+</dd>
+</dl>
+</div>
+<div id="Class" class="dlist">
+<dl>
+<dt class="hdlist1">Class</dt>
+<dd>
+<p>Within formal <a href="#OWL">OWL</a> modelling a class is a set of objects exhibiting common properties. For example, the set of all people who are studying could be defined as being within a <em>Student</em> class.</p>
+</dd>
+</dl>
+</div>
+<div id="KnowledgeGraph" class="dlist">
+<dl>
+<dt class="hdlist1">Knowledge Graph</dt>
+<dd>
+<p>A data holding that implements node-edge-node (graph) data structures. The 'knowledge' part is often taken to indicate that the graph contains refined information, not just pure, raw, data.</p>
+</dd>
+</dl>
+</div>
+<div id="LinkedData" class="dlist">
+<dl>
+<dt class="hdlist1">Linked Data</dt>
+<dd>
+<p>A series of technologies and methodologies for the publication of data on the Internet. Uses <a href="#RDF">RDF</a> as its underlying data structure, <a href="#OWL">OWL</a> as its data model and the common mechanics of the Domain Name System (DNS) and the Hypertext Transfer Protocol (HTTP) to identify and share its data.</p>
+</dd>
+</dl>
+</div>
+<div id="OWL" class="dlist">
+<dl>
+<dt class="hdlist1">OWL</dt>
+<dd>
+<p>The OWL 2 Web Ontology Language , informally OWL, is an ontology language for the Semantic Web with formally defined meaning. OWL 2 ontologies provide classes, properties, individuals, and data values and are stored as Semantic Web documents. OWL 2 ontologies can be used along with information written in <a href="#RDF">RDF</a>, and OWL 2 ontologies themselves are primarily exchanged as RDF documents - <a href="#OWL2">OWL</a></p>
+</dd>
+</dl>
+</div>
+<div id="Predicate" class="dlist">
+<dl>
+<dt class="hdlist1">Predicate</dt>
+<dd>
+<p>Predicates, within formal <a href="#OWL">OWL</a> modelling, are the defined relations between objects of different classes (see <a href="#Class">[Class]</a>) and also between objects and simple data values such as numbers and dates. For example, if <em>Person X</em> "knows" <em>Person Y</em>, then we can use a predicate of <code>knows</code> to relate them.</p>
+<div class="paragraph">
+<p>Frequently we use predicates already defined in existing ontologies. "knows", for example, is defined in the schema.org ontology <a href="#SDO">SDO</a> to be "The most generic bi-directional social/work relation".</p>
+</div>
+</dd>
+</dl>
+</div>
+<div id="RDF" class="dlist">
+<dl>
+<dt class="hdlist1">RDF</dt>
+<dd>
+<p>The Resource Description Framework (RDF) is a framework for representing information on the Web. RDF graphs are sets of subject-predicate-object triples, where the elements may be IRIs, unidentified nodes, or literals with specific datatypes. RDF expresses descriptions of resources - <a href="#RDFSPEC">RDFSPEC</a></p>
+</dd>
+</dl>
+</div>
+<div id="RDFS" class="dlist">
+<dl>
+<dt class="hdlist1">RDFS</dt>
+<dd>
+<p>RDF Schema provides a data-modelling vocabulary for RDF data. RDF Schema is an extension of the basic RDF vocabulary - <a href="#RDFSSPEC">RDFSSPEC</a></p>
+</dd>
+</dl>
+</div>
+<div id="SeamanticWeb" class="dlist">
+<dl>
+<dt class="hdlist1">Semantic Web</dt>
+<dd>
+<p>A vision of a machine-understandable Internet, created in the year 2000, and thought to be attainable through the use of Linked Data.</p>
+</dd>
+</dl>
+</div>
+<div id="SPARQL" class="dlist">
+<dl>
+<dt class="hdlist1">SPARQL</dt>
+<dd>
+<p>SPARQL is a query language for RDF. The results of SPARQL queries can be result sets or RDF graphs. <a href="#SPARQL">SPARQL</a></p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_diagram_conventions"><a class="anchor" href="#_diagram_conventions"></a>3.3. Diagram Conventions</h3>
+<div class="paragraph">
+<p>The following elements are used in this document&#8217;s Conceptual and Logical model diagrams:</p>
 </div>
 <div class="imageblock text-center">
 <div class="content">
@@ -597,7 +752,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect2">
-<h3 id="_namespaces"><a class="anchor" href="#_namespaces"></a>3.3. Namespaces</h3>
+<h3 id="_namespaces"><a class="anchor" href="#_namespaces"></a>3.4. Namespaces</h3>
 <div class="paragraph">
 <p>Namespaces for model, vocabulary and validator elements are assigned the following prefixes:</p>
 </div>
@@ -609,6 +764,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </colgroup>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><code>nsl</code></strong>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong><a href="https://linked.data.gov.au/def/nsl" class="bare">https://linked.data.gov.au/def/nsl</a></strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>This data model&#8217;s namespace</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>abis</code>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/abis" class="bare">https://linked.data.gov.au/def/abis</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Australian Biodiversity Information Standard</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>biro</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://purl.org/spar/biro/" class="bare">http://purl.org/spar/biro/</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.sparontologies.net/ontologies/biro">BiRO</a>, the Bibliographic Reference Ontology</p></td>
@@ -617,11 +782,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ex</code>:</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://example.com/" class="bare">http://example.com/</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A non-resolving namespace for examples</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nsl</code>:</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/nsl" class="bare">https://linked.data.gov.au/def/nsl</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This data model&#8217;s namespace</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>owl</code>:</p></td>
@@ -636,7 +796,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>rdfs</code>:</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.w3.org/2000/01/rdf-schema#" class="bare">http://www.w3.org/2000/01/rdf-schema#</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#_rdfs">RDFS</a> ontology</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#RDFS">RDFS</a> ontology</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sdo</code>:</p></td>
@@ -652,6 +812,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sosa</code>:</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.w3.org/ns/sosa/" class="bare">http://www.w3.org/ns/sosa/</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#SOSA">SOSA</a> ontology</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>tern</code>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://w3id.org/tern/ontologies/tern/" class="bare">https://w3id.org/tern/ontologies/tern/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">TERN Ontology namespace</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>time</code>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.w3.org/2006/time#" class="bare">http://www.w3.org/2006/time#</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Time Ontology in OWL namespace</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>xsd</code>:</p></td>
@@ -670,10 +840,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>The Australian National Species List (auNSL) is a taxonomic resource that provides authoritative data for names and published taxon concepts for native and naturalised taxa in Australia. See <a href="https://biodiversity.org.au/nsl/" class="bare">https://biodiversity.org.au/nsl/</a> for further information.</p>
 </div>
 <div class="paragraph">
-<p>This data model represents the <a href="#_rdf">RDF</a> / <a href="#_owl">OWL</a> expression of the structure of the content of the auNSL.</p>
+<p>This data model represents the <a href="#_semantic_web">Semantic Web</a> expression of the structure of the content of the auNSL, which means its interpretation in <a href="#OWL">OWL</a> <a href="#Class">Classes</a> and <a href="#Predicate">Predicates</a> and its delivery online in <a href="#RDF">RDF</a>. With the model in this form, the content of the auNSL can then be delivered as a <a href="#KnowledgeGraph">Knwoledge Graph</a> and accessed via <a href="#LinkedData">Linked Data</a> and via services such as <a href="#SPARQL">SPARQL</a>.</p>
 </div>
+<div class="sect2">
+<h3 id="_model_overview"><a class="anchor" href="#_model_overview"></a>4.1. Model Overview</h3>
 <div class="paragraph">
-<p>This model includes a <code>Taxon</code> class which represents "A group of organisms considered by taxonomists to form a homogeneous unit" and links to that a <code>Taxon Name</code> class which represents "Names applied to Taxa by people at points in time". It then</p>
+<p>This model includes a <code>Taxon</code> class which represents "A group of organisms considered by taxonomists to form a homogeneous unit" and links to that a <code>Taxon Name</code> class which represents "A name applied to Taxa by people at a point in time". Instances of <code>Taxon Name</code> are then modelled to have been used over time through a <code>Taxon Name Usage</code> class which may cite <code>Bibliographic Reference</code> class instances that indicate <code>Creative Work</code> instances which represent the papers/articles/books etc. that provide the taxon name and sometimes describe the taxon. <code>Taxon Name Usage</code> class instances may also be cited and instances of this are recorded as <code>Cited Usage</code> class instances.</p>
 </div>
 <div class="paragraph">
 <p>An informal overview of this model is given in <a href="#fig-overview">Figure 3</a> below.</p>
@@ -684,18 +856,62 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="title">Figure 3. An informal overview of the auNSL OWL Data Model showing major Classes and Predicates. See <a href="#fig-classes-and-predicates">Figure X</a> for a formal diagram.</div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="_model_context"><a class="anchor" href="#_model_context"></a>4.1. Model Context</h3>
+<h3 id="_model_context"><a class="anchor" href="#_model_context"></a>4.2. Model Context</h3>
 <div class="paragraph">
-<p>This section provides background information on the situation within which this model has been made.</p>
+<p>This model exists within both a national and international domain context - other models within the general area of biodiversity, species and bibliographic referencing - and a technical context of expressing and publishing Semantic Web models.</p>
 </div>
 <div class="sect3">
-<h4 id="_semantic_web"><a class="anchor" href="#_semantic_web"></a>4.1.1. Semantic Web</h4>
+<h4 id="_related_domain_models"><a class="anchor" href="#_related_domain_models"></a>4.2.1. Related Domain Models</h4>
+<div class="paragraph">
+<p>The auNLS is a stand-alone system, meaning it is not dependent on any other data sources for its interpretation or use, however its content is used by many other systems such as databases of biodiversity observations, in particular the:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://linked.data.gov.au/dataset/bdr">Biodiversity Data Repository (BDR)</a></p>
+</li>
+<li>
+<p><a href="https://ala.org.au">Atlas of Living Australia (ALA)</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These two systems have their own models which necessarily relate to this model.</p>
+</div>
+<div class="sect4">
+<h5 id="_abis"><a class="anchor" href="#_abis"></a>4.2.1.1. ABIS</h5>
+<div class="paragraph">
+<p>The BDR dataset uses the <a href="#ABIS">ABIS</a> model which contains uses the same <code>Taxon</code> and <code>Taxon Name</code> classes as defined in this model as well as the <code>Bibliographic Reference</code> and <code>Creative Work</code> classes and <code>cites</code> &amp; <code>references</code> predicates this model also reuses for general-purpose modelling. The use of the <code>Taxon</code> and <code>Taxon Name</code> classes by ABIS is shown in the following figure.</p>
+</div>
+<div id="fig-abis" class="imageblock text-center">
+<div class="content">
+<a class="image" href="img/abis.svg"><img src="img/abis.svg" alt="auNSL / ABIS relations"></a>
+</div>
+<div class="title">Figure 4. Classes from the <a href="#SOSA">SOSA</a> ontology used by <a href="#ABIS">ABIS</a>, shown in blue, and how they relate to classes defined by this model, shown in green. ABIS <em>observes</em> samples (animals, plants, parts of plants, soil etc.) and declares that a <code>Sample</code> belongs to ("is a") <code>Taxon</code> or has a particular <code>Taxon Name</code> assigned to it.</div>
+</div>
+<div class="paragraph">
+<p>This information is repeated in the <a href="#_mappings">Mapping Section</a> of this document.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_ala"><a class="anchor" href="#_ala"></a>4.2.1.2. ALA</h5>
+<div class="paragraph">
+<p>The Atlas of Living Australia data model is, or is becoming, the new <a href="https://www.gbif.org/new-data-model">GBIF New Data Model</a> which declares a <code>Taxon</code> class which is the same as this model&#8217;s <code>Taxon</code> class and which declares an <code>Identification</code> class which is similar to this model&#8217;s <code>Taxon Name</code> class.</p>
+</div>
+<div class="paragraph">
+<p>A Semantic Web form of the GBIF New Data Model is expected in 2024 and this auNSL/GBIF NDM relation will be updated then. For now, the mapping from this model to the GBIF NDM is given in the <a href="#_mappings">Mappings Section</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_semantic_web"><a class="anchor" href="#_semantic_web"></a>4.2.2. Semantic Web</h4>
 <div class="paragraph">
 <p>The <em>Semantic Web</em> is the concept of a machine-readable, and perhaps more ambitiously, a machine-<em>understandable</em> Internet.</p>
 </div>
 <div class="paragraph">
-<p>While the original coining of the phrase in 2001 described "an expected evolution of the existing Web to a Semantic Web" and by 2006 well-known Internet pioneers lamented it as being unrealised <a href="https://en.wikipedia.org/wiki/Semantic_Web">ref</a>, in the 2020s, there are vast amounts of data on the Internet encoded in the form expected, in 2001, to be machine-<em>understandable</em>: <a href="#_rdf">RDF</a>.</p>
+<p>While the original coining of the phrase in 2001 described "an expected evolution of the existing Web to a Semantic Web" and by 2006 well-known Internet pioneers lamented it as being unrealised <a href="https://en.wikipedia.org/wiki/Semantic_Web">ref</a>, in the 2020s, there are vast amounts of data on the Internet encoded in the form expected, in 2001, to be machine-<em>understandable</em>: <a href="#RDF">RDF</a>.</p>
 </div>
 <div class="paragraph">
 <p>In addition to RDF data on the Internet, there are many other machine-<em>understandable</em> data encodings and originally the NSL was, and still is, encoded in another one, <a href="https://graphql.org/">GraphQL</a>. What those other forms of data encoding lack is the very granular, universal, identification of data elements and relationships that RDF has which make the meaning of all data elements in RDF explicit, leaving nothing ambiguous.</p>
@@ -704,7 +920,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>By choosing the express the NSL&#8217;s data model in RDF, a commitment is being made to expressing all the elements of the model in a form that can be understood without implicit knowledge of the NSL or anything else, since all RDF objects and their definitions are <em>dereferencable</em> - their definitions and details may be obtained from the Internet.</p>
 </div>
 <div class="paragraph">
-<p>The Semantic Web, in the 2020s, relies on a few simple data models, such as <a href="#_rdf">RDF</a> &amp; <a href="#_rdfs">RDFS</a> for its basic data structures and on <a href="#_owl">OWL, the Web Ontology Language</a> for its modelling paradigm. In addition to these fundamental <em>technical</em> models, there are a series of well-known and often standardised generic domain models that are widely used by many datasets claiming to be part of the Semantic Web. For example, <a href="#PROV">the Provenance Ontology</a> is "&#8230;&#8203;about entities, activities, and people involved in producing a piece of data or thing&#8230;&#8203;" and is the Semantic Web&#8217;s go-to model for process flow modelling. <a href="#GSP">GeoSPARQL</a> is the Semantic Web&#8217;s most widely use spatial data model and <a href="#SDO">schema.org</a>.</p>
+<p>The Semantic Web, in the 2020s, relies on a few simple data models, such as <a href="#RDF">RDF</a> &amp; <a href="#RDFS">RDFS</a> for its basic data structures and on <a href="#OWL">OWL, the Web Ontology Language</a> for its modelling paradigm. In addition to these fundamental <em>technical</em> models, there are a series of well-known and often standardised generic domain models that are widely used by many datasets claiming to be part of the Semantic Web. For example, <a href="#PROV">the Provenance Ontology</a> is "&#8230;&#8203;about entities, activities, and people involved in producing a piece of data or thing&#8230;&#8203;" and is the Semantic Web&#8217;s go-to model for process flow modelling. <a href="#GSP">GeoSPARQL</a> is the Semantic Web&#8217;s most widely use spatial data model and <a href="#SDO">schema.org</a>.</p>
 </div>
 <div class="paragraph">
 <p>There is value in reusing well-known models is for human understanding - it&#8217;s much easier to understand a new model if it is linked to things you already know - but also in model quality - many well-known modes are well-known because they are good and widely used.</p>
@@ -720,7 +936,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect3">
-<h4 id="_supermodel"><a class="anchor" href="#_supermodel"></a>4.1.2. Supermodel</h4>
+<h4 id="_supermodel"><a class="anchor" href="#_supermodel"></a>4.2.3. Supermodel</h4>
 <div class="paragraph">
 <p>A 'Supermodel' is an overarching or enterprise model. The implementation of a focus model within a Supermodel context formally sets the broader context for the model by identifying and typing the other models that the focus model relates to and by defining the relations also.</p>
 </div>
@@ -773,26 +989,26 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect3">
-<h4 id="_profiling"><a class="anchor" href="#_profiling"></a>4.1.3. Profiling</h4>
+<h4 id="_profiling"><a class="anchor" href="#_profiling"></a>4.2.4. Profiling</h4>
 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_modelling_methods"><a class="anchor" href="#_modelling_methods"></a>4.2. Modelling Methods</h3>
+<h3 id="_modelling_methods"><a class="anchor" href="#_modelling_methods"></a>4.3. Modelling Methods</h3>
 <div class="sect3">
-<h4 id="_conceptual"><a class="anchor" href="#_conceptual"></a>4.2.1. Conceptual</h4>
+<h4 id="_conceptual"><a class="anchor" href="#_conceptual"></a>4.3.1. Conceptual</h4>
 <div class="paragraph">
 <p>Modelling Paradigm</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_logical"><a class="anchor" href="#_logical"></a>4.2.2. Logical</h4>
+<h4 id="_logical"><a class="anchor" href="#_logical"></a>4.3.2. Logical</h4>
 <div class="paragraph">
 <p>Model formalisms</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_physical"><a class="anchor" href="#_physical"></a>4.2.3. Physical</h4>
+<h4 id="_physical"><a class="anchor" href="#_physical"></a>4.3.3. Physical</h4>
 <div class="paragraph">
 <p>Model technology</p>
 </div>
@@ -832,55 +1048,173 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="_model"><a class="anchor" href="#_model"></a>6. Model</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section defines not only this model but also the background models this model inherits from and how they are formally related.</p>
+</div>
 <div id="fig-classes-and-predicates" class="imageblock text-center">
 <div class="content">
 <a class="image" href="img/classes-and-predicates.svg"><img src="img/classes-and-predicates.svg" alt="auNSL OWL Data Model overview"></a>
 </div>
-<div class="title">Figure 4. A formal overview of the auNSL OWL Data Model showing major Classes and Predicates. This figure extends Figure 3.</div>
+<div class="title">Figure 5. A formal overview of the auNSL OWL Data Model showing major Classes and Predicates. This figure extends Figure 3.</div>
+</div>
+<div class="sect2">
+<h3 id="_nsl_model"><a class="anchor" href="#_nsl_model"></a>6.1. NSL Model</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_background_models"><a class="anchor" href="#_background_models"></a>6.2. Background Models</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_profile_definition"><a class="anchor" href="#_profile_definition"></a>6.3. Profile Definition</h3>
+<div class="paragraph">
+<p>The relations of this model to the Background Models it inherits from are given in <em>Profiles Vocabulary</em> <a href="#PROF">[PROF]</a> terms in a formal "profile definition". That definition is related here in human-readable form and in machine-readable form (RDF) at:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://linked.data.gov.au/def/nsl/profile" class="bare">https://linked.data.gov.au/def/nsl/profile</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><mark>TODO: write up profile definition</mark></p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_mappings"><a class="anchor" href="#_mappings"></a>7. Mappings</h2>
+<h2 id="_vocabularies"><a class="anchor" href="#_vocabularies"></a>7. Vocabularies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vocabularies Section</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_validators"><a class="anchor" href="#_validators"></a>8. Validators</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Validators Section</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mappings"><a class="anchor" href="#_mappings"></a>9. Mappings</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section contains mappings of this model to other models/vocabularies.</p>
 </div>
 <div class="sect2">
-<h3 id="_abis"><a class="anchor" href="#_abis"></a>7.1. ABIS</h3>
+<h3 id="_abis_2"><a class="anchor" href="#_abis_2"></a>9.1. ABIS</h3>
+<div class="paragraph">
+<p>The BDR dataset uses the <a href="#ABIS">ABIS</a> model which contains uses the same <code>Taxon</code> and <code>Taxon Name</code> classes as defined in this model as well as the <code>Bibliographic Reference</code> and <code>Creative Work</code> classes and <code>cites</code> &amp; <code>references</code> predicates this model also reuses for general-purpose modelling. The use of the <code>Taxon</code> and <code>Taxon Name</code> classes by ABIS is shown in the following figure.</p>
+</div>
+<div id="fig-abis" class="imageblock text-center">
+<div class="content">
+<a class="image" href="img/abis.svg"><img src="img/abis.svg" alt="auNSL / ABIS relations"></a>
+</div>
+<div class="title">Figure 6. Classes from the <a href="#SOSA">SOSA</a> ontology used by <a href="#ABIS">ABIS</a>, shown in blue, and how they relate to classes defined by this model, shown in green. ABIS <em>observes</em> samples (animals, plants, parts of plants, soil etc.) and declares that a <code>Sample</code> belongs to ("is a") <code>Taxon</code> or has a particular <code>Taxon Name</code> assigned to it.</div>
+</div>
+<div class="paragraph">
+<p>This information is repeated in the <a href="#_related_domain_models">Related Domain Models</a> subsection of the <a href="#_introduction">Introduction Section</a> of this document.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gbif_new_data_model"><a class="anchor" href="#_gbif_new_data_model"></a>9.2. GBIF New Data Model</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 50.0002%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">From Element</th>
+<th class="tableblock halign-left valign-top">Mapping relation</th>
+<th class="tableblock halign-left valign-top">To Element</th>
+<th class="tableblock halign-left valign-top">Notes</th>
+</tr>
+</thead>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_darwin_core"><a class="anchor" href="#_darwin_core"></a>9.3. Darwin Core</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 50.0002%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">From Element</th>
+<th class="tableblock halign-left valign-top">Mapping relation</th>
+<th class="tableblock halign-left valign-top">To Element</th>
+<th class="tableblock halign-left valign-top">Notes</th>
+</tr>
+</thead>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_taxon_concept_schema"><a class="anchor" href="#_taxon_concept_schema"></a>9.4. Taxon Concept Schema</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 50.0002%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">From Element</th>
+<th class="tableblock halign-left valign-top">Mapping relation</th>
+<th class="tableblock halign-left valign-top">To Element</th>
+<th class="tableblock halign-left valign-top">Notes</th>
+</tr>
+</thead>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_catalogue_of_life"><a class="anchor" href="#_catalogue_of_life"></a>9.5. Catalogue of Life</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 50.0002%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">From Element</th>
+<th class="tableblock halign-left valign-top">Mapping relation</th>
+<th class="tableblock halign-left valign-top">To Element</th>
+<th class="tableblock halign-left valign-top">Notes</th>
+</tr>
+</thead>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_world_flora_online"><a class="anchor" href="#_world_flora_online"></a>9.6. World Flora Online</h3>
 
 </div>
 <div class="sect2">
-<h3 id="_gbif_new_data_model"><a class="anchor" href="#_gbif_new_data_model"></a>7.2. GBIF New Data Model</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_darwin_core"><a class="anchor" href="#_darwin_core"></a>7.3. Darwin Core</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_taxon_concept_schema"><a class="anchor" href="#_taxon_concept_schema"></a>7.4. Taxon Concept Schema</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_catalogue_of_life"><a class="anchor" href="#_catalogue_of_life"></a>7.5. Catalogue of Life</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_world_flora_online"><a class="anchor" href="#_world_flora_online"></a>7.6. World Flora Online</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_atlas_of_living_australia"><a class="anchor" href="#_atlas_of_living_australia"></a>7.7. Atlas of Living Australia</h3>
+<h3 id="_atlas_of_living_australia"><a class="anchor" href="#_atlas_of_living_australia"></a>9.7. Atlas of Living Australia</h3>
 
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_references"><a class="anchor" href="#_references"></a>8. References</h2>
+<h2 id="_references"><a class="anchor" href="#_references"></a>10. References</h2>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
+<dt class="hdlist1"><a id="ABIS"></a> [ABIS]</dt>
+<dd>
+<p>Department of Climate Change, Energy and the Environment, <em>Australian Biodiversity Information Standard</em> (2023). <a href="https://linked.data.gov.au/def/abis" class="bare">https://linked.data.gov.au/def/abis</a></p>
+</dd>
 <dt class="hdlist1"><a id="DCTERMS"></a> [DCTERMS]</dt>
 <dd>
 <p>DCMI Usage Board, <em>DCMI Metadata Terms</em>, DCMI Recommendation (2020). <a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/" class="bare">https://www.dublincore.org/specifications/dublin-core/dcmi-terms/</a></p>
@@ -908,6 +1242,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <dt class="hdlist1"><a id="RDFSPEC"></a> [RDFSPEC]</dt>
 <dd>
 <p>World Wide Web Consortium, <em>RDF 1.1 Concepts and Abstract Syntax</em>, W3C Recommendation (25 February 2014). <a href="https://www.w3.org/TR/rdf11-concepts/" class="bare">https://www.w3.org/TR/rdf11-concepts/</a></p>
+</dd>
+<dt class="hdlist1"><a id="RDFSSPEC"></a> [RDFSSPEC]</dt>
+<dd>
+<p>World Wide Web Consortium, <em>RDF Schema 1.1</em>, W3C Recommendation (25 February 2014). <a href="https://www.w3.org/TR/rdf11-schema/" class="bare">https://www.w3.org/TR/rdf11-schema/</a></p>
 </dd>
 <dt class="hdlist1"><a id="RFC2119"></a> [RFC2119]</dt>
 <dd>
@@ -964,7 +1302,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-11-26 22:25:22 UTC
+Last updated 2023-12-05 20:35:52 UTC
 </div>
 </div>
 </body>
