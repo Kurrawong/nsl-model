@@ -2,11 +2,83 @@
 
 This section defines not only this model but also the background models this model inherits from and how they are formally related.
 
-[#fig-classes-and-predicates,link=../img/classes-and-predicates.svg]
-.A formal overview of the auNSL OWL Data Model showing major Classes and Predicates. This figure extends Figure 3.
-image::../img/classes-and-predicates.svg[auNSL OWL Data Model overview,align="center"]
+[#fig-owl,link=../img/owl.svg]
+.A formal overview of the auNSL Semantic Web Model showing <<Class, Classes>> and <<Predicate, Predicates>> with the Classes defined by this model in green and those inherited from elsewhere in white. This figure extends <<fig-overview>>.
+image::../img/owl.svg[auNSL OWL Data Model overview,align="center"]
 
 === NSL Model
+
+==== Classes
+
+[[Taxon]]
+==== Taxon
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `nsl:Taxon`
+| Preferred Label | Taxon
+| Definition | A group of organisms considered by taxonomists to form a homogeneous unit
+| Is Defined By | This model
+| Provenance | Built on the https://ontobee.org/ontology/OBI[Ontology for Biomedical Investigation]'s definition for http://purl.obolibrary.org/obo/OBI_0100026[Organism]
+| Subclass of | https://www.w3.org/TR/prov-o/#Entity[`prov:Entity`]
+| Equivalent Class | The https://linkeddata.tern.org.au/information-models/tern-ontology[TERN Ontology]'s https://w3id.org/tern/ontologies/tern/Taxon[`tern:Taxon`] class
+| Expected Properties | <<name>>
+| Example
+a| [source,turtle]
+----
+PREFIX cn: <https://linked.data.gov.au/def/cn/>
+PREFIX ex: <http://example.com/>
+PREFIX nsl: <https://linked.data.gov.au/def/nsl/>
+PREFIX sdo: <https://schema.org/>
+
+<https://id.biodiversity.org.au/51851883>
+    a nsl:Taxon ;
+    sdo:name <https://id.biodiversity.org.au/name/afd/83727> ;  # a Taxon Name
+.
+----
+|===
+
+[[TaxonName]]
+==== Taxon Name
+
+[cols="2,6"]
+|===
+| Property | Value
+
+| IRI | `nsl:TaxonName`
+| Preferred Label | Taxon Name
+| Definition | A name applied to Taxa by people at a point in time
+| Is Defined By | This model
+| Provenance | Defined by the NSL team
+| Subclass of | https://linked.data.gov.au/def/cn[`cn:CompoundName`]
+| Expected Properties | <<isNameFor>> <<hasPart>>
+| Example
+a| [source,turtle]
+----
+PREFIX cn: <https://linked.data.gov.au/def/cn/>
+PREFIX ex: <http://example.com/>
+PREFIX nsl: <https://linked.data.gov.au/def/nsl/>
+PREFIX nslnames: <https://linked.data.gov.au/def/nsl/names/>
+PREFIX sdo: <https://schema.org/>
+
+<https://id.biodiversity.org.au/name/afd/83727>
+    a nsl:TaxonName ;
+    cn:isNameFor <https://id.biodiversity.org.au/51822963> ;  # a Taxon
+    sdo:hasPart [
+        sdo:additionalType nslnames:FullName ;
+        sdo:value "Pilumnus scabriusculus Adams & White, 1849" ;
+    ] ,
+    [
+        sdo:additionalType nslnames:GenericName ;
+        sdo:value "Pilumnus" ;
+    ] ;
+.
+----
+|===
+
+==== Predicates
 
 === Background Models
 

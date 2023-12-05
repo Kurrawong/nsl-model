@@ -11,8 +11,8 @@ This model includes a `Taxon` class which represents "A group of organisms consi
 An informal overview of this model is given in <<fig-overview, Figure 3>> below.
 
 [#fig-overview,link=../img/overview.svg]
-.An informal overview of the auNSL OWL Data Model showing major Classes and Predicates. See <<fig-classes-and-predicates, Figure X>> for a formal diagram.
-image::../img/overview.svg[auNSL OWL Data Model overview,align="center"]
+.An informal overview of the auNSL OWL Data Model showing major <<Class, Classes>> and <<Predicate, Predicates>> with the Classes defined by this model in green and those inherited from elsewhere in white. See <<fig-owl>> for a formal diagram of this model.
+image::../img/overview.svg[auNSL Semantic Web Model overview,align="center"]
 
 === Model Context
 

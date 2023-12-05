@@ -14,7 +14,7 @@ World Flora Online https://list.worldfloraonline.org/
 
 The BDR dataset uses the <<ABIS, ABIS>> model which contains uses the same `Taxon` and `Taxon Name` classes as defined in this model as well as the `Bibliographic Reference` and `Creative Work` classes and `cites` & `references` predicates this model also reuses for general-purpose modelling. The use of the `Taxon` and `Taxon Name` classes by ABIS is shown in the following figure.
 
-[#fig-abis,link=../img/abis.svg]
+[#fig-abis2,link=../img/abis.svg]
 .Classes from the <<SOSA, SOSA>> ontology used by <<ABIS, ABIS>>, shown in blue, and how they relate to classes defined by this model, shown in green. ABIS _observes_ samples (animals, plants, parts of plants, soil etc.) and declares that a `Sample` belongs to ("is a") `Taxon` or has a particular `Taxon Name` assigned to it.
 image::../img/abis.svg[auNSL / ABIS relations,align="center"]
 
