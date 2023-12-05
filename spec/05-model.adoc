@@ -11,9 +11,9 @@ image::../img/owl.svg[auNSL OWL Data Model overview,align="center"]
 ==== Classes
 
 [[Taxon]]
-==== Taxon
+===== Taxon
 
-[cols="2,6"]
+[cols="1,7"]
 |===
 | Property | Value
 
@@ -41,9 +41,9 @@ PREFIX sdo: <https://schema.org/>
 |===
 
 [[TaxonName]]
-==== Taxon Name
+===== Taxon Name
 
-[cols="2,6"]
+[cols="1,7"]
 |===
 | Property | Value
 
