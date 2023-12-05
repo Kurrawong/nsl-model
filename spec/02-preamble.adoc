@@ -1,49 +1,66 @@
 == Preamble
 
+=== Parts of this Model
+
+The NSL's Semantic Web Model comprises the following parts:
+
+* *Model Specification*
+** This document
+** Describes the parts, patterns and mappings of the Model in human-readable form
+* *Profile Definition*
+** The definition of how this Model inherits from other models
+** This is described in the <<Profile Definition, Profile Definition Section>> but the machine-readable form of this definition is available separately
+* *Vocabularies*
+** The codelists/classifiers/concept schemes used by this model
+** These are listed in the <<Vocabularies, Vocabularies Section>> in this document but are published independently of this model
+* *Validators*
+** Data 'shape' expressions files in the <<SHACL, SHACL>> format that can be used to automatically validate data claiming to conform to this model
+** These are listed in the <<Validators, Validators Section>> in this document but are published independently of this model
+* *Mappings*
+** Mappings of this model to other models in its domain
+** These are described in the <<Mappings, Mappings Section>> but are also available in machine-readable form
+
 === Terms & Definitions
 
-[discrete]
-==== IRI
+The following terms are used in this document
 
-An _Internationalized Resource Identifier_ is a web address-style URL that is used as an identifier for something. It may be for a real-world object, e.g. `https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince` identifies the Queensland Geological Feature _Anakie Province_ or for data only, e.g. `https://schema.org/marginOfError` which is for a predicate that links a margin of error value to a result.
-
+[[IRI]]
+IRI:: An _Internationalized Resource Identifier_ is a web address-style URL that is used as an identifier for something. It may be for a real-world object, e.g. `https://linked.data.gov.au/dataset/qldgeofeatures/AnakieProvince` identifies the Queensland Geological Feature _Anakie Province_ or for data only, e.g. `https://schema.org/marginOfError` which is for a predicate that links a margin of error value to a result.
++
 IRIs do not have to resolve - go somewhere online when clicked - but they do have to follow ll the rules for URLs such as having no spaces.
 
-[discrete]
-==== Class
+[[Class]]
+Class:: Within formal <<OWL, OWL>> modelling a class is a set of objects exhibiting common properties. For example, the set of all people who are studying could be defined as being within a _Student_ class.
 
-Within formal <<OWL, OWL>> modelling a class is a set of objects exhibiting common properties. For example, the set of all people who are studying could be defined as being within a _Student_ class.
+[[KnowledgeGraph]]
+Knowledge Graph:: A data holding that implements node-edge-node (graph) data structures. The 'knowledge' part is often taken to indicate that the graph contains refined information, not just pure, raw, data.
 
-[discrete]
-==== OWL
+[[LinkedData]]
+Linked Data:: A series of technologies and methodologies for the publication of data on the Internet. Uses <<RDF, RDF>> as its underlying data structure, <<OWL, OWL>> as its data model and the common mechanics of the Domain Name System (DNS) and the Hypertext Transfer Protocol (HTTP) to identify and share its data.
 
-The OWL 2 Web Ontology Language, informally OWL 2, is an ontology language for the Semantic Web with formally defined meaning. OWL 2 ontologies provide classes, properties, individuals, and data values and are stored as Semantic Web documents. OWL 2 ontologies can be used along with information written in RDF, and OWL 2 ontologies themselves are primarily exchanged as RDF documents. <<OWL2, OWL>>
+[[OWL]]
+OWL:: The OWL 2 Web Ontology Language , informally OWL, is an ontology language for the Semantic Web with formally defined meaning. OWL 2 ontologies provide classes, properties, individuals, and data values and are stored as Semantic Web documents. OWL 2 ontologies can be used along with information written in <<RDF, RDF>>, and OWL 2 ontologies themselves are primarily exchanged as RDF documents - <<OWL2, OWL>>
 
-[discrete]
-==== Predicate
-
-Predicates, within formal <<OWL, OWL>> modelling, are the defined relations between objects of different classes (see <<Class>>) and also between objects and simple data values such as numbers and dates. For example, if _Person X_ "knows" _Person Y_, then we can use a predicate of `knows` to relate them.
-
+[[Predicate]]
+Predicate:: Predicates, within formal <<OWL, OWL>> modelling, are the defined relations between objects of different classes (see <<Class>>) and also between objects and simple data values such as numbers and dates. For example, if _Person X_ "knows" _Person Y_, then we can use a predicate of `knows` to relate them.
++
 Frequently we use predicates already defined in existing ontologies. "knows", for example, is defined in the schema.org ontology <<SDO, SDO>> to be "The most generic bi-directional social/work relation".
 
-[discrete]
-==== RDF
+[[RDF]]
+RDF:: The Resource Description Framework (RDF) is a framework for representing information on the Web. RDF graphs are sets of subject-predicate-object triples, where the elements may be IRIs, unidentified nodes, or literals with specific datatypes. RDF expresses descriptions of resources - <<RDFSPEC, RDFSPEC>>
 
-The Resource Description Framework (RDF) is a framework for representing information on the Web. RDF graphs are sets of subject-predicate-object triples, where the elements may be IRIs, unidentified nodes, or literals with specific datatypes. RDF expresses descriptions of resources. <<RDFSPEC, RDFSPEC>>
+[[RDFS]]
+RDFS:: RDF Schema provides a data-modelling vocabulary for RDF data. RDF Schema is an extension of the basic RDF vocabulary - <<RDFSSPEC, RDFSSPEC>>
 
-[discrete]
-==== RDFS
+[[SeamanticWeb]]
+Semantic Web:: A vision of a machine-understandable Internet, created in the year 2000, and thought to be attainable through the use of Linked Data.
 
-RDF Schema provides a data-modelling vocabulary for RDF data. RDF Schema is an extension of the basic RDF vocabulary. <<RDFS, RDFS>>
-
-[discrete]
-==== SPARQL
-
-SPARQL is a query language for RDF. The results of SPARQL queries can be result sets or RDF graphs. <<SPARQL, SPARQL>>
+[[SPARQL]]
+SPARQL:: SPARQL is a query language for RDF. The results of SPARQL queries can be result sets or RDF graphs. <<SPARQL, SPARQL>>
 
 === Diagram Conventions
 
-The following elements are used in Conceptual and Logical model diagrams:
+The following elements are used in this document's Conceptual and Logical model diagrams:
 
 .Diagram Elements Key. Where `prefix:ElementID` is used, the `prefix` refers to entries in the <<Namespaces, Namespaces>> table below
 image::../img/key.svg[Diagram Elements Key,align="center"]
@@ -54,14 +71,17 @@ Namespaces for model, vocabulary and validator elements are assigned the followi
 
 [frame=none, grid=none, cols="1, 4, 4"]
 |===
+| *`nsl`*: | *https://linked.data.gov.au/def/nsl* | *This data model's namespace*
+| `abis`: | https://linked.data.gov.au/def/abis | Australian Biodiversity Information Standard
 | `biro` | http://purl.org/spar/biro/ | http://www.sparontologies.net/ontologies/biro[BiRO], the Bibliographic Reference Ontology
 | `ex`: | http://example.com/ | A non-resolving namespace for examples
-| `nsl`: | https://linked.data.gov.au/def/nsl | This data model's namespace
 | `owl`: | http://www.w3.org/2002/07/owl# | <<OWL2, OWL>> ontology
 | `prov`: | http://www.w3.org/ns/prov# | <<PROV, PROV>> ontology
 | `rdfs`: | http://www.w3.org/2000/01/rdf-schema# | <<RDFS, RDFS>> ontology
 | `sdo`: | https://schema.org/ | <<SDO, SDO>> vocabulary
 | `skos`: | http://www.w3.org/2004/02/skos/core# | <<SKOS, SKOS>> ontology
 | `sosa`: | http://www.w3.org/ns/sosa/ | <<SOSA, SOSA>> ontology
+| `tern`: | https://w3id.org/tern/ontologies/tern/ | TERN Ontology namespace
+| `time`: | http://www.w3.org/2006/time# | Time Ontology in OWL namespace
 | `xsd`: | http://www.w3.org/2001/XMLSchema# | <<XSD2, XSD>> datatypes vocabulary
 |===

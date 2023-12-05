@@ -2,9 +2,11 @@
 
 The Australian National Species List (auNSL) is a taxonomic resource that provides authoritative data for names and published taxon concepts for native and naturalised taxa in Australia. See https://biodiversity.org.au/nsl/ for further information.
 
-This data model represents the <<RDF, RDF>> / <<OWL, OWL>> expression of the structure of the content of the auNSL.
+This data model represents the <<Semantic Web, Semantic Web>> expression of the structure of the content of the auNSL, which means its interpretation in <<OWL, OWL>> <<Class, Classes>> and <<Predicate, Predicates>> and its delivery online in <<RDF, RDF>>. With the model in this form, the content of the auNSL can then be delivered as a <<KnowledgeGraph, Knwoledge Graph>> and accessed via <<LinkedData, Linked Data>> and via services such as <<SPARQL, SPARQL>>.
 
-This model includes a `Taxon` class which represents "A group of organisms considered by taxonomists to form a homogeneous unit" and links to that a `Taxon Name` class which represents "Names applied to Taxa by people at points in time". It then
+=== Model Overview
+
+This model includes a `Taxon` class which represents "A group of organisms considered by taxonomists to form a homogeneous unit" and links to that a `Taxon Name` class which represents "A name applied to Taxa by people at a point in time". Instances of `Taxon Name` are then modelled to have been used over time through a `Taxon Name Usage` class which may cite `Bibliographic Reference` class instances that indicate `Creative Work` instances which represent the papers/articles/books etc. that provide the taxon name and sometimes describe the taxon. `Taxon Name Usage` class instances may also be cited and instances of this are recorded as `Cited Usage` class instances.
 
 An informal overview of this model is given in <<fig-overview, Figure 3>> below.
 
@@ -14,7 +16,32 @@ image::../img/overview.svg[auNSL OWL Data Model overview,align="center"]
 
 === Model Context
 
-This section provides background information on the situation within which this model has been made.
+This model exists within both a national and international domain context - other models within the general area of biodiversity, species and bibliographic referencing - and a technical context of expressing and publishing Semantic Web models.
+
+==== Related Domain Models
+
+The auNLS is a stand-alone system, meaning it is not dependent on any other data sources for its interpretation or use, however its content is used by many other systems such as databases of biodiversity observations, in particular the:
+
+* https://linked.data.gov.au/dataset/bdr[Biodiversity Data Repository (BDR)]
+* https://ala.org.au[Atlas of Living Australia (ALA)]
+
+These two systems have their own models which necessarily relate to this model.
+
+===== ABIS
+
+The BDR dataset uses the <<ABIS, ABIS>> model which contains uses the same `Taxon` and `Taxon Name` classes as defined in this model as well as the `Bibliographic Reference` and `Creative Work` classes and `cites` & `references` predicates this model also reuses for general-purpose modelling. The use of the `Taxon` and `Taxon Name` classes by ABIS is shown in the following figure.
+
+[#fig-abis,link=../img/abis.svg]
+.Classes from the <<SOSA, SOSA>> ontology used by <<ABIS, ABIS>>, shown in blue, and how they relate to classes defined by this model, shown in green. ABIS _observes_ samples (animals, plants, parts of plants, soil etc.) and declares that a `Sample` belongs to ("is a") `Taxon` or has a particular `Taxon Name` assigned to it.
+image::../img/abis.svg[auNSL / ABIS relations,align="center"]
+
+This information is repeated in the <<Mappings, Mapping Section>> of this document.
+
+===== ALA
+
+The Atlas of Living Australia data model is, or is becoming, the new https://www.gbif.org/new-data-model[GBIF New Data Model] which declares a `Taxon` class which is the same as this model's `Taxon` class and which declares an `Identification` class which is similar to this model's `Taxon Name` class.
+
+A Semantic Web form of the GBIF New Data Model is expected in 2024 and this auNSL/GBIF NDM relation will be updated then. For now, the mapping from this model to the GBIF NDM is given in the <<Mappings, Mappings Section>>.
 
 ==== Semantic Web
 

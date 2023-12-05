@@ -1,5 +1,7 @@
 == References
 
+[[ABIS]] [ABIS]:: Department of Climate Change, Energy and the Environment, _Australian Biodiversity Information Standard_ (2023). https://linked.data.gov.au/def/abis
+
 [[DCTERMS]] [DCTERMS]:: DCMI Usage Board, _DCMI Metadata Terms_, DCMI Recommendation (2020). https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
 
 [[GSP]] [GSP]:: Open Geospatial Consortium, _OGC GeoSPARQL - A Geographic Query Language for RDF Data_, OGC Implementation Standard. Car, N. J., & Homburg, T. (eds.) (2011). http://www.opengis.net/doc/IS/geosparql/1.1
@@ -13,6 +15,8 @@
 [[OWL2]] [OWL2]:: World Wide Web Consortium, _OWL 2 Web Ontology Language Document Overview (Second Edition)_, W3C Recommendation (11 December 2012). https://www.w3.org/TR/owl2-overview/
 
 [[RDFSPEC]] [RDFSPEC]:: World Wide Web Consortium, _RDF 1.1 Concepts and Abstract Syntax_, W3C Recommendation (25 February 2014). https://www.w3.org/TR/rdf11-concepts/
+
+[[RDFSSPEC]] [RDFSSPEC]:: World Wide Web Consortium, _RDF Schema 1.1_, W3C Recommendation (25 February 2014). https://www.w3.org/TR/rdf11-schema/
 
 [[RFC2119]] [RFC2119]:: RFC 2119: _Key words for use in RFCs to Indicate Requirement Levels_, Internet Engineering Taskforce_ (March 1997). https://www.rfc-editor.org/info/rfc2119, DOI: https://doi.org/10.17487/RFC2119[10.17487/RFC2119]
 
