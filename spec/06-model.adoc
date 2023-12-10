@@ -134,14 +134,14 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 #TODO: add other properties to TNU in example#
 
 [[CitedUsage]]
-===== Cited Usage
+===== Usage
 
 [cols="1,7"]
 |===
 | Property | Value
 
-| IRI | `nsl:CitedUsage`
-| Preferred Label | Cited Usage
+| IRI | `nsl:Usage`
+| Preferred Label | Usage
 | Definition |
 | Is Defined By | This model
 | Provenance | Defined by the NSL team
@@ -150,7 +150,15 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 | Example
 a| [source,turtle]
 ----
+PREFIX biro: <http://purl.org/spar/biro/>
+PREFIX nsl: <https://linked.data.gov.au/def/nsl/>
 
+<https://www.biodiversitylibrary.org/page/34948210>
+    a nsl:Usage ;
+    biro:references <https://id.biodiversity.org.au/name/afd/87296> ;  # TaxonName
+    biro:references <http://hdl.handle.net/102.100.100/314652> ;  # CreativeWork
+    # ... other properties situating the usage
+.
 ----
 |===
 
@@ -163,10 +171,10 @@ a| [source,turtle]
 
 | IRI | `biro:BibliographicReference`
 | Preferred Label | Bibliographic Reference
-| Definition |
-| Is Defined By | This model
+| Definition | A bibliographic reference is a realization of a bibliographic record. Moreover, it can contain only items referring to elements contained by the bibliographic record it realizes.
+| Is Defined By | http://www.sparontologies.net/ontologies/biro[Bibliographic Reference Ontology (BiRO]
 | Provenance | Defined by the NSL team
-| Subclass of |
+| Subclass of | Used without alteration
 | Expected Properties |
 | Example
 a| [source,turtle]
@@ -186,7 +194,7 @@ a| [source,turtle]
 | Preferred Label | Creative Work
 | Definition | The most generic kind of creative work, including books, movies, photographs, software programs, etc.
 | Is Defined By | https://schema.org[schema.org]
-| Provenance | Taken directly from schema.org without alteration
+| Provenance | Used without alteration
 | Expected Properties | <<name, name>>, <<author, author>>, <<datePublished, date created>>, <<publicationName, publication name>>, <<volumeNumber, volume number>>, <<issueNumber, issue number>>
 | Example
 a| [source,turtle]
