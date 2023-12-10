@@ -1517,7 +1517,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 </div>
 </div>
 <div class="sect4">
-<h5 id="CitedUsage"><a class="anchor" href="#CitedUsage"></a>6.1.1.5. Cited Usage</h5>
+<h5 id="CitedUsage"><a class="anchor" href="#CitedUsage"></a>6.1.1.5. Usage</h5>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -1532,11 +1532,11 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nsl:CitedUsage</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nsl:Usage</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Preferred Label</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Cited Usage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usage</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
@@ -1562,7 +1562,15 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="turtle"></code></pre>
+<pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">biro:</span><span class="w"> </span><span class="nl">&lt;http://purl.org/spar/biro/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">nsl:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/nsl/&gt;</span><span class="w">
+
+</span><span class="nl">&lt;https://www.biodiversitylibrary.org/page/34948210&gt;</span><span class="w">
+    </span><span class="k">a</span><span class="w"> </span><span class="nn">nsl:</span><span class="n">Usage</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">biro:</span><span class="n">references</span><span class="w"> </span><span class="nl">&lt;https://id.biodiversity.org.au/name/afd/87296&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1"># TaxonName</span><span class="w">
+    </span><span class="nn">biro:</span><span class="n">references</span><span class="w"> </span><span class="nl">&lt;http://hdl.handle.net/102.100.100/314652&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1"># CreativeWork</span><span class="w">
+    </span><span class="c1"># ... other properties situating the usage</span><span class="w">
+</span><span class="p">.</span></code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -1593,11 +1601,11 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A bibliographic reference is a realization of a bibliographic record. Moreover, it can contain only items referring to elements contained by the bibliographic record it realizes.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This model</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.sparontologies.net/ontologies/biro">Bibliographic Reference Ontology (BiRO</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Provenance</p></td>
@@ -1605,7 +1613,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Subclass of</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used without alteration</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
@@ -1654,7 +1662,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Provenance</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Taken directly from schema.org without alteration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used without alteration</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
@@ -2008,7 +2016,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-12-10 21:39:23 UTC
+Last updated 2023-12-10 22:01:54 UTC
 </div>
 </div>
 </body>
