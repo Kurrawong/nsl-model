@@ -1,0 +1,47 @@
+query GetCitedUsages {
+  apni_cited_usage_cv(where: {nameId: {_eq: 87296}}) {
+    citedIdentifier
+    citedUsageId
+    citedUsageNotes
+    fullName
+    host
+    identifier
+    nameId
+    pageCitation
+    publicationCitation
+    publicationDate
+    publicationYear
+    referenceId
+    relationshipId
+    relationshipNotes
+    relationshipType
+    usageTypeId
+  }
+}
+
+
+
+query GetATaxonName {
+  apni_taxon_name_cv(limit:3, where: {nameId: {_eq: 87296}}) {
+    NSLStatus
+    authorId
+    authorship
+    created
+    cultivarEpithet
+    fullName
+    genericName
+    identifier
+    modified
+    nameId
+    nameStatusId
+    nameType
+    nomenclaturalCode
+    nomenclaturalStatus
+    primaryUsageId
+    rankRDFId
+    simpleName
+    sortName
+    sourceId
+    typeCitation
+  }
+}

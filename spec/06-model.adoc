@@ -1,0 +1,272 @@
+== Model
+
+This section defines not only this model but also the background models this model inherits from and how they are formally related.
+
+=== auNSL Semantic Web Model
+
+[#fig-owl,link=../img/owl.svg]
+.A formal overview of the auNSL Semantic Web Model showing <<Class, Classes>> and <<Predicate, Predicates>> with the Classes defined by this model in green and those inherited from elsewhere in white. Namespace prefixes for each figure element are given such as ":" & "sdo:" so elements' full IRIs can be understood. See the <<Namespaces, Namespaces>> section for their interpretation. This figure extends <<fig-overview>>.
+image::../img/owl.svg[auNSL OWL Data Model overview,align="center"]
+
+This model is described in terms of <<Class, Classes>> and <<Predicate, Predicates>>. The figure above provides an overview of this model and the figure below provides the comprehensive view - all model elements.
+
+[#fig-comprehensive,link=../img/owl.svg]
+.A comprehensive view of auNSL Semantic Web Model showing all <<Class, Classes>> and <<Predicate, Predicates>> defined by and used by this model. Classes defined by this model in green and those inherited from elsewhere in white. This figure extends <<fig-overview>>.
+image::../img/owl.svg[auNSL OWL Data Model overview,align="center"]
+
+#TODO: add the real comprehensive figure in above#
+
+==== Classes
+
+===== Class Index
+
+* <<Taxon, Taxon>>
+* <<TaxonName, Taxon Name>>
+* <<TaxonNameUsage, Taxon Name Usage>>
+* <<CitedUsage, Cited Usage>>
+* <<BibliographicReference, Bibliographic Reference>>
+* <<CreativeWork, Creative Work>>
+
+[[Taxon]]
+===== Taxon
+
+[cols="1,7"]
+|===
+| Property | Value
+
+| IRI | `nsl:Taxon`
+| Preferred Label | Taxon
+| Definition | A group of organisms considered by taxonomists to form a homogeneous unit
+| Is Defined By | This model
+| Provenance | Built on the https://ontobee.org/ontology/OBI[Ontology for Biomedical Investigation]'s definition for http://purl.obolibrary.org/obo/OBI_0100026[Organism]
+| Subclass of | https://www.w3.org/TR/prov-o/#Entity[`prov:Entity`]
+| Equivalent Class | The https://linkeddata.tern.org.au/information-models/tern-ontology[TERN Ontology]'s https://w3id.org/tern/ontologies/tern/Taxon[`tern:Taxon`] class
+| Expected Properties | <<name>>
+| Example
+a| [source,turtle]
+----
+PREFIX cn: <https://linked.data.gov.au/def/cn/>
+PREFIX ex: <http://example.com/>
+PREFIX nsl: <https://linked.data.gov.au/def/nsl/>
+PREFIX sdo: <https://schema.org/>
+
+<https://id.biodiversity.org.au/51851883>
+    a nsl:Taxon ;
+    sdo:name <https://id.biodiversity.org.au/name/afd/83727> ;  # a Taxon Name
+.
+----
+|===
+
+[[TaxonName]]
+===== Taxon Name
+
+[cols="1,7"]
+|===
+| Property | Value
+
+| IRI | `nsl:TaxonName`
+| Preferred Label | Taxon Name
+| Definition | A name applied to Taxa by people at a point in time
+| Is Defined By | This model
+| Provenance | Defined by the NSL team
+| Subclass of | https://linked.data.gov.au/def/cn[`cn:CompoundName`]
+| Expected Properties | <<isNameFor>>, <<hasPart>>, <<hasCitation>>
+| Example
+a| [source,turtle]
+----
+PREFIX cn: <https://linked.data.gov.au/def/cn/>
+PREFIX ex: <http://example.com/>
+PREFIX nsl: <https://linked.data.gov.au/def/nsl/>
+PREFIX nslnames: <https://linked.data.gov.au/def/nsl/names/>
+PREFIX sdo: <https://schema.org/>
+
+<https://id.biodiversity.org.au/name/afd/83727>
+    a nsl:TaxonName ;
+    cn:isNameFor <https://id.biodiversity.org.au/51822963> ;  # a Taxon
+    sdo:hasPart [
+        sdo:additionalType nslnames:FullName ;
+        sdo:value "Pilumnus scabriusculus Adams & White, 1849" ;
+    ] ,
+    [
+        sdo:additionalType nslnames:GenericName ;
+        sdo:value "Pilumnus" ;
+    ] ;
+.
+----
+|===
+
+[[TaxonNameUsage]]
+===== Taxon Name Usage
+
+[cols="1,7"]
+|===
+| Property | Value
+
+| IRI | `nsl:TaxonNameUsage`
+| Preferred Label | Taxon Name Usage
+| Definition | An instance of the use of an Entity via citation
+| Is Defined By | This model
+| Provenance | Defined by the NSL team
+| Subclass of | https://www.w3.org/TR/prov-o/#Entity[`prov:Entity`]
+| Expected Properties | <<cites>>
+| Example
+a| [source,turtle]
+----
+PREFIX nsl: <https://linked.data.gov.au/def/nsl/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX sdo: <https://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+<https://id.biodiversity.org.au/name/afd/83727>
+    a nsl:TaxonName ;
+    # ... other properties
+.
+
+<http://example.com/tnu/x>
+    a nsl:TaxonNameUsage ;
+    sdo:cites <https://id.biodiversity.org.au/name/afd/83727> ;
+    prov:createdAtTime "1995-03-02"^^xsd:date ;
+    # ... other properties
+.
+----
+|===
+
+#TODO: add other properties to TNU in example#
+
+[[CitedUsage]]
+===== Cited Usage
+
+[cols="1,7"]
+|===
+| Property | Value
+
+| IRI | `nsl:CitedUsage`
+| Preferred Label | Cited Usage
+| Definition |
+| Is Defined By | This model
+| Provenance | Defined by the NSL team
+| Subclass of |
+| Expected Properties |
+| Example
+a| [source,turtle]
+----
+
+----
+|===
+
+[[BibliographicReference]]
+===== Bibliographic Reference
+
+[cols="1,7"]
+|===
+| Property | Value
+
+| IRI | `biro:BibliographicReference`
+| Preferred Label | Bibliographic Reference
+| Definition |
+| Is Defined By | This model
+| Provenance | Defined by the NSL team
+| Subclass of |
+| Expected Properties |
+| Example
+a| [source,turtle]
+----
+
+----
+|===
+
+[[CreativeWork]]
+===== Creative Work
+
+[cols="1,7"]
+|===
+| Property | Value
+
+| IRI | `sdo:CreativeWork`
+| Preferred Label | Creative Work
+| Definition | The most generic kind of creative work, including books, movies, photographs, software programs, etc.
+| Is Defined By | https://schema.org[schema.org]
+| Provenance | Taken directly from schema.org without alteration
+| Expected Properties | <<name, name>>, <<author, author>>, <<datePublished, date created>>, <<publicationName, publication name>>, <<volumeNumber, volume number>>, <<issueNumber, issue number>>
+| Example
+a| [source,turtle]
+----
+PREFIX cn: <https://linked.data.gov.au/def/cn/>
+PREFIX ex: <http://example.com/>
+PREFIX sdo: <https://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+<http://hdl.handle.net/102.100.100/314652>
+    a sdo:CreativeWork ;  # sdo:Article
+    sdo:name "Check List of Northern Territory Plants" ;
+    sdo:author "Chippendale, G.M." ;
+    sdo:datePublished "1972-04-17"^^xsd:date ;
+    ex:publicationName "Proceedings of the Linnean Society of New South Wales" ;
+    sdo:volumeNumber 64 ;
+    sdo:issueNumber 4 ;
+    sdo:name [
+        # "Chippendale, G.M. (17 April 1972), Check List of Northern Territory Plants. Proceedings of the Linnean Society of New South Wales 96(4)" ;
+        a cn:CompoundName ;
+        sdo:hasPart [
+            sdo:additionalType sdo:name ;
+            sdo:value "Check List of Northern Territory Plants" ;
+        ] ,
+        [
+            sdo:additionalType sdo:author ;
+            sdo:value "Chippendale, G.M." ;
+        ] ,
+        [
+            sdo:additionalType sdo:datePublished ;
+            sdo:value "1972-04-17"^^xsd:date ;
+        ] ,
+        [
+            sdo:additionalType ex:publicationName ;
+            sdo:value "Proceedings of the Linnean Society of New South Wales" ;
+        ] ,
+        [
+            sdo:additionalType sdo:volumeNumber ;
+            sdo:value 64 ;
+        ] ,
+        [
+            sdo:additionalType sdo:issueNumber ;
+            sdo:value 4 ;
+        ]
+    ]
+.
+----
+|===
+
+==== Predicates
+
+===== Class Index
+
+* <<name, name>>
+* <<isNameFor, is name for>>
+* <<hasPart, has part>>
+* <<cites, cites>>
+* <<hasCitation, has citation>>
+
+[[name]]
+===== name
+
+[[isNameFor]]
+===== is name for
+
+[[hasPart]]
+===== has part
+
+[[cites]]
+===== cites
+
+[[hasCitation]]
+===== has citation
+
+=== Background Models
+
+=== Profile Definition
+
+The relations of this model to the Background Models it inherits from are given in _Profiles Vocabulary_ <<PROF>> terms in a formal "profile definition". That definition is related here in human-readable form and in machine-readable form (RDF) at:
+
+* https://linked.data.gov.au/def/nsl/profile
+
+#TODO: write up profile definition#
