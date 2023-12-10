@@ -681,7 +681,7 @@ pre.rouge {
 </li>
 <li><a href="#_model">6. Model</a>
 <ul class="sectlevel2">
-<li><a href="#_nsl_model">6.1. NSL Model</a></li>
+<li><a href="#_aunsl_semantic_web_model">6.1. auNSL Semantic Web Model</a></li>
 <li><a href="#_background_models">6.2. Background Models</a></li>
 <li><a href="#_profile_definition">6.3. Profile Definition</a></li>
 </ul>
@@ -699,7 +699,8 @@ pre.rouge {
 <li><a href="#_atlas_of_living_australia">9.7. Atlas of Living Australia</a></li>
 </ul>
 </li>
-<li><a href="#_references">10. References</a></li>
+<li><a href="#_nsl_data_access">10. NSL Data Access</a></li>
+<li><a href="#_references">11. References</a></li>
 </ul>
 </div>
 </div>
@@ -741,7 +742,7 @@ pre.rouge {
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Modified</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2023-12-04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-12-11</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Issued</strong></p></td>
@@ -1262,18 +1263,55 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <div class="paragraph">
 <p>This section defines not only this model but also the background models this model inherits from and how they are formally related.</p>
 </div>
+<div class="sect2">
+<h3 id="_aunsl_semantic_web_model"><a class="anchor" href="#_aunsl_semantic_web_model"></a>6.1. auNSL Semantic Web Model</h3>
 <div id="fig-owl" class="imageblock text-center">
 <div class="content">
 <a class="image" href="img/owl.svg"><img src="img/owl.svg" alt="auNSL OWL Data Model overview"></a>
 </div>
-<div class="title">Figure 5. A formal overview of the auNSL Semantic Web Model showing <a href="#Class">Classes</a> and <a href="#Predicate">Predicates</a> with the Classes defined by this model in green and those inherited from elsewhere in white. This figure extends <a href="#fig-overview">Figure 3</a>.</div>
+<div class="title">Figure 5. A formal overview of the auNSL Semantic Web Model showing <a href="#Class">Classes</a> and <a href="#Predicate">Predicates</a> with the Classes defined by this model in green and those inherited from elsewhere in white. Namespace prefixes for each figure element are given such as ":" &amp; "sdo:" so elements' full IRIs can be understood. See the <a href="#_namespaces">Namespaces</a> section for their interpretation. This figure extends <a href="#fig-overview">Figure 3</a>.</div>
 </div>
-<div class="sect2">
-<h3 id="_nsl_model"><a class="anchor" href="#_nsl_model"></a>6.1. NSL Model</h3>
+<div class="paragraph">
+<p>This model is described in terms of <a href="#Class">Classes</a> and <a href="#Predicate">Predicates</a>. The figure above provides an overview of this model and the figure below provides the comprehensive view - all model elements.</p>
+</div>
+<div id="fig-comprehensive" class="imageblock text-center">
+<div class="content">
+<a class="image" href="img/owl.svg"><img src="img/owl.svg" alt="auNSL OWL Data Model overview"></a>
+</div>
+<div class="title">Figure 6. A comprehensive view of auNSL Semantic Web Model showing all <a href="#Class">Classes</a> and <a href="#Predicate">Predicates</a> defined by and used by this model. Classes defined by this model in green and those inherited from elsewhere in white. This figure extends <a href="#fig-overview">Figure 3</a>.</div>
+</div>
+<div class="paragraph">
+<p><mark>TODO: add the real comprehensive figure in above</mark></p>
+</div>
 <div class="sect3">
 <h4 id="_classes"><a class="anchor" href="#_classes"></a>6.1.1. Classes</h4>
 <div class="sect4">
-<h5 id="Taxon"><a class="anchor" href="#Taxon"></a>6.1.1.1. Taxon</h5>
+<h5 id="_class_index"><a class="anchor" href="#_class_index"></a>6.1.1.1. Class Index</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#Taxon">Taxon</a></p>
+</li>
+<li>
+<p><a href="#TaxonName">Taxon Name</a></p>
+</li>
+<li>
+<p><a href="#TaxonNameUsage">Taxon Name Usage</a></p>
+</li>
+<li>
+<p><a href="#CitedUsage">Cited Usage</a></p>
+</li>
+<li>
+<p><a href="#BibliographicReference">Bibliographic Reference</a></p>
+</li>
+<li>
+<p><a href="#CreativeWork">Creative Work</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="Taxon"><a class="anchor" href="#Taxon"></a>6.1.1.2. Taxon</h5>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -1316,7 +1354,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#name">[name]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#name">Section 6.1.2.2</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
@@ -1338,7 +1376,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 </table>
 </div>
 <div class="sect4">
-<h5 id="TaxonName"><a class="anchor" href="#TaxonName"></a>6.1.1.2. Taxon Name</h5>
+<h5 id="TaxonName"><a class="anchor" href="#TaxonName"></a>6.1.1.3. Taxon Name</h5>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <colgroup>
 <col style="width: 12.5%;">
@@ -1377,7 +1415,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#isNameFor">[isNameFor]</a> <a href="#hasPart">[hasPart]</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#isNameFor">Section 6.1.2.3</a>, <a href="#hasPart">Section 6.1.2.4</a>, <a href="#hasCitation">Section 6.1.2.6</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
@@ -1407,10 +1445,318 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 </tbody>
 </table>
 </div>
+<div class="sect4">
+<h5 id="TaxonNameUsage"><a class="anchor" href="#TaxonNameUsage"></a>6.1.1.4. Taxon Name Usage</h5>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 12.5%;">
+<col style="width: 87.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nsl:TaxonNameUsage</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preferred Label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Taxon Name Usage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An instance of the use of an Entity via citation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This model</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provenance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defined by the NSL team</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subclass of</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/prov-o/#Entity"><code>prov:Entity</code></a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cites">Section 6.1.2.5</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">nsl:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/nsl/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">prov:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/ns/prov#&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sdo:</span><span class="w"> </span><span class="nl">&lt;https://schema.org/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">xsd:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span><span class="w">
+
+</span><span class="nl">&lt;https://id.biodiversity.org.au/name/afd/83727&gt;</span><span class="w">
+    </span><span class="k">a</span><span class="w"> </span><span class="nn">nsl:</span><span class="n">TaxonName</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="c1"># ... other properties</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nl">&lt;http://example.com/tnu/x&gt;</span><span class="w">
+    </span><span class="k">a</span><span class="w"> </span><span class="nn">nsl:</span><span class="n">TaxonNameUsage</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">cites</span><span class="w"> </span><span class="nl">&lt;https://id.biodiversity.org.au/name/afd/83727&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">prov:</span><span class="n">createdAtTime</span><span class="w"> </span><span class="s">"1995-03-02"</span><span class="p">^^</span><span class="nn">xsd:</span><span class="n">date</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="c1"># ... other properties</span><span class="w">
+</span><span class="p">.</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><mark>TODO: add other properties to TNU in example</mark></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="CitedUsage"><a class="anchor" href="#CitedUsage"></a>6.1.1.5. Cited Usage</h5>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 12.5%;">
+<col style="width: 87.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nsl:CitedUsage</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preferred Label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cited Usage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This model</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provenance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defined by the NSL team</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subclass of</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="turtle"></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="BibliographicReference"><a class="anchor" href="#BibliographicReference"></a>6.1.1.6. Bibliographic Reference</h5>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 12.5%;">
+<col style="width: 87.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>biro:BibliographicReference</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preferred Label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bibliographic Reference</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This model</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provenance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Defined by the NSL team</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subclass of</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="turtle"></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="CreativeWork"><a class="anchor" href="#CreativeWork"></a>6.1.1.7. Creative Work</h5>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 12.5%;">
+<col style="width: 87.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sdo:CreativeWork</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preferred Label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Creative Work</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The most generic kind of creative work, including books, movies, photographs, software programs, etc.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://schema.org">schema.org</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provenance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Taken directly from schema.org without alteration</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#name">name</a>, <a href="#author">author</a>, <a href="#datePublished">date created</a>, <a href="#publicationName">publication name</a>, <a href="#volumeNumber">volume number</a>, <a href="#issueNumber">issue number</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">cn:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/cn/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">ex:</span><span class="w"> </span><span class="nl">&lt;http://example.com/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sdo:</span><span class="w"> </span><span class="nl">&lt;https://schema.org/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">xsd:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span><span class="w">
+
+</span><span class="nl">&lt;http://hdl.handle.net/102.100.100/314652&gt;</span><span class="w">
+    </span><span class="k">a</span><span class="w"> </span><span class="nn">sdo:</span><span class="n">CreativeWork</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1"># sdo:Article</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">name</span><span class="w"> </span><span class="s">"Check List of Northern Territory Plants"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">author</span><span class="w"> </span><span class="s">"Chippendale, G.M."</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">datePublished</span><span class="w"> </span><span class="s">"1972-04-17"</span><span class="p">^^</span><span class="nn">xsd:</span><span class="n">date</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">ex:</span><span class="n">publicationName</span><span class="w"> </span><span class="s">"Proceedings of the Linnean Society of New South Wales"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">volumeNumber</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">issueNumber</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">name</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="c1"># "Chippendale, G.M. (17 April 1972), Check List of Northern Territory Plants. Proceedings of the Linnean Society of New South Wales 96(4)" ;</span><span class="w">
+        </span><span class="k">a</span><span class="w"> </span><span class="nn">cn:</span><span class="n">CompoundName</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="nn">sdo:</span><span class="n">hasPart</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">sdo:</span><span class="n">name</span><span class="w"> </span><span class="p">;</span><span class="w">
+            </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="s">"Check List of Northern Territory Plants"</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">sdo:</span><span class="n">author</span><span class="w"> </span><span class="p">;</span><span class="w">
+            </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="s">"Chippendale, G.M."</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">sdo:</span><span class="n">datePublished</span><span class="w"> </span><span class="p">;</span><span class="w">
+            </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="s">"1972-04-17"</span><span class="p">^^</span><span class="nn">xsd:</span><span class="n">date</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">ex:</span><span class="n">publicationName</span><span class="w"> </span><span class="p">;</span><span class="w">
+            </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="s">"Proceedings of the Linnean Society of New South Wales"</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">sdo:</span><span class="n">volumeNumber</span><span class="w"> </span><span class="p">;</span><span class="w">
+            </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="p">[</span><span class="w">
+            </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">sdo:</span><span class="n">issueNumber</span><span class="w"> </span><span class="p">;</span><span class="w">
+            </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">.</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_predicates"><a class="anchor" href="#_predicates"></a>6.1.2. Predicates</h4>
+<div class="sect4">
+<h5 id="_class_index_2"><a class="anchor" href="#_class_index_2"></a>6.1.2.1. Class Index</h5>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#name">name</a></p>
+</li>
+<li>
+<p><a href="#isNameFor">is name for</a></p>
+</li>
+<li>
+<p><a href="#hasPart">has part</a></p>
+</li>
+<li>
+<p><a href="#cites">cites</a></p>
+</li>
+<li>
+<p><a href="#hasCitation">has citation</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="name"><a class="anchor" href="#name"></a>6.1.2.2. name</h5>
 
+</div>
+<div class="sect4">
+<h5 id="isNameFor"><a class="anchor" href="#isNameFor"></a>6.1.2.3. is name for</h5>
+
+</div>
+<div class="sect4">
+<h5 id="hasPart"><a class="anchor" href="#hasPart"></a>6.1.2.4. has part</h5>
+
+</div>
+<div class="sect4">
+<h5 id="cites"><a class="anchor" href="#cites"></a>6.1.2.5. cites</h5>
+
+</div>
+<div class="sect4">
+<h5 id="hasCitation"><a class="anchor" href="#hasCitation"></a>6.1.2.6. has citation</h5>
+
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1466,7 +1812,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <div class="content">
 <a class="image" href="img/abis.svg"><img src="img/abis.svg" alt="auNSL / ABIS relations"></a>
 </div>
-<div class="title">Figure 6. Classes from the <a href="#SOSA">SOSA</a> ontology used by <a href="#ABIS">ABIS</a>, shown in blue, and how they relate to classes defined by this model, shown in green. ABIS <em>observes</em> samples (animals, plants, parts of plants, soil etc.) and declares that a <code>Sample</code> belongs to ("is a") <code>Taxon</code> or has a particular <code>Taxon Name</code> assigned to it.</div>
+<div class="title">Figure 7. Classes from the <a href="#SOSA">SOSA</a> ontology used by <a href="#ABIS">ABIS</a>, shown in blue, and how they relate to classes defined by this model, shown in green. ABIS <em>observes</em> samples (animals, plants, parts of plants, soil etc.) and declares that a <code>Sample</code> belongs to ("is a") <code>Taxon</code> or has a particular <code>Taxon Name</code> assigned to it.</div>
 </div>
 <div class="paragraph">
 <p>This information is repeated in the <a href="#_related_domain_models">Related Domain Models</a> subsection of the <a href="#_introduction">Introduction Section</a> of this document.</p>
@@ -1559,7 +1905,15 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 </div>
 </div>
 <div class="sect1">
-<h2 id="_references"><a class="anchor" href="#_references"></a>10. References</h2>
+<h2 id="_nsl_data_access"><a class="anchor" href="#_nsl_data_access"></a>10. NSL Data Access</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>NSL Data Access Section</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references"><a class="anchor" href="#_references"></a>11. References</h2>
 <div class="sectionbody">
 <div class="dlist">
 <dl>
@@ -1654,7 +2008,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-12-05 23:38:32 UTC
+Last updated 2023-12-10 21:39:23 UTC
 </div>
 </div>
 </body>
