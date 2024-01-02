@@ -18,6 +18,7 @@ image::../img/overview.svg[auNSL Semantic Web Model overview,align="center"]
 
 This model exists within both a national and international domain context - other models within the general area of biodiversity, species and bibliographic referencing - and a technical context of expressing and publishing Semantic Web models.
 
+[discrete]
 ==== Related Domain Models
 
 The auNLS is a stand-alone system, meaning it is not dependent on any other data sources for its interpretation or use, however its content is used by many other systems such as databases of biodiversity observations, in particular the:
@@ -27,6 +28,7 @@ The auNLS is a stand-alone system, meaning it is not dependent on any other data
 
 These two systems have their own models which necessarily relate to this model.
 
+[discrete]
 [[mapping-abis]]
 ===== ABIS
 
@@ -38,12 +40,14 @@ image::../img/abis.svg[auNSL / ABIS relations,align="center",width=450]
 
 This information is repeated in the <<Mappings, Mapping Section>> of this document.
 
+[discrete]
 ===== ALA
 
 The Atlas of Living Australia data model is, or is becoming, the new https://www.gbif.org/new-data-model[GBIF New Data Model] which declares a `Taxon` class which is the same as this model's `Taxon` class and which declares an `Identification` class which is similar to this model's `Taxon Name` class.
 
 A Semantic Web form of the GBIF New Data Model is expected in 2024 and this auNSL/GBIF NDM relation will be updated then. For now, the mapping from this model to the GBIF NDM is given in the <<Mappings, Mappings Section>>.
 
+[discrete]
 ==== Semantic Web
 
 The _Semantic Web_ is the concept of a machine-readable, and perhaps more ambitiously, a machine-_understandable_ Internet.
@@ -64,6 +68,7 @@ While is no definitive set of these well-known models and the set will surely ch
 
 The next sections describes well-known model ruse by this model in formal terms and the <<Mappings, Mappings>> section describes this model's mappings to a number of Semantic Web and similar models that aren't directly.
 
+[discrete]
 ==== Supermodel
 
 A 'Supermodel' is an overarching or enterprise model. The implementation of a focus model within a Supermodel context formally sets the broader context for the model by identifying and typing the other models that the focus model relates to and by defining the relations also.
@@ -79,18 +84,22 @@ The general picture of a Supermodel is that it contains:
 * **Backbone Model**
 ** a model that sets the minimum properties of model elements across component models for integration
 
+[discrete]
 ==== Profiling
 
 === Modelling Methods
 
+[discrete]
 ==== Conceptual
 
 Modelling Paradigm
 
+[discrete]
 ==== Logical
 
 Model formalisms
 
+[discrete]
 ==== Physical
 
 Model technology

@@ -233,3 +233,4 @@ ex:tn-518366
 ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .
 ----
 
+The _citing_ and _cited_ objects may vary: `TaxonName` instances but also other `Usage` instances may be cited.

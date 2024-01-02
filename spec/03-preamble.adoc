@@ -72,8 +72,9 @@ Namespaces for model, vocabulary and validator elements are assigned the followi
 [frame=none, grid=none, cols="1, 4, 4"]
 |===
 | *`nsl`*: | *https://linked.data.gov.au/def/nsl* | *This data model's namespace*
-| `abis`: | https://linked.data.gov.au/def/abis | Australian Biodiversity Information Standard
-| `biro` | http://purl.org/spar/biro/ | http://www.sparontologies.net/ontologies/biro[BiRO], the Bibliographic Reference Ontology
+| `abis`: | https://linked.data.gov.au/def/abis | https://linked.data.gov.au/def/abis[Australian Biodiversity Information Standard]
+| `bibo`: | http://purl.org/ontology/bibo/ | https://www.dublincore.org/specifications/bibo/[Bibliographic Ontology, BIBO]
+| `biro`: | http://purl.org/spar/biro/ | http://www.sparontologies.net/ontologies/biro[BiRO], the Bibliographic Reference Ontology
 | `ex`: | http://example.com/ | A non-resolving namespace for examples
 | `owl`: | http://www.w3.org/2002/07/owl# | <<OWL2, OWL>> ontology
 | `prov`: | http://www.w3.org/ns/prov# | <<PROV, PROV>> ontology

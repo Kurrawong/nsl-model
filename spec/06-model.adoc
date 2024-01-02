@@ -1,17 +1,11 @@
 == Model
 
-This section defines not only this model but also the background models this model inherits from and how they are formally related.
+This section details not only model elements defined in this model but also model elements defined elsewhere and used in this model.
 
 === auNSL Semantic Web Model
 
 [#fig-owl,link=../img/owl.svg]
-.A formal overview of the auNSL Semantic Web Model showing <<Class, Classes>> and <<Predicate, Predicates>> with the Classes defined by this model in green and those inherited from elsewhere in white. Namespace prefixes for each figure element are given such as ":" & "sdo:" so elements' full IRIs can be understood. See the <<Namespaces, Namespaces>> section for their interpretation. This figure extends <<fig-overview>>.
-image::../img/owl.svg[auNSL OWL Data Model overview,align="center"]
-
-This model is described in terms of <<Class, Classes>> and <<Predicate, Predicates>>. The figure above provides an overview of this model and the figure below provides the comprehensive view - all model elements.
-
-[#fig-comprehensive,link=../img/owl.svg]
-.A comprehensive view of auNSL Semantic Web Model showing all <<Class, Classes>> and <<Predicate, Predicates>> defined by and used by this model. Classes defined by this model in green and those inherited from elsewhere in white. This figure extends <<fig-overview>>.
+.A formal overview of the auNSL Semantic Web Model showing <<Class, Classes>> and <<Predicate, Predicates>> with the Classes defined by this model in green and those inherited from elsewhere in white using notation described in the <<Diagram Conventions, Diagram Conventions section>> . Namespace prefixes for each figure element are given such as ":" & "sdo:" so elements' full IRIs can be understood. See the <<Namespaces, Namespaces>> section for their interpretation. This figure extends <<fig-overview>> above.
 image::../img/owl.svg[auNSL OWL Data Model overview,align="center"]
 
 #TODO: add the real comprehensive figure in above#
@@ -20,17 +14,18 @@ image::../img/owl.svg[auNSL OWL Data Model overview,align="center"]
 
 ===== Class Index
 
-* <<Taxon, Taxon>>
-* <<TaxonName, Taxon Name>>
-* <<TaxonNameUsage, Taxon Name Usage>>
-* <<CitedUsage, Cited Usage>>
-* <<BibliographicReference, Bibliographic Reference>>
-* <<CreativeWork, Creative Work>>
+* <<nsl:Taxon, Taxon>>
+* <<nsl:TaxonName, Taxon Name>>
+* <<nsl:Usage, Usage>>
+* <<sdo:CreativeWork, Creative Work>>
+* <<cn:CompoundName, Compound Name>>
+* <<cito:Citation, Citation>>
+* <<rdfs:Resource, Resource>>
 
-[[Taxon]]
+[[nsl:Taxon]]
 ===== Taxon
 
-[cols="1,7"]
+[cols="2,7"]
 |===
 | Property | Value
 
@@ -41,7 +36,7 @@ image::../img/owl.svg[auNSL OWL Data Model overview,align="center"]
 | Provenance | Built on the https://ontobee.org/ontology/OBI[Ontology for Biomedical Investigation]'s definition for http://purl.obolibrary.org/obo/OBI_0100026[Organism]
 | Subclass of | https://www.w3.org/TR/prov-o/#Entity[`prov:Entity`]
 | Equivalent Class | The https://linkeddata.tern.org.au/information-models/tern-ontology[TERN Ontology]'s https://w3id.org/tern/ontologies/tern/Taxon[`tern:Taxon`] class
-| Expected Properties | <<name>>
+| Expected Properties | <<sdo:name, name>>
 | Example
 a| [source,turtle]
 ----
@@ -57,10 +52,10 @@ PREFIX sdo: <https://schema.org/>
 ----
 |===
 
-[[TaxonName]]
+[[nsl:TaxonName]]
 ===== Taxon Name
 
-[cols="1,7"]
+[cols="2,7"]
 |===
 | Property | Value
 
@@ -69,8 +64,8 @@ PREFIX sdo: <https://schema.org/>
 | Definition | A name applied to Taxa by people at a point in time
 | Is Defined By | This model
 | Provenance | Defined by the NSL team
-| Subclass of | https://linked.data.gov.au/def/cn[`cn:CompoundName`]
-| Expected Properties | <<isNameFor>>, <<hasPart>>, <<hasCitation>>
+| Subclass of | <<cn:CompoundName, Compound Name>>
+| Expected Properties | <<cn:isNameFor>>, <<sdo:hasPart>>, <<sdo:citation>>
 | Example
 a| [source,turtle]
 ----
@@ -80,113 +75,95 @@ PREFIX nsl: <https://linked.data.gov.au/def/nsl/>
 PREFIX nslnames: <https://linked.data.gov.au/def/nsl/names/>
 PREFIX sdo: <https://schema.org/>
 
-<https://id.biodiversity.org.au/name/afd/83727>
-    a nsl:TaxonName ;
-    cn:isNameFor <https://id.biodiversity.org.au/51822963> ;  # a Taxon
+ex:name-lomatia
+    a cn:CompoundName ;
+    sdo:value "Lomatia" ;
+    sdo:additionalType ex:genus ;
+    # template: "{ex:genus}"
+.
+
+ex:name-ilicifolia
+    a cn:CompoundName ;
+    sdo:value "ilicifolia" ;
+    sdo:additionalType ex:species ;
+    # template: "{ex:species}"
+.
+
+ex:author-1441
+    a cn:CompoundName ;
     sdo:hasPart [
-        sdo:additionalType nslnames:FullName ;
-        sdo:value "Pilumnus scabriusculus Adams & White, 1849" ;
+        sdo:value "Brown" ;
+        sdo:additionalType ex:familyName ;
     ] ,
     [
-        sdo:additionalType nslnames:GenericName ;
-        sdo:value "Pilumnus" ;
+        sdo:value "Robert" ;
+        sdo:additionalType ex:givenName ;
+    ] ,
+    [
+        sdo:value "R.Br." ;
+        sdo:additionalType ex:authorStandardForm ;
     ] ;
+    sdo:additionalType ex:species ;
+    # template: "{ex:authorStandardForm}"
+.
+
+ex:name-94766
+    a cn:CompoundName ;
+    sdo:hasPart [
+        sdo:value ex:name-lomatia ;
+        sdo:additionalType ex:genus ;
+    ] ,
+    [
+        sdo:value ex:name-ilicifolia ;
+        sdo:additionalType ex:species ;
+    ] ,
+    [
+        sdo:value ex:author-1441 ;
+        sdo:additionalType ex:author ;
+    ] ;
+    sdo:additionalType ex:scientificName ;
+    # template: "{ex:genus} {ex:species} {ex:author}"
 .
 ----
 |===
 
-[[TaxonNameUsage]]
-===== Taxon Name Usage
+[[nsl:Usage]]
+===== Usage
 
-[cols="1,7"]
+[cols="2,7"]
 |===
 | Property | Value
 
-| IRI | `nsl:TaxonNameUsage`
+| IRI | `nsl:Usage`
 | Preferred Label | Taxon Name Usage
 | Definition | An instance of the use of an Entity via citation
 | Is Defined By | This model
 | Provenance | Defined by the NSL team
-| Subclass of | https://www.w3.org/TR/prov-o/#Entity[`prov:Entity`]
-| Expected Properties | <<cites>>
+| Subclass of | http://www.sparontologies.net/ontologies/cito[Citation] , http://www.sparontologies.net/ontologies/biro[Bibliographic Reference]
+| Expected Properties | <<nsl:citing, citing>>, <<nsl:cited, cited>>, https://www.dublincore.org/specifications/bibo/[BIBO] referencing properties
 | Example
 a| [source,turtle]
 ----
+PREFIX bibo: <http://purl.org/ontology/bibo/>
+PREFIX ex: <http://example.com/>
 PREFIX nsl: <https://linked.data.gov.au/def/nsl/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX sdo: <https://schema.org/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-<https://id.biodiversity.org.au/name/afd/83727>
-    a nsl:TaxonName ;
-    # ... other properties
-.
-
-<http://example.com/tnu/x>
-    a nsl:TaxonNameUsage ;
-    sdo:cites <https://id.biodiversity.org.au/name/afd/83727> ;
-    prov:createdAtTime "1995-03-02"^^xsd:date ;
-    # ... other properties
-.
-----
-|===
-
-#TODO: add other properties to TNU in example#
-
-[[CitedUsage]]
-===== Usage
-
-[cols="1,7"]
-|===
-| Property | Value
-
-| IRI | `nsl:Usage`
-| Preferred Label | Usage
-| Definition |
-| Is Defined By | This model
-| Provenance | Defined by the NSL team
-| Subclass of |
-| Expected Properties |
-| Example
-a| [source,turtle]
-----
-PREFIX biro: <http://purl.org/spar/biro/>
-PREFIX nsl: <https://linked.data.gov.au/def/nsl/>
-
-<https://www.biodiversitylibrary.org/page/34948210>
+ex:tn-518366
     a nsl:Usage ;
-    biro:references <https://id.biodiversity.org.au/name/afd/87296> ;  # TaxonName
-    biro:references <http://hdl.handle.net/102.100.100/314652> ;  # CreativeWork
-    # ... other properties situating the usage
+    nsl:citing ex:taxonName-94766 ;  # a Taxon Name instance
+    nsl:cited ex:creativeWork-22456 ;  # a Creative Work instance
+    bibo:pages 200 ;
 .
 ----
 |===
 
-[[BibliographicReference]]
-===== Bibliographic Reference
-
-[cols="1,7"]
-|===
-| Property | Value
-
-| IRI | `biro:BibliographicReference`
-| Preferred Label | Bibliographic Reference
-| Definition | A bibliographic reference is a realization of a bibliographic record. Moreover, it can contain only items referring to elements contained by the bibliographic record it realizes.
-| Is Defined By | http://www.sparontologies.net/ontologies/biro[Bibliographic Reference Ontology (BiRO]
-| Provenance | Defined by the NSL team
-| Subclass of | Used without alteration
-| Expected Properties |
-| Example
-a| [source,turtle]
-----
-
-----
-|===
-
-[[CreativeWork]]
+[[sdo:CreativeWork]]
 ===== Creative Work
 
-[cols="1,7"]
+[cols="2,7"]
 |===
 | Property | Value
 
@@ -194,8 +171,8 @@ a| [source,turtle]
 | Preferred Label | Creative Work
 | Definition | The most generic kind of creative work, including books, movies, photographs, software programs, etc.
 | Is Defined By | https://schema.org[schema.org]
-| Provenance | Used without alteration
-| Expected Properties | <<name, name>>, <<author, author>>, <<datePublished, date created>>, <<publicationName, publication name>>, <<volumeNumber, volume number>>, <<issueNumber, issue number>>
+| Provenance | Used without change
+| Expected Properties | Standard predicates for the cataloguing of scholarly works
 | Example
 a| [source,turtle]
 ----
@@ -244,30 +221,94 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 ----
 |===
 
+[[cn:CompoundName]]
+===== Compound Name
+
+[cols="2,7"]
+|===
+| Property | Value
+
+| IRI | `cn:CompoundName`
+| Preferred Label | Compound Name
+| Definition | A Compound Name is a literal value, or objects that can be interpreted as literal values, that describe or name a Feature
+| Is Defined By | https://linked.data.gov.au/def/cn[Compound Naming Model]
+| Provenance | Used via subclasses (<<nsl:TaxonName, TaxonName>>)
+| Expected Properties | <<cn:isNameFor>>, <<sdo:hasPart>>
+| Scope Note | This class is not expected to be used directly, instead use <<nsl:TaxonName, Taxon Name>>
+| Example | See the example for <<nsl:TaxonName, Taxon Name>> and the <<Compound Names, Compound Names pattern>>.
+|===
+
+[[cito:Citation]]
+===== Citation
+
+[cols="2,7"]
+|===
+| Property | Value
+
+| IRI | `cito:Citation`
+| Preferred Label | Citation
+| Definition | A conceptual directional link from a citing entity to a cited entity
+| Is Defined By | <<CITO, CIO>>
+| Provenance | Used via subclasses (<<nsl:Usage, Usage>>)
+| Expected Properties | <<nsl:citing, citing>>, <<nsl:cited, cited>>
+| Scope Note | This class is not expected to be used directly, instead use <<nsl:Usage, Usage>>
+| Example | See the example for <<nsl:Usage, Usage>> and the <<Citation, Citation pattern>>.
+|===
+
+[[rdfs:Resource]]
+===== Resource
+
+[cols="2,7"]
+|===
+| Property | Value
+
+| IRI | `rdfs:Resource`
+| Preferred Label | Resource
+| Definition | The class resource, everything
+| Is Defined By | <<RDFSSPEC, RDFS>>
+| Provenance | Used only via subclassing (<<cn:CompoundName, Compound Name>>, <<sdo:CreativeWork, Creative Work>>)
+| Expected Properties | None
+| Scope Note | This class is not expected to be used directly, instead use specialised subclasses
+| Example | No example given as all use is via subclasses
+|===
+
+
 ==== Predicates
 
 ===== Class Index
 
-* <<name, name>>
-* <<isNameFor, is name for>>
-* <<hasPart, has part>>
-* <<cites, cites>>
-* <<hasCitation, has citation>>
+* <<sdo:name, name>>
+* <<cn:isNameFor, is name for>>
+* <<sdo:hasPart, has part>>
+* <<nsl:citing, citing>>
+* <<nsl:cited, cited>>
+* <<cito:cites, cites>>
+* <<cito:isCitedBy, is cited by>>
+* <<sdo:citation, citation>>
 
-[[name]]
+[[sdo:name]]
 ===== name
 
-[[isNameFor]]
+[[cn:isNameFor]]
 ===== is name for
 
-[[hasPart]]
+[[sdo:hasPart]]
 ===== has part
 
-[[cites]]
+[[nsl:citing]]
+===== citing
+
+[[nsl:cited]]
+===== cited
+
+[[cito:cites]]
 ===== cites
 
-[[hasCitation]]
-===== has citation
+[[cito:isCitedBy]]
+===== is cited by
+
+[[sdo:citation]]
+===== citation
 
 === Background Models
 

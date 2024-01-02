@@ -6,7 +6,7 @@
 :lang: en
 :table-stripes: even
 :toc: left
-:toclevels: 2
+:toclevels: 3
 :chapter-label:
 :sectnums:
 :sectnumlevels: 4
@@ -19,9 +19,9 @@
 :xrefstyle: short
 :source-highlighter: rouge
 
-[#overview]
+[#fig-simple,link=../img/simple.svg]
 .An informal overview of this data model
-image::../img/overview.svg[Model Overview,align="center"]
+image::../img/simple.svg[Model Overview,align="center"]
 
 == Metadata
 
