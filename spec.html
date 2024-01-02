@@ -673,10 +673,9 @@ pre.rouge {
 </li>
 <li><a href="#_patterns">5. Patterns</a>
 <ul class="sectlevel2">
-<li><a href="#_supermodel_context">5.1. Supermodel Context</a></li>
-<li><a href="#_data_cataloguing">5.2. Data Cataloguing</a></li>
-<li><a href="#_scholarly_citations">5.3. Scholarly Citations</a></li>
-<li><a href="#_observations_measurement">5.4. Observations &amp; Measurement</a></li>
+<li><a href="#_qualified_relations">5.1. Qualified Relations</a></li>
+<li><a href="#_compound_names">5.2. Compound Names</a></li>
+<li><a href="#_citations">5.3. Citations</a></li>
 </ul>
 </li>
 <li><a href="#_model">6. Model</a>
@@ -690,7 +689,7 @@ pre.rouge {
 <li><a href="#_validators">8. Validators</a></li>
 <li><a href="#_mappings">9. Mappings</a>
 <ul class="sectlevel2">
-<li><a href="#_abis_2">9.1. ABIS</a></li>
+<li><a href="#_abis">9.1. ABIS</a></li>
 <li><a href="#_gbif_new_data_model">9.2. GBIF New Data Model</a></li>
 <li><a href="#_darwin_core">9.3. Darwin Core</a></li>
 <li><a href="#_taxon_concept_schema">9.4. Taxon Concept Schema</a></li>
@@ -1042,6 +1041,9 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>Where example data is given below and dummy values are used, either for modelling elements - <a href="#Class">classes</a> or <a href="#Predicate">predicates</a> - or instances of them - particular persons or names etc. - the prefix <code>ex:</code> is used to indicate that this is example/dummy data only.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1066,7 +1068,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <div class="content">
 <a class="image" href="img/overview.svg"><img src="img/overview.svg" alt="auNSL Semantic Web Model overview"></a>
 </div>
-<div class="title">Figure 3. An informal overview of the auNSL OWL Data Model showing major <a href="#Class">Classes</a> and <a href="#Predicate">Predicates</a> with the Classes defined by this model in green and those inherited from elsewhere in white. See <a href="#fig-owl">Figure 5</a> for a formal diagram of this model.</div>
+<div class="title">Figure 3. An informal overview of the auNSL OWL Data Model showing major <a href="#Class">Classes</a> and <a href="#Predicate">Predicates</a> with the Classes defined by this model in green and those inherited from elsewhere in white. See <a href="#fig-owl">Figure 7</a> for a formal diagram of this model.</div>
 </div>
 </div>
 <div class="sect2">
@@ -1093,13 +1095,13 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <p>These two systems have their own models which necessarily relate to this model.</p>
 </div>
 <div class="sect4">
-<h5 id="_abis"><a class="anchor" href="#_abis"></a>4.2.1.1. ABIS</h5>
+<h5 id="mapping-abis"><a class="anchor" href="#mapping-abis"></a>4.2.1.1. ABIS</h5>
 <div class="paragraph">
 <p>The BDR dataset uses the <a href="#ABIS">ABIS</a> model which contains uses the same <code>Taxon</code> and <code>Taxon Name</code> classes as defined in this model as well as the <code>Bibliographic Reference</code> and <code>Creative Work</code> classes and <code>cites</code> &amp; <code>references</code> predicates this model also reuses for general-purpose modelling. The use of the <code>Taxon</code> and <code>Taxon Name</code> classes by ABIS is shown in the following figure.</p>
 </div>
 <div id="fig-abis" class="imageblock text-center">
 <div class="content">
-<a class="image" href="img/abis.svg"><img src="img/abis.svg" alt="auNSL / ABIS relations"></a>
+<a class="image" href="img/abis.svg"><img src="img/abis.svg" alt="auNSL / ABIS relations" width="450"></a>
 </div>
 <div class="title">Figure 4. Classes from the <a href="#SOSA">SOSA</a> ontology used by <a href="#ABIS">ABIS</a>, shown in blue, and how they relate to classes defined by this model, shown in green. ABIS <em>observes</em> samples (animals, plants, parts of plants, soil etc.) and declares that a <code>Sample</code> belongs to ("is a") <code>Taxon</code> or has a particular <code>Taxon Name</code> assigned to it.</div>
 </div>
@@ -1231,28 +1233,335 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <div class="sect1">
 <h2 id="_patterns"><a class="anchor" href="#_patterns"></a>5. Patterns</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_supermodel_context"><a class="anchor" href="#_supermodel_context"></a>5.1. Supermodel Context</h3>
 <div class="paragraph">
-<p>Profiles Vocabulary</p>
-</div>
+<p>Patterns are arrangements of elements of a model designed for some purpose. This model implements patterns inherited from other models and also implements some of its own patterns or extends those inherited. The following patterns are important patterns to understand when using this model.</p>
 </div>
 <div class="sect2">
-<h3 id="_data_cataloguing"><a class="anchor" href="#_data_cataloguing"></a>5.2. Data Cataloguing</h3>
+<h3 id="_qualified_relations"><a class="anchor" href="#_qualified_relations"></a>5.1. Qualified Relations</h3>
 <div class="paragraph">
-<p>DCAT</p>
+<p>In graph modelling, as per <a href="#RDF">RDF</a> and <a href="#OWL">OWL</a>, objects are associate with binary relations which are <em>unqualified</em>. For example, a <code><a href="#sdo:CreativeWork">Creative Work</a></code>, such as a book, might be attributed to multiple <code><a href="#sdo:Person">Person</a></code> instances like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ex:book-001
+    a sdo:CreativeWork ;
+    prov:wasAttributedTo
+        ex:person-a ,
+        ex:person-b ;
+.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, we have no knowledge of what the role of <code>ex:person-a</code> or <code>ex:person-b</code> was/is with respect to the book <code>ex:book-001</code>.</p>
+</div>
+<div class="paragraph">
+<p>We can use specialised predicates to indicate roles. Building on the example above we might have:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ex:book-001
+    a sdo:CreativeWork ;
+    dcterms:author ex:person-a ;
+    dcterms:editor ex:person-b ;
+.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now we can see the different roles played by the persons - "author" and "editor" - but this is limied to a defined set of predicates.</p>
+</div>
+<div class="paragraph">
+<p>Instead, we can use the <em>qualified relation</em> pattern (see <a href="https://patterns.dataincubator.org/book/qualified-relation.html">ref</a>) that interposes a node (data object) between the two related objects - a book and a person - and attached qualifying information to that node. Using this pattern, the above example could be represented like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ex:book-001
+    a sdo:CreativeWork ;
+    prov:qualifiedAttribution [
+        prov:agent ex:person-a ;
+        prov:hadRole ex:author ;
+    ] ,
+    [
+        prov:agent ex:person-b ;
+        prov:hadRole ex:editor ;
+    ] ;
+.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here, the same information is conveyed as in the previous example however the roles - "author" &amp; "editor" - can be defined in an expandable, or even multiple, vocabularies of terms and do not need to be drawn from a ontology containing predicates. This make the expansion and even alteration of roles much easier.</p>
+</div>
+<div class="paragraph">
+<p>For a <code><a href="#nsl:TaxonName">TaxonName</a></code> object, multiple usages - instances of <code><a href="#nsl:Usage">Usage</a></code> - are likely to exist and it is important to indicate which of them is the "accepted use". If no qualified relations are used, this model&#8217;s predicate <code><a href="#nsl:isCitedBy">nsl:isCitedBy</a></code> can be used to relate the objects, but they cannot be differentiated, like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;http://example.com/taxonName/94766&gt;
+    a nsl:TaxonName ;
+    nsl:isCitedBy
+        &lt;http://example.com/usage/22532&gt; ,
+        &lt;http://example.com/usage/518366&gt; ,  # accepted use
+        &lt;http://example.com/usage/720941&gt; ,
+        # ...
+.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the <em>qualified relation</em> pattern is used, the role of the <code><a href="#nsl:Usage">Usage</a></code> - "accepted" or otherwise - can be seen:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;http://example.com/taxonName/94766&gt;
+    a nsl:TaxonName ;
+    nsl:qualifiedCitation [
+        sdo:value &lt;http://example.com/usage/22532&gt; ;
+        sdo:roleName ex:archaicUse ;
+    ] ,
+    [
+        sdo:value &lt;http://example.com/usage/518366&gt; ;
+        sdo:roleName ex:acceptedUse ;
+    ] ,
+    [
+        sdo:value &lt;http://example.com/usage/720941&gt; ;
+        sdo:roleName ex:archaicUse ;
+    ] ,
+    # ...
+.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This <em>qualified relation</em> pattern representation of name usage can include temporal details like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>&lt;http://example.com/taxonName/94766&gt;
+    a nsl:TaxonName ;
+    nsl:qualifiedCitation [
+        sdo:value &lt;http://example.com/usage/22532&gt; ;
+        sdo:roleName ex:archaicUse ;
+        time:hasTime [
+            time:hasBeginning [ time:inXSDDateTime "1927-05-14" ] ;
+            time:hasEnd [ time:inXSDDateTime "1985-07-12" ] ;
+        ] ;
+    ] ,
+    [
+        sdo:value &lt;http://example.com/usage/518366&gt; ;
+        sdo:roleName ex:acceptedUse ;
+        time:hasTime [
+            time:hasBeginning [ time:inXSDDateTime "1985-07-12" ] ;
+        ] ;
+    ] ,
+    [
+        sdo:value &lt;http://example.com/usage/720941&gt; ;
+        sdo:roleName ex:archaicUse ;
+    ] ,
+    # ...
+.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the above example, two <code><a href="#nsl:Usage">Usage</a></code> instances are indicated as having the role of "accepted", but they are further qualified with temporal extents meaning that there has not been more than one "accepted" use here.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_scholarly_citations"><a class="anchor" href="#_scholarly_citations"></a>5.3. Scholarly Citations</h3>
+<h3 id="_compound_names"><a class="anchor" href="#_compound_names"></a>5.2. Compound Names</h3>
 <div class="paragraph">
-<p>SPAR</p>
+<p>This model represents complex names made of multiple parts for various sorts of objects. Important examples of which are described in the following table.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5715%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Complex Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Format</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scientific name</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">a Genus and a Species name uniquely identifying a <code>Taxon</code> instance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{GENUS-NAME} {SPECIES-NAME}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">"Lomatia ilicifolia"</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scientific name with authorship</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">a Genus and Species name with an abbreviated author name uniquely identifying a <code>Taxon Name</code> instance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{GENUS-NAME} {SPECIES-NAME} {AUTHOR-NAME-ABBREVIATED}</code></p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>"Lomatia ilicifolia R.Br."</p>
+</div>
+<div class="paragraph">
+<p><em>Lomatia ilicifolia</em> as named by Brown, R.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>scientific name with authorship as per publication</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">a Genus and Species name with an abbreviated author name and publication reference uniquely identifying a <code>Taxon Name Usage</code> instance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">`{GENUS-NAME} {SPECIES-NAME} {AUTHOR-NAME-ABBREVIATED} sensu {PUBLICATION-NAME-ABBREVIATED}</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>"Lomatia ilicifolia R.Br. sensu ABRS"</p>
+</div>
+<div class="paragraph">
+<p><em>Lomatia ilicifolia</em>, as named by Brown, R and used in the Australian Biological resources Study&#8217;s <em>Flora of Australia</em> publication</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The pattern used to represent the parts of these compound names and to assemble the parts and format them is taken from the <a href="#CN">Compound Naming Model</a>, an overview figure of which is shown below.</p>
+</div>
+<div id="fig-cn" class="imageblock text-center">
+<div class="content">
+<a class="image" href="img/cn.svg"><img src="img/cn.svg" alt="Compound Naming Model overview figure" width="550"></a>
+</div>
+<div class="title">Figure 5. Compound Naming Model overview figure</div>
+</div>
+<div class="paragraph">
+<p>The Compound Naming Model, as overviewed in the figure above, allows for the creation of <code>Compound Name</code> objects which just present a resource - a simple data object like text, a number or date or a complex object which can be any kind of object - with an "additional type" or specialised type for that resource which defines its role. Templating used per Compound Name object to define the printing format of the resource&#8217;s textual representation is defined in the Model but is outside RDF representation.</p>
+</div>
+<div class="paragraph">
+<p>A recursive algorithm which gathers simple data objects from Compound Name objects that refer to other Compound Name objects is also given in the Model. The algorithm allows a textual representation of any Compound Name object to be created, even when the object has other Compound Name objects as its parts to any level of depth. The algorithm extracts the textual representation of any object and presents it to any other object referencing it so that textual representations can be compounded "upwards" to the level it is needed.</p>
+</div>
+<div class="paragraph">
+<p>Scientific names can be represented as a very simple Compound Name objects as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ex:name-lomatia
+    a cn:CompoundName ;
+    sdo:value "Lomatia" ;
+    sdo:additionalType ex:genus ;
+.
+
+ex:name-ilicifolia
+    a cn:CompoundName ;
+    sdo:value "ilicifolia" ;
+    sdo:additionalType ex:species ;
+.
+
+ex:scientific-name-lomatia-ilicifolia
+    a cn:CompoundName ;
+    sdo:hasPart
+        ex:name-lomatia ,
+        ex:name-ilicifolia ;
+    sdo:additionalType ex:scientificName ;
+.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The templates for the three specialised types of `CompoundName`s above are then:</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 50%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Object</th>
+<th class="tableblock halign-left valign-top">Template</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ex:genus</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{VALUE}|italic</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Lomatia</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ex:species</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{VALUE}|italic</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>ilicifolia</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ex:scientificName</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{ex:genus&#8594;VALUE} {ex:species&#8594;VALUE}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Lomatia ilicifolia</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Similar data representation and templating can then be used for <em>scientific name with authorship</em> and all other naming.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_observations_measurement"><a class="anchor" href="#_observations_measurement"></a>5.4. Observations &amp; Measurement</h3>
+<h3 id="_citations"><a class="anchor" href="#_citations"></a>5.3. Citations</h3>
 <div class="paragraph">
-<p>SOSA - peripheral</p>
+<p>Many models - Semantic Web models and others - have patterns for indicating referencing or citation. For example, <a href="#SDO">schema.org</a> includes a predicate `<a href="#sdo:citation">citation</a> - that can be used to associate a <em>citing</em> and a <em>cited</em> object, like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ex:highschool-essay-x
+    a sdo:CreativeWork ;
+    sdo:citation ex:frankenstein ;
+.
+
+ex:frankenstein
+    a sdo:CreativeWork ;
+    sdo:name "Frankenstein; or, The Modern Prometheus" ;
+    sdo:author "Mary Shelley" ;
+.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This simple form of citation does not cater for qualification of the citation (see the <a href="#_qualified_relations">Qualified Relations section</a> above) or for the indication or part citation: which part of <em>Frankenstein</em> was cited.</p>
+</div>
+<div class="paragraph">
+<p>Detailed citation models handle these issues and the <a href="#CITO">Citation Typing Ontology (CiTO)</a> model which interposes a <code>Citation</code> object between the <em>citing</em> and a <em>cited</em> objects, following the <a href="#_qualified_relations">Qualified Relations</a> pattern to which qualifying details can be related, like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>ex:citation-x
+    a cito:Citation ;
+    cito:hasCitingEntity ex:highschool-essay-x ;  # the citing work
+    cito:hasCitedEntity ex:frankenstein ;  # the cited work
+    cito:hasCitationCharacterization cito:critiques ;
+.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here <code>ex:highschool-essay-x</code> cited <code>ex:frankenstein</code> in the manner of a critique - <code>cito:critiques</code>.</p>
+</div>
+<div class="paragraph">
+<p>In this model, we adopt the CITO cited/citing pattern with renamed predicates of <code>cito:hasCitingEntity</code> &#8594; <code>nsl:citing</code> and <code>cito:hasCitedEntity</code> &#8594; <code>nsl:cited</code> and make an equivalence to the unqualified citation pattern of schema.org whereby the predicate path <code>sdo:citation</code> == (inverse of) <code>cito:hasCitingEntity</code> / <code>cito:hasCitedEntity</code>, as per the following figure:</p>
+</div>
+<div id="fig-citation" class="imageblock text-center">
+<div class="content">
+<a class="image" href="img/citation.svg"><img src="img/citation.svg" alt="CITO&#8217;s citation patten adapted" width="550"></a>
+</div>
+<div class="title">Figure 6. CITO&#8217;s citation patten adapted with red predicates inferred and green predicates created here as equivalents</div>
+</div>
+<div class="paragraph">
+<p>The representation of citation of specific parts of a cited work are not provided for directly by CITO but are partly support by the use of in-text reference pointers in the CITO sibling ontology <a href="http://www.sparontologies.net/ontologies/c4o">C4O</a> able to be indicated. Another CITO sibling ontology, <a href="http://www.sparontologies.net/ontologies/doco">DOCO</a>, provides for detailed document part modelling which allows citations to indicate a part of a document (a <code>Creative Work</code>) but only if that document has been decomposed into addressable parts.</p>
+</div>
+<div class="paragraph">
+<p>The reasonably well-known (in ontology circles) <a href="https://www.dublincore.org/specifications/bibo/">BIBO</a> ontology for "expressing citations and bibliographic references" allows for standard scholarly citation element representation: page numbers, journal volumes and so on.</p>
+</div>
+<div class="paragraph">
+<p>Using the altered citation pattern, described above, as well as model elements from BIBO, we can model NSL <code><a href="#nsl:Usage">Usage</a></code> instances like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre># indicating the use of Taxon Name No. 94766
+# on page 200 of Creative Work No. 22456
+ex:tn-518366
+    a nsl:Usage ;
+    nsl:citing ex:taxonName-94766 ;
+    nsl:cited ex:creativeWork-22456 ;
+    bibo:pages 200 ;
+.
+
+# inference drawn from above
+ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
+</div>
 </div>
 </div>
 </div>
@@ -1269,7 +1578,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <div class="content">
 <a class="image" href="img/owl.svg"><img src="img/owl.svg" alt="auNSL OWL Data Model overview"></a>
 </div>
-<div class="title">Figure 5. A formal overview of the auNSL Semantic Web Model showing <a href="#Class">Classes</a> and <a href="#Predicate">Predicates</a> with the Classes defined by this model in green and those inherited from elsewhere in white. Namespace prefixes for each figure element are given such as ":" &amp; "sdo:" so elements' full IRIs can be understood. See the <a href="#_namespaces">Namespaces</a> section for their interpretation. This figure extends <a href="#fig-overview">Figure 3</a>.</div>
+<div class="title">Figure 7. A formal overview of the auNSL Semantic Web Model showing <a href="#Class">Classes</a> and <a href="#Predicate">Predicates</a> with the Classes defined by this model in green and those inherited from elsewhere in white. Namespace prefixes for each figure element are given such as ":" &amp; "sdo:" so elements' full IRIs can be understood. See the <a href="#_namespaces">Namespaces</a> section for their interpretation. This figure extends <a href="#fig-overview">Figure 3</a>.</div>
 </div>
 <div class="paragraph">
 <p>This model is described in terms of <a href="#Class">Classes</a> and <a href="#Predicate">Predicates</a>. The figure above provides an overview of this model and the figure below provides the comprehensive view - all model elements.</p>
@@ -1278,7 +1587,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <div class="content">
 <a class="image" href="img/owl.svg"><img src="img/owl.svg" alt="auNSL OWL Data Model overview"></a>
 </div>
-<div class="title">Figure 6. A comprehensive view of auNSL Semantic Web Model showing all <a href="#Class">Classes</a> and <a href="#Predicate">Predicates</a> defined by and used by this model. Classes defined by this model in green and those inherited from elsewhere in white. This figure extends <a href="#fig-overview">Figure 3</a>.</div>
+<div class="title">Figure 8. A comprehensive view of auNSL Semantic Web Model showing all <a href="#Class">Classes</a> and <a href="#Predicate">Predicates</a> defined by and used by this model. Classes defined by this model in green and those inherited from elsewhere in white. This figure extends <a href="#fig-overview">Figure 3</a>.</div>
 </div>
 <div class="paragraph">
 <p><mark>TODO: add the real comprehensive figure in above</mark></p>
@@ -1812,7 +2121,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <p>This section contains mappings of this model to other models/vocabularies.</p>
 </div>
 <div class="sect2">
-<h3 id="_abis_2"><a class="anchor" href="#_abis_2"></a>9.1. ABIS</h3>
+<h3 id="_abis"><a class="anchor" href="#_abis"></a>9.1. ABIS</h3>
 <div class="paragraph">
 <p>The BDR dataset uses the <a href="#ABIS">ABIS</a> model which contains uses the same <code>Taxon</code> and <code>Taxon Name</code> classes as defined in this model as well as the <code>Bibliographic Reference</code> and <code>Creative Work</code> classes and <code>cites</code> &amp; <code>references</code> predicates this model also reuses for general-purpose modelling. The use of the <code>Taxon</code> and <code>Taxon Name</code> classes by ABIS is shown in the following figure.</p>
 </div>
@@ -1820,7 +2129,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <div class="content">
 <a class="image" href="img/abis.svg"><img src="img/abis.svg" alt="auNSL / ABIS relations"></a>
 </div>
-<div class="title">Figure 7. Classes from the <a href="#SOSA">SOSA</a> ontology used by <a href="#ABIS">ABIS</a>, shown in blue, and how they relate to classes defined by this model, shown in green. ABIS <em>observes</em> samples (animals, plants, parts of plants, soil etc.) and declares that a <code>Sample</code> belongs to ("is a") <code>Taxon</code> or has a particular <code>Taxon Name</code> assigned to it.</div>
+<div class="title">Figure 9. Classes from the <a href="#SOSA">SOSA</a> ontology used by <a href="#ABIS">ABIS</a>, shown in blue, and how they relate to classes defined by this model, shown in green. ABIS <em>observes</em> samples (animals, plants, parts of plants, soil etc.) and declares that a <code>Sample</code> belongs to ("is a") <code>Taxon</code> or has a particular <code>Taxon Name</code> assigned to it.</div>
 </div>
 <div class="paragraph">
 <p>This information is repeated in the <a href="#_related_domain_models">Related Domain Models</a> subsection of the <a href="#_introduction">Introduction Section</a> of this document.</p>
@@ -1929,6 +2238,14 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <dd>
 <p>Department of Climate Change, Energy and the Environment, <em>Australian Biodiversity Information Standard</em> (2023). <a href="https://linked.data.gov.au/def/abis" class="bare">https://linked.data.gov.au/def/abis</a></p>
 </dd>
+<dt class="hdlist1"><a id="CITO"></a> [CITO]</dt>
+<dd>
+<p>Peroni, S., Shotton, D., <em>FaBiO and CiTO: ontologies for describing bibliographic resources and citations</em>. In Journal of Web Semantics: Science, Services and Agents on the World Wide Web, 17 (December 2012): 33-43. Amsterdam, The Netherlands: Elsevier. <a href="https://doi.org/10.1016/j.websem.2012.08.001" class="bare">https://doi.org/10.1016/j.websem.2012.08.001</a>. Online access at <a href="http://www.sparontologies.net/ontologies/cito" class="bare">http://www.sparontologies.net/ontologies/cito</a></p>
+</dd>
+<dt class="hdlist1"><a id="CN"></a> [CN]</dt>
+<dd>
+<p>Australian Government Linked Data Working Group, <em>Compound Naming Model</em>, Australian Government Semantic Web Ontology (2023). <a href="https://linked.data.gov.au/def/cn" class="bare">https://linked.data.gov.au/def/cn</a></p>
+</dd>
 <dt class="hdlist1"><a id="DCTERMS"></a> [DCTERMS]</dt>
 <dd>
 <p>DCMI Usage Board, <em>DCMI Metadata Terms</em>, DCMI Recommendation (2020). <a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/" class="bare">https://www.dublincore.org/specifications/dublin-core/dcmi-terms/</a></p>
@@ -2016,7 +2333,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-12-10 22:01:54 UTC
+Last updated 2024-01-02 05:39:51 UTC
 </div>
 </div>
 </body>
