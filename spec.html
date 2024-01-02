@@ -680,7 +680,12 @@ pre.rouge {
 </li>
 <li><a href="#_model">6. Model</a>
 <ul class="sectlevel2">
-<li><a href="#_aunsl_semantic_web_model">6.1. auNSL Semantic Web Model</a></li>
+<li><a href="#_aunsl_semantic_web_model">6.1. auNSL Semantic Web Model</a>
+<ul class="sectlevel3">
+<li><a href="#_classes">6.1.1. Classes</a></li>
+<li><a href="#_predicates">6.1.2. Predicates</a></li>
+</ul>
+</li>
 <li><a href="#_background_models">6.2. Background Models</a></li>
 <li><a href="#_profile_definition">6.3. Profile Definition</a></li>
 </ul>
@@ -706,9 +711,9 @@ pre.rouge {
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div id="overview" class="imageblock text-center">
+<div id="fig-simple" class="imageblock text-center">
 <div class="content">
-<img src="img/overview.svg" alt="Model Overview">
+<a class="image" href="img/simple.svg"><img src="img/simple.svg" alt="Model Overview"></a>
 </div>
 <div class="title">Figure 1. An informal overview of this data model</div>
 </div>
@@ -982,10 +987,15 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>abis</code>:</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/abis" class="bare">https://linked.data.gov.au/def/abis</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Australian Biodiversity Information Standard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/abis">Australian Biodiversity Information Standard</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>biro</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>bibo</code>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://purl.org/ontology/bibo/" class="bare">http://purl.org/ontology/bibo/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.dublincore.org/specifications/bibo/">Bibliographic Ontology, BIBO</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>biro</code>:</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://purl.org/spar/biro/" class="bare">http://purl.org/spar/biro/</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.sparontologies.net/ontologies/biro">BiRO</a>, the Bibliographic Reference Ontology</p></td>
 </tr>
@@ -1076,8 +1086,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <div class="paragraph">
 <p>This model exists within both a national and international domain context - other models within the general area of biodiversity, species and bibliographic referencing - and a technical context of expressing and publishing Semantic Web models.</p>
 </div>
-<div class="sect3">
-<h4 id="_related_domain_models"><a class="anchor" href="#_related_domain_models"></a>4.2.1. Related Domain Models</h4>
+<h4 id="_related_domain_models" class="discrete">Related Domain Models</h4>
 <div class="paragraph">
 <p>The auNLS is a stand-alone system, meaning it is not dependent on any other data sources for its interpretation or use, however its content is used by many other systems such as databases of biodiversity observations, in particular the:</p>
 </div>
@@ -1094,8 +1103,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <div class="paragraph">
 <p>These two systems have their own models which necessarily relate to this model.</p>
 </div>
-<div class="sect4">
-<h5 id="mapping-abis"><a class="anchor" href="#mapping-abis"></a>4.2.1.1. ABIS</h5>
+<h5 id="mapping-abis" class="discrete">ABIS</h5>
 <div class="paragraph">
 <p>The BDR dataset uses the <a href="#ABIS">ABIS</a> model which contains uses the same <code>Taxon</code> and <code>Taxon Name</code> classes as defined in this model as well as the <code>Bibliographic Reference</code> and <code>Creative Work</code> classes and <code>cites</code> &amp; <code>references</code> predicates this model also reuses for general-purpose modelling. The use of the <code>Taxon</code> and <code>Taxon Name</code> classes by ABIS is shown in the following figure.</p>
 </div>
@@ -1108,19 +1116,14 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <div class="paragraph">
 <p>This information is repeated in the <a href="#_mappings">Mapping Section</a> of this document.</p>
 </div>
-</div>
-<div class="sect4">
-<h5 id="_ala"><a class="anchor" href="#_ala"></a>4.2.1.2. ALA</h5>
+<h5 id="_ala" class="discrete">ALA</h5>
 <div class="paragraph">
 <p>The Atlas of Living Australia data model is, or is becoming, the new <a href="https://www.gbif.org/new-data-model">GBIF New Data Model</a> which declares a <code>Taxon</code> class which is the same as this model&#8217;s <code>Taxon</code> class and which declares an <code>Identification</code> class which is similar to this model&#8217;s <code>Taxon Name</code> class.</p>
 </div>
 <div class="paragraph">
 <p>A Semantic Web form of the GBIF New Data Model is expected in 2024 and this auNSL/GBIF NDM relation will be updated then. For now, the mapping from this model to the GBIF NDM is given in the <a href="#_mappings">Mappings Section</a>.</p>
 </div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_semantic_web"><a class="anchor" href="#_semantic_web"></a>4.2.2. Semantic Web</h4>
+<h4 id="_semantic_web" class="discrete">Semantic Web</h4>
 <div class="paragraph">
 <p>The <em>Semantic Web</em> is the concept of a machine-readable, and perhaps more ambitiously, a machine-<em>understandable</em> Internet.</p>
 </div>
@@ -1148,9 +1151,7 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <div class="paragraph">
 <p>The next sections describes well-known model ruse by this model in formal terms and the <a href="#_mappings">Mappings</a> section describes this model&#8217;s mappings to a number of Semantic Web and similar models that aren&#8217;t directly.</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_supermodel"><a class="anchor" href="#_supermodel"></a>4.2.3. Supermodel</h4>
+<h4 id="_supermodel" class="discrete">Supermodel</h4>
 <div class="paragraph">
 <p>A 'Supermodel' is an overarching or enterprise model. The implementation of a focus model within a Supermodel context formally sets the broader context for the model by identifying and typing the other models that the focus model relates to and by defining the relations also.</p>
 </div>
@@ -1201,31 +1202,21 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 </li>
 </ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_profiling"><a class="anchor" href="#_profiling"></a>4.2.4. Profiling</h4>
-
-</div>
+<h4 id="_profiling" class="discrete">Profiling</h4>
 </div>
 <div class="sect2">
 <h3 id="_modelling_methods"><a class="anchor" href="#_modelling_methods"></a>4.3. Modelling Methods</h3>
-<div class="sect3">
-<h4 id="_conceptual"><a class="anchor" href="#_conceptual"></a>4.3.1. Conceptual</h4>
+<h4 id="_conceptual" class="discrete">Conceptual</h4>
 <div class="paragraph">
 <p>Modelling Paradigm</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_logical"><a class="anchor" href="#_logical"></a>4.3.2. Logical</h4>
+<h4 id="_logical" class="discrete">Logical</h4>
 <div class="paragraph">
 <p>Model formalisms</p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_physical"><a class="anchor" href="#_physical"></a>4.3.3. Physical</h4>
+<h4 id="_physical" class="discrete">Physical</h4>
 <div class="paragraph">
 <p>Model technology</p>
-</div>
 </div>
 </div>
 </div>
@@ -1563,6 +1554,9 @@ ex:tn-518366
 ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>The <em>citing</em> and <em>cited</em> objects may vary: <code>TaxonName</code> instances but also other <code>Usage</code> instances may be cited.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1570,7 +1564,7 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 <h2 id="_model"><a class="anchor" href="#_model"></a>6. Model</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section defines not only this model but also the background models this model inherits from and how they are formally related.</p>
+<p>This section details not only model elements defined in this model but also model elements defined elsewhere and used in this model.</p>
 </div>
 <div class="sect2">
 <h3 id="_aunsl_semantic_web_model"><a class="anchor" href="#_aunsl_semantic_web_model"></a>6.1. auNSL Semantic Web Model</h3>
@@ -1578,16 +1572,7 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 <div class="content">
 <a class="image" href="img/owl.svg"><img src="img/owl.svg" alt="auNSL OWL Data Model overview"></a>
 </div>
-<div class="title">Figure 7. A formal overview of the auNSL Semantic Web Model showing <a href="#Class">Classes</a> and <a href="#Predicate">Predicates</a> with the Classes defined by this model in green and those inherited from elsewhere in white. Namespace prefixes for each figure element are given such as ":" &amp; "sdo:" so elements' full IRIs can be understood. See the <a href="#_namespaces">Namespaces</a> section for their interpretation. This figure extends <a href="#fig-overview">Figure 3</a>.</div>
-</div>
-<div class="paragraph">
-<p>This model is described in terms of <a href="#Class">Classes</a> and <a href="#Predicate">Predicates</a>. The figure above provides an overview of this model and the figure below provides the comprehensive view - all model elements.</p>
-</div>
-<div id="fig-comprehensive" class="imageblock text-center">
-<div class="content">
-<a class="image" href="img/owl.svg"><img src="img/owl.svg" alt="auNSL OWL Data Model overview"></a>
-</div>
-<div class="title">Figure 8. A comprehensive view of auNSL Semantic Web Model showing all <a href="#Class">Classes</a> and <a href="#Predicate">Predicates</a> defined by and used by this model. Classes defined by this model in green and those inherited from elsewhere in white. This figure extends <a href="#fig-overview">Figure 3</a>.</div>
+<div class="title">Figure 7. A formal overview of the auNSL Semantic Web Model showing <a href="#Class">Classes</a> and <a href="#Predicate">Predicates</a> with the Classes defined by this model in green and those inherited from elsewhere in white using notation described in the <a href="#_diagram_conventions">Diagram Conventions section</a> . Namespace prefixes for each figure element are given such as ":" &amp; "sdo:" so elements' full IRIs can be understood. See the <a href="#_namespaces">Namespaces</a> section for their interpretation. This figure extends <a href="#fig-overview">Figure 3</a> above.</div>
 </div>
 <div class="paragraph">
 <p><mark>TODO: add the real comprehensive figure in above</mark></p>
@@ -1599,32 +1584,35 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#Taxon">Taxon</a></p>
+<p><a href="#nsl:Taxon">Taxon</a></p>
 </li>
 <li>
-<p><a href="#TaxonName">Taxon Name</a></p>
+<p><a href="#nsl:TaxonName">Taxon Name</a></p>
 </li>
 <li>
-<p><a href="#TaxonNameUsage">Taxon Name Usage</a></p>
+<p><a href="#nsl:Usage">Usage</a></p>
 </li>
 <li>
-<p><a href="#CitedUsage">Cited Usage</a></p>
+<p><a href="#sdo:CreativeWork">Creative Work</a></p>
 </li>
 <li>
-<p><a href="#BibliographicReference">Bibliographic Reference</a></p>
+<p><a href="#cn:CompoundName">Compound Name</a></p>
 </li>
 <li>
-<p><a href="#CreativeWork">Creative Work</a></p>
+<p><a href="#cito:Citation">Citation</a></p>
+</li>
+<li>
+<p><a href="#rdfs:Resource">Resource</a></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="Taxon"><a class="anchor" href="#Taxon"></a>6.1.1.2. Taxon</h5>
+<h5 id="nsl:Taxon"><a class="anchor" href="#nsl:Taxon"></a>6.1.1.2. Taxon</h5>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <colgroup>
-<col style="width: 12.5%;">
-<col style="width: 87.5%;">
+<col style="width: 22.2222%;">
+<col style="width: 77.7778%;">
 </colgroup>
 <thead>
 <tr>
@@ -1663,7 +1651,7 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#name">Section 6.1.2.2</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:name">name</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
@@ -1685,11 +1673,11 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </table>
 </div>
 <div class="sect4">
-<h5 id="TaxonName"><a class="anchor" href="#TaxonName"></a>6.1.1.3. Taxon Name</h5>
+<h5 id="nsl:TaxonName"><a class="anchor" href="#nsl:TaxonName"></a>6.1.1.3. Taxon Name</h5>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <colgroup>
-<col style="width: 12.5%;">
-<col style="width: 87.5%;">
+<col style="width: 22.2222%;">
+<col style="width: 77.7778%;">
 </colgroup>
 <thead>
 <tr>
@@ -1720,11 +1708,11 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Subclass of</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/cn"><code>cn:CompoundName</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cn:CompoundName">Compound Name</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#isNameFor">Section 6.1.2.3</a>, <a href="#hasPart">Section 6.1.2.4</a>, <a href="#hasCitation">Section 6.1.2.6</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cn:isNameFor">Section 6.1.2.3</a>, <a href="#sdo:hasPart">Section 6.1.2.4</a>, <a href="#sdo:citation">Section 6.1.2.9</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
@@ -1736,17 +1724,54 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">nslnames:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/nsl/names/&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sdo:</span><span class="w"> </span><span class="nl">&lt;https://schema.org/&gt;</span><span class="w">
 
-</span><span class="nl">&lt;https://id.biodiversity.org.au/name/afd/83727&gt;</span><span class="w">
-    </span><span class="k">a</span><span class="w"> </span><span class="nn">nsl:</span><span class="n">TaxonName</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">cn:</span><span class="n">isNameFor</span><span class="w"> </span><span class="nl">&lt;https://id.biodiversity.org.au/51822963&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1"># a Taxon</span><span class="w">
+</span><span class="nn">ex:</span><span class="n">name-lomatia
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">cn:</span><span class="n">CompoundName</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="s">"Lomatia"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">ex:</span><span class="n">genus</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="c1"># template: "{ex:genus}"</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">name-ilicifolia
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">cn:</span><span class="n">CompoundName</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="s">"ilicifolia"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">ex:</span><span class="n">species</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="c1"># template: "{ex:species}"</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">author-1441
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">cn:</span><span class="n">CompoundName</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sdo:</span><span class="n">hasPart</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">nslnames:</span><span class="n">FullName</span><span class="w"> </span><span class="p">;</span><span class="w">
-        </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="s">"Pilumnus scabriusculus Adams &amp; White, 1849"</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="s">"Brown"</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">ex:</span><span class="n">familyName</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w">
     </span><span class="p">[</span><span class="w">
-        </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">nslnames:</span><span class="n">GenericName</span><span class="w"> </span><span class="p">;</span><span class="w">
-        </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="s">"Pilumnus"</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="s">"Robert"</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">ex:</span><span class="n">givenName</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+        </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="s">"R.Br."</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">ex:</span><span class="n">authorStandardForm</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="p">]</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">ex:</span><span class="n">species</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="c1"># template: "{ex:authorStandardForm}"</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">name-94766
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">cn:</span><span class="n">CompoundName</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">hasPart</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="nn">ex:</span><span class="n">name-lomatia</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">ex:</span><span class="n">genus</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+        </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="nn">ex:</span><span class="n">name-ilicifolia</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">ex:</span><span class="n">species</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+        </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="nn">ex:</span><span class="n">author-1441</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">ex:</span><span class="n">author</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="p">]</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">ex:</span><span class="n">scientificName</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="c1"># template: "{ex:genus} {ex:species} {ex:author}"</span><span class="w">
 </span><span class="p">.</span></code></pre>
 </div>
 </div></div></td>
@@ -1755,11 +1780,11 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </table>
 </div>
 <div class="sect4">
-<h5 id="TaxonNameUsage"><a class="anchor" href="#TaxonNameUsage"></a>6.1.1.4. Taxon Name Usage</h5>
+<h5 id="nsl:Usage"><a class="anchor" href="#nsl:Usage"></a>6.1.1.4. Usage</h5>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <colgroup>
-<col style="width: 12.5%;">
-<col style="width: 87.5%;">
+<col style="width: 22.2222%;">
+<col style="width: 77.7778%;">
 </colgroup>
 <thead>
 <tr>
@@ -1770,7 +1795,7 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nsl:TaxonNameUsage</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nsl:Usage</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Preferred Label</p></td>
@@ -1790,95 +1815,28 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Subclass of</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/prov-o/#Entity"><code>prov:Entity</code></a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.sparontologies.net/ontologies/cito">Citation</a> , <a href="http://www.sparontologies.net/ontologies/biro">Bibliographic Reference</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cites">Section 6.1.2.5</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#nsl:citing">citing</a>, <a href="#nsl:cited">cited</a>, <a href="https://www.dublincore.org/specifications/bibo/">BIBO</a> referencing properties</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">nsl:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/nsl/&gt;</span><span class="w">
+<pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">bibo:</span><span class="w"> </span><span class="nl">&lt;http://purl.org/ontology/bibo/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">ex:</span><span class="w"> </span><span class="nl">&lt;http://example.com/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">nsl:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/nsl/&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">prov:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/ns/prov#&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sdo:</span><span class="w"> </span><span class="nl">&lt;https://schema.org/&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">xsd:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span><span class="w">
 
-</span><span class="nl">&lt;https://id.biodiversity.org.au/name/afd/83727&gt;</span><span class="w">
-    </span><span class="k">a</span><span class="w"> </span><span class="nn">nsl:</span><span class="n">TaxonName</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="c1"># ... other properties</span><span class="w">
-</span><span class="p">.</span><span class="w">
-
-</span><span class="nl">&lt;http://example.com/tnu/x&gt;</span><span class="w">
-    </span><span class="k">a</span><span class="w"> </span><span class="nn">nsl:</span><span class="n">TaxonNameUsage</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">sdo:</span><span class="n">cites</span><span class="w"> </span><span class="nl">&lt;https://id.biodiversity.org.au/name/afd/83727&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">prov:</span><span class="n">createdAtTime</span><span class="w"> </span><span class="s">"1995-03-02"</span><span class="p">^^</span><span class="nn">xsd:</span><span class="n">date</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="c1"># ... other properties</span><span class="w">
-</span><span class="p">.</span></code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><mark>TODO: add other properties to TNU in example</mark></p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="CitedUsage"><a class="anchor" href="#CitedUsage"></a>6.1.1.5. Usage</h5>
-<table class="tableblock frame-all grid-all stripes-even stretch">
-<colgroup>
-<col style="width: 12.5%;">
-<col style="width: 87.5%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Property</th>
-<th class="tableblock halign-left valign-top">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nsl:Usage</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Preferred Label</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Usage</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This model</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Provenance</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defined by the NSL team</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Subclass of</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">biro:</span><span class="w"> </span><span class="nl">&lt;http://purl.org/spar/biro/&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">nsl:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/nsl/&gt;</span><span class="w">
-
-</span><span class="nl">&lt;https://www.biodiversitylibrary.org/page/34948210&gt;</span><span class="w">
-    </span><span class="k">a</span><span class="w"> </span><span class="nn">nsl:</span><span class="n">Usage</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">biro:</span><span class="n">references</span><span class="w"> </span><span class="nl">&lt;https://id.biodiversity.org.au/name/afd/87296&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1"># TaxonName</span><span class="w">
-    </span><span class="nn">biro:</span><span class="n">references</span><span class="w"> </span><span class="nl">&lt;http://hdl.handle.net/102.100.100/314652&gt;</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1"># CreativeWork</span><span class="w">
-    </span><span class="c1"># ... other properties situating the usage</span><span class="w">
+</span><span class="nn">ex:</span><span class="n">tn-518366
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">nsl:</span><span class="n">Usage</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">nsl:</span><span class="n">citing</span><span class="w"> </span><span class="nn">ex:</span><span class="n">taxonName-94766</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1"># a Taxon Name instance</span><span class="w">
+    </span><span class="nn">nsl:</span><span class="n">cited</span><span class="w"> </span><span class="nn">ex:</span><span class="n">creativeWork-22456</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1"># a Creative Work instance</span><span class="w">
+    </span><span class="nn">bibo:</span><span class="n">pages</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="p">;</span><span class="w">
 </span><span class="p">.</span></code></pre>
 </div>
 </div></div></td>
@@ -1887,64 +1845,11 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </table>
 </div>
 <div class="sect4">
-<h5 id="BibliographicReference"><a class="anchor" href="#BibliographicReference"></a>6.1.1.6. Bibliographic Reference</h5>
+<h5 id="sdo:CreativeWork"><a class="anchor" href="#sdo:CreativeWork"></a>6.1.1.5. Creative Work</h5>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <colgroup>
-<col style="width: 12.5%;">
-<col style="width: 87.5%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Property</th>
-<th class="tableblock halign-left valign-top">Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>biro:BibliographicReference</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Preferred Label</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Bibliographic Reference</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A bibliographic reference is a realization of a bibliographic record. Moreover, it can contain only items referring to elements contained by the bibliographic record it realizes.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.sparontologies.net/ontologies/biro">Bibliographic Reference Ontology (BiRO</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Provenance</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Defined by the NSL team</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Subclass of</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Used without alteration</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="turtle"></code></pre>
-</div>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect4">
-<h5 id="CreativeWork"><a class="anchor" href="#CreativeWork"></a>6.1.1.7. Creative Work</h5>
-<table class="tableblock frame-all grid-all stripes-even stretch">
-<colgroup>
-<col style="width: 12.5%;">
-<col style="width: 87.5%;">
+<col style="width: 22.2222%;">
+<col style="width: 77.7778%;">
 </colgroup>
 <thead>
 <tr>
@@ -1971,11 +1876,11 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Provenance</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Used without alteration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used without change</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#name">name</a>, <a href="#author">author</a>, <a href="#datePublished">date created</a>, <a href="#publicationName">publication name</a>, <a href="#volumeNumber">volume number</a>, <a href="#issueNumber">issue number</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard predicates for the cataloguing of scholarly works</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
@@ -2029,6 +1934,153 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </tbody>
 </table>
 </div>
+<div class="sect4">
+<h5 id="cn:CompoundName"><a class="anchor" href="#cn:CompoundName"></a>6.1.1.6. Compound Name</h5>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 77.7778%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cn:CompoundName</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preferred Label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Compound Name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A Compound Name is a literal value, or objects that can be interpreted as literal values, that describe or name a Feature</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://linked.data.gov.au/def/cn">Compound Naming Model</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provenance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used via subclasses (<a href="#nsl:TaxonName">TaxonName</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cn:isNameFor">Section 6.1.2.3</a>, <a href="#sdo:hasPart">Section 6.1.2.4</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This class is not expected to be used directly, instead use <a href="#nsl:TaxonName">Taxon Name</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See the example for <a href="#nsl:TaxonName">Taxon Name</a> and the <a href="#_compound_names">Compound Names pattern</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="cito:Citation"><a class="anchor" href="#cito:Citation"></a>6.1.1.7. Citation</h5>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 77.7778%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cito:Citation</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preferred Label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Citation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A conceptual directional link from a citing entity to a cited entity</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#CITO">CIO</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provenance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used via subclasses (<a href="#nsl:Usage">Usage</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#nsl:citing">citing</a>, <a href="#nsl:cited">cited</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This class is not expected to be used directly, instead use <a href="#nsl:Usage">Usage</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See the example for <a href="#nsl:Usage">Usage</a> and the <a href="#cito:Citation">Citation pattern</a>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="rdfs:Resource"><a class="anchor" href="#rdfs:Resource"></a>6.1.1.8. Resource</h5>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 77.7778%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IRI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rdfs:Resource</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preferred Label</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Resource</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Definition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The class resource, everything</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is Defined By</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#RDFSSPEC">RDFS</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provenance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used only via subclassing (<a href="#cn:CompoundName">Compound Name</a>, <a href="#sdo:CreativeWork">Creative Work</a>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scope Note</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This class is not expected to be used directly, instead use specialised subclasses</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No example given as all use is via subclasses</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_predicates"><a class="anchor" href="#_predicates"></a>6.1.2. Predicates</h4>
@@ -2037,41 +2089,62 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#name">name</a></p>
+<p><a href="#sdo:name">name</a></p>
 </li>
 <li>
-<p><a href="#isNameFor">is name for</a></p>
+<p><a href="#cn:isNameFor">is name for</a></p>
 </li>
 <li>
-<p><a href="#hasPart">has part</a></p>
+<p><a href="#sdo:hasPart">has part</a></p>
 </li>
 <li>
-<p><a href="#cites">cites</a></p>
+<p><a href="#nsl:citing">citing</a></p>
 </li>
 <li>
-<p><a href="#hasCitation">has citation</a></p>
+<p><a href="#nsl:cited">cited</a></p>
+</li>
+<li>
+<p><a href="#cito:cites">cites</a></p>
+</li>
+<li>
+<p><a href="#cito:isCitedBy">is cited by</a></p>
+</li>
+<li>
+<p><a href="#sdo:citation">citation</a></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="name"><a class="anchor" href="#name"></a>6.1.2.2. name</h5>
+<h5 id="sdo:name"><a class="anchor" href="#sdo:name"></a>6.1.2.2. name</h5>
 
 </div>
 <div class="sect4">
-<h5 id="isNameFor"><a class="anchor" href="#isNameFor"></a>6.1.2.3. is name for</h5>
+<h5 id="cn:isNameFor"><a class="anchor" href="#cn:isNameFor"></a>6.1.2.3. is name for</h5>
 
 </div>
 <div class="sect4">
-<h5 id="hasPart"><a class="anchor" href="#hasPart"></a>6.1.2.4. has part</h5>
+<h5 id="sdo:hasPart"><a class="anchor" href="#sdo:hasPart"></a>6.1.2.4. has part</h5>
 
 </div>
 <div class="sect4">
-<h5 id="cites"><a class="anchor" href="#cites"></a>6.1.2.5. cites</h5>
+<h5 id="nsl:citing"><a class="anchor" href="#nsl:citing"></a>6.1.2.5. citing</h5>
 
 </div>
 <div class="sect4">
-<h5 id="hasCitation"><a class="anchor" href="#hasCitation"></a>6.1.2.6. has citation</h5>
+<h5 id="nsl:cited"><a class="anchor" href="#nsl:cited"></a>6.1.2.6. cited</h5>
+
+</div>
+<div class="sect4">
+<h5 id="cito:cites"><a class="anchor" href="#cito:cites"></a>6.1.2.7. cites</h5>
+
+</div>
+<div class="sect4">
+<h5 id="cito:isCitedBy"><a class="anchor" href="#cito:isCitedBy"></a>6.1.2.8. is cited by</h5>
+
+</div>
+<div class="sect4">
+<h5 id="sdo:citation"><a class="anchor" href="#sdo:citation"></a>6.1.2.9. citation</h5>
 
 </div>
 </div>
@@ -2129,7 +2202,7 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 <div class="content">
 <a class="image" href="img/abis.svg"><img src="img/abis.svg" alt="auNSL / ABIS relations"></a>
 </div>
-<div class="title">Figure 9. Classes from the <a href="#SOSA">SOSA</a> ontology used by <a href="#ABIS">ABIS</a>, shown in blue, and how they relate to classes defined by this model, shown in green. ABIS <em>observes</em> samples (animals, plants, parts of plants, soil etc.) and declares that a <code>Sample</code> belongs to ("is a") <code>Taxon</code> or has a particular <code>Taxon Name</code> assigned to it.</div>
+<div class="title">Figure 8. Classes from the <a href="#SOSA">SOSA</a> ontology used by <a href="#ABIS">ABIS</a>, shown in blue, and how they relate to classes defined by this model, shown in green. ABIS <em>observes</em> samples (animals, plants, parts of plants, soil etc.) and declares that a <code>Sample</code> belongs to ("is a") <code>Taxon</code> or has a particular <code>Taxon Name</code> assigned to it.</div>
 </div>
 <div class="paragraph">
 <p>This information is repeated in the <a href="#_related_domain_models">Related Domain Models</a> subsection of the <a href="#_introduction">Introduction Section</a> of this document.</p>
@@ -2333,7 +2406,7 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-01-02 05:39:51 UTC
+Last updated 2024-01-02 07:08:57 UTC
 </div>
 </div>
 </body>
