@@ -85,3 +85,5 @@ Namespaces for model, vocabulary and validator elements are assigned the followi
 | `time`: | http://www.w3.org/2006/time# | Time Ontology in OWL namespace
 | `xsd`: | http://www.w3.org/2001/XMLSchema# | <<XSD2, XSD>> datatypes vocabulary
 |===
+
+Where example data is given below and dummy values are used, either for modelling elements - <<Class, classes>> or <<Predicate, predicates>> - or instances of them - particular persons or names etc. - the prefix `ex:` is used to indicate that this is example/dummy data only.

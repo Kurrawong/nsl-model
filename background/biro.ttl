@@ -62,12 +62,6 @@ It provides a logical system for relating an individual bibliographic reference,
     rdfs:subPropertyOf owl:topObjectProperty ;
     owl:inverseOf :isReferencedBy .
 
-rdfs:comment a owl:AnnotationProperty .
-
-rdfs:label a owl:AnnotationProperty .
-
-owl:versionInfo a owl:AnnotationProperty .
-
 :isReferencedBy a owl:ObjectProperty ;
     rdfs:label "is referenced by"@en ;
     rdfs:comment "The relation between a publication and the bibliographic record or bibliographic reference describing it."@en ;
@@ -75,8 +69,6 @@ owl:versionInfo a owl:AnnotationProperty .
     rdfs:range [ a owl:Class ;
             owl:unionOf ( :BibliographicRecord :BibliographicReference ) ] ;
     rdfs:subPropertyOf owl:topObjectProperty .
-
-core:part a owl:ObjectProperty .
 
 :BibliographicList a owl:Class ;
     rdfs:label "bibliographic list"@en ;
@@ -90,18 +82,6 @@ core:part a owl:ObjectProperty .
             owl:onProperty core:realizationOf ],
         co:List,
         core:Expression .
-
-core:Endeavour a owl:Class .
-
-core:Expression a owl:Class .
-
-core:Work a owl:Class .
-
-core:realization a owl:ObjectProperty .
-
-core:realizationOf a owl:ObjectProperty .
-
-owl:topObjectProperty a owl:ObjectProperty .
 
 :BibliographicCollection a owl:Class ;
     rdfs:label "bibliographic collection"@en ;

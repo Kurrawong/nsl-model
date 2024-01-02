@@ -2,6 +2,10 @@
 
 [[ABIS]] [ABIS]:: Department of Climate Change, Energy and the Environment, _Australian Biodiversity Information Standard_ (2023). https://linked.data.gov.au/def/abis
 
+[[CITO]] [CITO]:: Peroni, S., Shotton, D., _FaBiO and CiTO: ontologies for describing bibliographic resources and citations_. In Journal of Web Semantics: Science, Services and Agents on the World Wide Web, 17 (December 2012): 33-43. Amsterdam, The Netherlands: Elsevier. https://doi.org/10.1016/j.websem.2012.08.001. Online access at http://www.sparontologies.net/ontologies/cito
+
+[[CN]] [CN]:: Australian Government Linked Data Working Group, _Compound Naming Model_, Australian Government Semantic Web Ontology (2023). https://linked.data.gov.au/def/cn
+
 [[DCTERMS]] [DCTERMS]:: DCMI Usage Board, _DCMI Metadata Terms_, DCMI Recommendation (2020). https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
 
 [[GSP]] [GSP]:: Open Geospatial Consortium, _OGC GeoSPARQL - A Geographic Query Language for RDF Data_, OGC Implementation Standard. Car, N. J., & Homburg, T. (eds.) (2011). http://www.opengis.net/doc/IS/geosparql/1.1
