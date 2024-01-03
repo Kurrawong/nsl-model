@@ -29,15 +29,15 @@ image::../img/owl.svg[auNSL OWL Data Model overview,align="center"]
 |===
 | Property | Value
 
-| IRI | `nsl:Taxon`
-| Preferred Label | Taxon
-| Definition | A group of organisms considered by taxonomists to form a homogeneous unit
-| Is Defined By | This model
-| Provenance | Built on the https://ontobee.org/ontology/OBI[Ontology for Biomedical Investigation]'s definition for http://purl.obolibrary.org/obo/OBI_0100026[Organism]
-| Subclass of | https://www.w3.org/TR/prov-o/#Entity[`prov:Entity`]
-| Equivalent Class | The https://linkeddata.tern.org.au/information-models/tern-ontology[TERN Ontology]'s https://w3id.org/tern/ontologies/tern/Taxon[`tern:Taxon`] class
+| <<IRI, IRI>> | `nsl:Taxon`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | Taxon
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | A group of organisms considered by taxonomists to form a homogeneous unit
+| https://www.w3.org/TR/rdf12-schema/#ch_subclassof[Subclass of] | <<rdfs:Resource, Resource>>
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | This model
+| https://www.w3.org/TR/skos-reference/#historyNote[History Note] | Built on the https://ontobee.org/ontology/OBI[Ontology for Biomedical Investigation]'s definition for http://purl.obolibrary.org/obo/OBI_0100026[Organism]
+| https://www.w3.org/TR/owl-primer/#a_EquivalentClasses[Equivalent Class] | The https://linkeddata.tern.org.au/information-models/tern-ontology[TERN Ontology]'s https://w3id.org/tern/ontologies/tern/Taxon[`tern:Taxon`] class
 | Expected Properties | <<sdo:name, name>>
-| Example
+| https://www.w3.org/TR/skos-reference/#example[Example]
 a| [source,turtle]
 ----
 PREFIX cn: <https://linked.data.gov.au/def/cn/>
@@ -59,14 +59,14 @@ PREFIX sdo: <https://schema.org/>
 |===
 | Property | Value
 
-| IRI | `nsl:TaxonName`
-| Preferred Label | Taxon Name
-| Definition | A name applied to Taxa by people at a point in time
-| Is Defined By | This model
-| Provenance | Defined by the NSL team
-| Subclass of | <<cn:CompoundName, Compound Name>>
+| <<IRI, IRI>> | `nsl:TaxonName`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | Taxon Name
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | A name applied to Taxa by people at a point in time
+| https://www.w3.org/TR/rdf12-schema/#ch_subclassof[Subclass of] | <<cn:CompoundName, Compound Name>>
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | This model
+| https://www.w3.org/TR/skos-reference/#historyNote[History Note] | Defined by the NSL team
 | Expected Properties | <<cn:isNameFor>>, <<sdo:hasPart>>, <<sdo:citation>>
-| Example
+| https://www.w3.org/TR/skos-reference/#example[Example]
 a| [source,turtle]
 ----
 PREFIX cn: <https://linked.data.gov.au/def/cn/>
@@ -134,14 +134,14 @@ ex:name-94766
 |===
 | Property | Value
 
-| IRI | `nsl:Usage`
-| Preferred Label | Taxon Name Usage
-| Definition | An instance of the use of an Entity via citation
-| Is Defined By | This model
-| Provenance | Defined by the NSL team
-| Subclass of | http://www.sparontologies.net/ontologies/cito[Citation] , http://www.sparontologies.net/ontologies/biro[Bibliographic Reference]
+| <<IRI, IRI>> | `nsl:Usage`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | Taxon Name Usage
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | An instance of the use of an Entity via citation
+| https://www.w3.org/TR/rdf12-schema/#ch_subclassof[Subclass of] | http://www.sparontologies.net/ontologies/cito[Citation] , http://www.sparontologies.net/ontologies/biro[Bibliographic Reference]
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | This model
+| https://www.w3.org/TR/skos-reference/#historyNote[History Note] | Defined by the NSL team
 | Expected Properties | <<nsl:citing, citing>>, <<nsl:cited, cited>>, https://www.dublincore.org/specifications/bibo/[BIBO] referencing properties
-| Example
+| https://www.w3.org/TR/skos-reference/#example[Example]
 a| [source,turtle]
 ----
 PREFIX bibo: <http://purl.org/ontology/bibo/>
@@ -167,13 +167,14 @@ ex:tn-518366
 |===
 | Property | Value
 
-| IRI | `sdo:CreativeWork`
-| Preferred Label | Creative Work
-| Definition | The most generic kind of creative work, including books, movies, photographs, software programs, etc.
-| Is Defined By | https://schema.org[schema.org]
-| Provenance | Used without change
+| <<IRI, IRI>> | `sdo:CreativeWork`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | Creative Work
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | The most generic kind of creative work, including books, movies, photographs, software programs, etc.
+| https://www.w3.org/TR/rdf12-schema/#ch_subclassof[Subclass of] | <<rdfs:Resource, Resource>>
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | https://schema.org[schema.org]
+| https://www.w3.org/TR/skos-reference/#historyNote[History Note] | Used without change
 | Expected Properties | Standard predicates for the cataloguing of scholarly works
-| Example
+| https://www.w3.org/TR/skos-reference/#example[Example]
 a| [source,turtle]
 ----
 PREFIX cn: <https://linked.data.gov.au/def/cn/>
@@ -228,14 +229,15 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 |===
 | Property | Value
 
-| IRI | `cn:CompoundName`
-| Preferred Label | Compound Name
-| Definition | A Compound Name is a literal value, or objects that can be interpreted as literal values, that describe or name a Feature
-| Is Defined By | https://linked.data.gov.au/def/cn[Compound Naming Model]
-| Provenance | Used via subclasses (<<nsl:TaxonName, TaxonName>>)
+| <<IRI, IRI>> | `cn:CompoundName`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | Compound Name
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | A Compound Name is a literal value, or objects that can be interpreted as literal values, that describe or name a Feature
+| https://www.w3.org/TR/rdf12-schema/#ch_subclassof[Subclass of] | <<rdfs:Resource, Resource>>
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | https://linked.data.gov.au/def/cn[Compound Naming Model]
+| https://www.w3.org/TR/skos-reference/#historyNote[History Note] | Used via subclasses (<<nsl:TaxonName, TaxonName>>)
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | This class is not expected to be used directly, instead use <<nsl:TaxonName, Taxon Name>>
 | Expected Properties | <<cn:isNameFor>>, <<sdo:hasPart>>
-| Scope Note | This class is not expected to be used directly, instead use <<nsl:TaxonName, Taxon Name>>
-| Example | See the example for <<nsl:TaxonName, Taxon Name>> and the <<Compound Names, Compound Names pattern>>.
+| https://www.w3.org/TR/skos-reference/#example[Example] | See the example for <<nsl:TaxonName, Taxon Name>> and the <<Compound Names, Compound Names pattern>>.
 |===
 
 [[cito:Citation]]
@@ -245,14 +247,14 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 |===
 | Property | Value
 
-| IRI | `cito:Citation`
-| Preferred Label | Citation
-| Definition | A conceptual directional link from a citing entity to a cited entity
-| Is Defined By | <<CITO, CIO>>
-| Provenance | Used via subclasses (<<nsl:Usage, Usage>>)
+| <<IRI, IRI>> | `cito:Citation`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | Citation
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | A conceptual directional link from a citing entity to a cited entity
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<CITO, CIO>>
+| https://www.w3.org/TR/skos-reference/#historyNote[History Note] | Used via subclasses (<<nsl:Usage, Usage>>)
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | This class is not expected to be used directly, instead use <<nsl:Usage, Usage>>
 | Expected Properties | <<nsl:citing, citing>>, <<nsl:cited, cited>>
-| Scope Note | This class is not expected to be used directly, instead use <<nsl:Usage, Usage>>
-| Example | See the example for <<nsl:Usage, Usage>> and the <<Citation, Citation pattern>>.
+| https://www.w3.org/TR/skos-reference/#example[Example] | See the example for <<nsl:Usage, Usage>> and the <<Citation, Citation pattern>>.
 |===
 
 [[rdfs:Resource]]
@@ -262,16 +264,15 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 |===
 | Property | Value
 
-| IRI | `rdfs:Resource`
-| Preferred Label | Resource
-| Definition | The class resource, everything
-| Is Defined By | <<RDFSSPEC, RDFS>>
-| Provenance | Used only via subclassing (<<cn:CompoundName, Compound Name>>, <<sdo:CreativeWork, Creative Work>>)
+| <<IRI, IRI>> | `rdfs:Resource`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | Resource
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | The class resource, everything
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<RDFSSPEC, RDFS>>
+| https://www.w3.org/TR/skos-reference/#historyNote[History Note] | Used only via subclassing (<<cn:CompoundName, Compound Name>>, <<sdo:CreativeWork, Creative Work>>)
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | This class is not expected to be used directly, instead use specialised subclasses
 | Expected Properties | None
-| Scope Note | This class is not expected to be used directly, instead use specialised subclasses
-| Example | No example given as all use is via subclasses
+| https://www.w3.org/TR/skos-reference/#example[Example] | No example given as all use is via subclasses
 |===
-
 
 ==== Predicates
 
@@ -286,29 +287,155 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 * <<cito:isCitedBy, is cited by>>
 * <<sdo:citation, citation>>
 
+[discrete]
 [[sdo:name]]
 ===== name
+
+[cols="1,5"]
+|===
+| Property | Value
+
+| <<IRI, IRI>> | `sdo:name`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | name
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | The name of the item
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<SDO, schema.org>>
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | Use this property to assign literal names to anything or to assign a naming resource, such as a `<<cn:CompoundName, Compound Name>>`, to a thing
+| https://www.w3.org/TR/skos-reference/#example[Example] | See example for `<<nsl:Taxon, Taxon>>`
+|===
 
 [[cn:isNameFor]]
 ===== is name for
 
+[cols="1,5"]
+|===
+| Property | Value
+
+| <<IRI, IRI>> | `cn:isNameFor`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | is name for
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | The inverse of `<<sdo:name, name>>`
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | This model
+| https://www.w3.org/TR/owl-primer/#a_InverseObjectProperties[Inverse Of] | `<<sdo:name, name>>`
+| https://www.w3.org/TR/skos-reference/#example[Example] a| [source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX nsl: <https://linked.data.gov.au/def/nsl/>
+PREFIX sdo: <https://schema.org/>
+
+ex:taxon-51851883 sdo:name ex:taxonName-83727 .
+
+ex:taxonName-83727 nsl:isNameFor ex:taxon-51851883 .
+----
+|===
+
 [[sdo:hasPart]]
 ===== has part
+
+[cols="1,5"]
+|===
+| Property | Value
+
+| <<IRI, IRI>> | `sdo:hasPart`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | has part
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | Indicates an item that is part of this item (in some sense)
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<SDO, schema.org>>
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | Use this predicate to indicate that a `<<cn:CompoundName, Compound Name>>` has another `<<cn:CompoundName, Compound Name>>` as a part
+| https://www.w3.org/TR/skos-reference/#example[Example] | See example for `<<nsl:TaxonName, Taxon Name>>`
+|===
 
 [[nsl:citing]]
 ===== citing
 
+[cols="1,5"]
+|===
+| Property | Value
+
+| <<IRI, IRI>> | ``
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] |
+| https://www.w3.org/TR/skos-reference/#definition[Definition] |
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] |
+| https://www.w3.org/TR/rdf12-schema/#ch_domain[Domain] |
+| https://www.w3.org/TR/rdf12-schema/#ch_range[Range] |
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] |
+| https://www.w3.org/TR/skos-reference/#example[Example] a|
+----
+----
+|===
+
 [[nsl:cited]]
 ===== cited
+
+[cols="1,5"]
+|===
+| Property | Value
+
+| <<IRI, IRI>> | ``
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] |
+| https://www.w3.org/TR/skos-reference/#definition[Definition] |
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] |
+| https://www.w3.org/TR/rdf12-schema/#ch_domain[Domain] |
+| https://www.w3.org/TR/rdf12-schema/#ch_range[Range] |
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] |
+| https://www.w3.org/TR/skos-reference/#example[Example] a|
+----
+----
+|===
 
 [[cito:cites]]
 ===== cites
 
+[cols="1,5"]
+|===
+| Property | Value
+
+| <<IRI, IRI>> | ``
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] |
+| https://www.w3.org/TR/skos-reference/#definition[Definition] |
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] |
+| https://www.w3.org/TR/rdf12-schema/#ch_domain[Domain] |
+| https://www.w3.org/TR/rdf12-schema/#ch_range[Range] |
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] |
+| https://www.w3.org/TR/skos-reference/#example[Example] a|
+----
+----
+|===
+
 [[cito:isCitedBy]]
 ===== is cited by
 
+[cols="1,5"]
+|===
+| Property | Value
+
+| <<IRI, IRI>> | ``
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] |
+| https://www.w3.org/TR/skos-reference/#definition[Definition] |
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] |
+| https://www.w3.org/TR/rdf12-schema/#ch_domain[Domain] |
+| https://www.w3.org/TR/rdf12-schema/#ch_range[Range] |
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] |
+| https://www.w3.org/TR/skos-reference/#example[Example] a|
+----
+----
+|===
+
 [[sdo:citation]]
 ===== citation
+
+[cols="1,5"]
+|===
+| Property | Value
+
+| <<IRI, IRI>> | ``
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] |
+| https://www.w3.org/TR/skos-reference/#definition[Definition] |
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] |
+| https://www.w3.org/TR/rdf12-schema/#ch_domain[Domain] |
+| https://www.w3.org/TR/rdf12-schema/#ch_range[Range] |
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] |
+| https://www.w3.org/TR/skos-reference/#example[Example] a|
+----
+----
+|===
 
 === Background Models
 

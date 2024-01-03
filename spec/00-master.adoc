@@ -31,7 +31,7 @@ image::../img/simple.svg[Model Overview,align="center"]
 | *Name* | National Species List - Semantic Web Model
 | *Definition* | This document is the normative specification of the Semantic Web data model of the National Species List
 | *Created* | 2023-10-15
-| *Modified* | 2023-12-11
+| *Modified* | 2024-01-03
 | *Issued* | _Not Yet_
 | *Version* | 1.0
 | *Creator* | https://linked.data.gov.au/org/canbr[Centre for Australian National Biodiversity Research (CANBR)] +
