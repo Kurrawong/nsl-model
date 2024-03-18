@@ -18,7 +18,6 @@ image::../img/owl.svg[auNSL OWL Data Model overview,align="center"]
 * <<nsl:TaxonName, Taxon Name>>
 * <<nsl:Usage, Usage>>
 * <<sdo:CreativeWork, Creative Work>>
-* <<cn:CompoundName, Compound Name>>
 * <<cito:Citation, Citation>>
 * <<rdfs:Resource, Resource>>
 
@@ -62,7 +61,6 @@ PREFIX sdo: <https://schema.org/>
 | <<IRI, IRI>> | `nsl:TaxonName`
 | https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | Taxon Name
 | https://www.w3.org/TR/skos-reference/#definition[Definition] | A name applied to Taxa by people at a point in time
-| https://www.w3.org/TR/rdf12-schema/#ch_subclassof[Subclass of] | <<cn:CompoundName, Compound Name>>
 | https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | This model
 | https://www.w3.org/TR/skos-reference/#historyNote[History Note] | Defined by the NSL team
 | Expected Properties | <<cn:isNameFor>>, <<sdo:hasPart>>, <<sdo:citation>>
@@ -222,24 +220,6 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 ----
 |===
 
-[[cn:CompoundName]]
-===== Compound Name
-
-[cols="2,7"]
-|===
-| Property | Value
-
-| <<IRI, IRI>> | `cn:CompoundName`
-| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | Compound Name
-| https://www.w3.org/TR/skos-reference/#definition[Definition] | A Compound Name is a literal value, or objects that can be interpreted as literal values, that describe or name a Feature
-| https://www.w3.org/TR/rdf12-schema/#ch_subclassof[Subclass of] | <<rdfs:Resource, Resource>>
-| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | https://linked.data.gov.au/def/cn[Compound Naming Model]
-| https://www.w3.org/TR/skos-reference/#historyNote[History Note] | Used via subclasses (<<nsl:TaxonName, TaxonName>>)
-| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | This class is not expected to be used directly, instead use <<nsl:TaxonName, Taxon Name>>
-| Expected Properties | <<cn:isNameFor>>, <<sdo:hasPart>>
-| https://www.w3.org/TR/skos-reference/#example[Example] | See the example for <<nsl:TaxonName, Taxon Name>> and the <<Compound Names, Compound Names pattern>>.
-|===
-
 [[cito:Citation]]
 ===== Citation
 
@@ -256,6 +236,33 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 | Expected Properties | <<nsl:citing, citing>>, <<nsl:cited, cited>>
 | https://www.w3.org/TR/skos-reference/#example[Example] | See the example for <<nsl:Usage, Usage>> and the <<Citation, Citation pattern>>.
 |===
+
+[[prov:Agent]]
+==== Agent
+
+[cols="2,7"]
+|===
+| Property | Value
+
+| <<IRI, IRI>> | `prov:Agent`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | Agent
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<PROV, PROV>>
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | This class is not expected to be used directly, instead use `sdo:Person` & `sdo:Organization`
+| Expected Properties | <<sdo:name, name>>, inbound: <<prov:wasAttributedTo, was attributed to>>, <<prov:agent, agent>>
+| https://www.w3.org/TR/skos-reference/#example[Example] a|
+[source, turtle]
+----
+# A Creative Work is also a prov:Entity and may be attributed
+ex:book-001
+    a sdo:CreativeWork ;
+    prov:wasAttributedTo
+        ex:person-a ,  # instance of sdo:Person, subclass of prov:Agent
+        ex:person-b ;
+.
+----
+|===
+
 
 [[rdfs:Resource]]
 ===== Resource
@@ -436,6 +443,12 @@ ex:taxonName-83727 nsl:isNameFor ex:taxon-51851883 .
 ----
 ----
 |===
+
+[[prov:wasAttributedTo]]
+===== was attributed to
+
+[[prov:agent]]
+===== agent
 
 === Background Models
 
