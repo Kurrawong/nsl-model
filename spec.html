@@ -2304,37 +2304,44 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#IRI">IRI</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">``</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sdo:citation</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#prefLabel">Preferred Label</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">citation</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#definition">Definition</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby">Is Defined By</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_domain">Domain</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_range">Range</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#SDO">SDO</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#scopeNote">Scope Note</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is schema.org&#8217;s general <em>citation</em> predicate which is a looser form of <a href="#CITO">CITO</a>'s <code><a href="#cito:cites">Section 6.1.2.6</a></code>. The NSL model will use this predicate as a shortcut between citing and cited resources</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#example">Example</a></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
-<pre></pre>
+<pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">bibo:</span><span class="w"> </span><span class="nl">&lt;http://purl.org/ontology/bibo/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">ex:</span><span class="w"> </span><span class="nl">&lt;http://example.com/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">nsl:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/nsl/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">prov:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/ns/prov#&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sdo:</span><span class="w"> </span><span class="nl">&lt;https://schema.org/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">xsd:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">tn-518366
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">nsl:</span><span class="n">Usage</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">nsl:</span><span class="n">citing</span><span class="w"> </span><span class="nn">ex:</span><span class="n">taxonName-94766</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1"># a Taxon Name instance</span><span class="w">
+    </span><span class="nn">nsl:</span><span class="n">cited</span><span class="w"> </span><span class="nn">ex:</span><span class="n">creativeWork-22456</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1"># a Creative Work instance</span><span class="w">
+    </span><span class="nn">bibo:</span><span class="n">pages</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">taxonName-94766</span><span class="w"> </span><span class="nn">sdo:</span><span class="n">citation</span><span class="w"> </span><span class="nn">ex:</span><span class="n">creativeWork-22456</span><span class="w"> </span><span class="p">.</span><span class="w">
+</span></code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -2608,7 +2615,7 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-04-07 22:26:43 UTC
+Last updated 2024-04-07 22:33:36 UTC
 </div>
 </div>
 </body>
