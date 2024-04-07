@@ -999,6 +999,11 @@ within the <a href="https://linked.data.gov.au/org/anbg">Australian National Bot
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.sparontologies.net/ontologies/biro">BiRO</a>, the Bibliographic Reference Ontology</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cito</code>:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://purl.org/spar/cito/" class="bare">http://purl.org/spar/cito/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.sparontologies.net/ontologies/cito">CITO</a>, the Citation Typing Ontology Ontology</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>ex</code>:</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://example.com/" class="bare">http://example.com/</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A non-resolving namespace for examples</p></td>
@@ -1443,9 +1448,6 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </div>
 <div class="title">Figure 6. A formal overview of the auNSL Semantic Web Model showing <a href="#Class">Classes</a> and <a href="#Predicate">Predicates</a> with the Classes defined by this model in green and those inherited from elsewhere in white using notation described in the <a href="#_diagram_conventions">Diagram Conventions section</a> . Namespace prefixes for each figure element are given such as ":" &amp; "sdo:" so elements' full IRIs can be understood. See the <a href="#_namespaces">Namespaces</a> section for their interpretation. This figure extends <a href="#fig-overview">Figure 3</a> above.</div>
 </div>
-<div class="paragraph">
-<p><mark>TODO: add the real comprehensive figure in above</mark></p>
-</div>
 <div class="sect3">
 <h4 id="_classes"><a class="anchor" href="#_classes"></a>6.1.1. Classes</h4>
 <div class="sect4">
@@ -1574,7 +1576,7 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cn:isNameFor">Section 6.1.2.3</a>, <a href="#sdo:hasPart">[sdo:hasPart]</a>, <a href="#sdo:citation">Section 6.1.2.8</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#cn:isNameFor">Section 6.1.2.3</a>, <a href="#sdo:citation">Section 6.1.2.8</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#example">Example</a></p></td>
@@ -1688,6 +1690,7 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">bibo:</span><span class="w"> </span><span class="nl">&lt;http://purl.org/ontology/bibo/&gt;</span><span class="w">
+</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">cito:</span><span class="w"> </span><span class="nl">&lt;http://purl.org/spar/cito/&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">ex:</span><span class="w"> </span><span class="nl">&lt;http://example.com/&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">nsl:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/nsl/&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">prov:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/ns/prov#&gt;</span><span class="w">
@@ -1699,7 +1702,14 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
     </span><span class="nn">nsl:</span><span class="n">citing</span><span class="w"> </span><span class="nn">ex:</span><span class="n">taxonName-94766</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1"># a Taxon Name instance</span><span class="w">
     </span><span class="nn">nsl:</span><span class="n">cited</span><span class="w"> </span><span class="nn">ex:</span><span class="n">creativeWork-22456</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1"># a Creative Work instance</span><span class="w">
     </span><span class="nn">bibo:</span><span class="n">pages</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="p">;</span><span class="w">
-</span><span class="p">.</span></code></pre>
+</span><span class="p">.</span><span class="w">
+
+</span><span class="c1"># Inferrable from above</span><span class="w">
+</span><span class="nn">ex:</span><span class="n">taxonName-94766</span><span class="w"> </span><span class="nn">cito:</span><span class="n">cites</span><span class="w"> </span><span class="nn">ex:</span><span class="n">creativeWork-22456</span><span class="w"> </span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">creativeWork-22456</span><span class="w"> </span><span class="nn">cito:</span><span class="n">isCitedBy</span><span class="w"> </span><span class="nn">ex:</span><span class="n">taxonName-94766</span><span class="w"> </span><span class="p">.</span><span class="w">
+
+</span><span class="nn">ex:</span><span class="n">taxonName-94766</span><span class="w"> </span><span class="nn">sdo:</span><span class="n">citation</span><span class="w"> </span><span class="nn">ex:</span><span class="n">creativeWork-22456</span><span class="w"> </span><span class="p">.</span></code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -1762,11 +1772,11 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
     </span><span class="nn">sdo:</span><span class="n">name</span><span class="w"> </span><span class="s">"Check List of Northern Territory Plants"</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sdo:</span><span class="n">author</span><span class="w"> </span><span class="s">"Chippendale, G.M."</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sdo:</span><span class="n">datePublished</span><span class="w"> </span><span class="s">"1972-04-17"</span><span class="p">^^</span><span class="nn">xsd:</span><span class="n">date</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">ex:</span><span class="n">publicationName</span><span class="w"> </span><span class="s">"Proceedings of the Linnean Society of New South Wales"</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">ex:</span><span class="n">publicationName</span><span class="w"> </span><span class="s">"Proceedings of the Linnean Society of NSW"</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sdo:</span><span class="n">volumeNumber</span><span class="w"> </span><span class="mi">64</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sdo:</span><span class="n">issueNumber</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">;</span><span class="w">
     </span><span class="nn">sdo:</span><span class="n">name</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="c1"># "Chippendale, G.M. (17 April 1972), Check List of Northern Territory Plants. Proceedings of the Linnean Society of New South Wales 96(4)" ;</span><span class="w">
+        </span><span class="c1"># "Chippendale, G.M. (17 April 1972), Check List of Northern Territory Plants. Proceedings of the Linnean Society of NSW 96(4)" ;</span><span class="w">
         </span><span class="k">a</span><span class="w"> </span><span class="nn">cn:</span><span class="n">CompoundName</span><span class="w"> </span><span class="p">;</span><span class="w">
         </span><span class="nn">sdo:</span><span class="n">hasPart</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">sdo:</span><span class="n">name</span><span class="w"> </span><span class="p">;</span><span class="w">
@@ -1782,7 +1792,7 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
         </span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w">
         </span><span class="p">[</span><span class="w">
             </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">ex:</span><span class="n">publicationName</span><span class="w"> </span><span class="p">;</span><span class="w">
-            </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="s">"Proceedings of the Linnean Society of New South Wales"</span><span class="w"> </span><span class="p">;</span><span class="w">
+            </span><span class="nn">sdo:</span><span class="n">value</span><span class="w"> </span><span class="s">"Proceedings of the Linnean Society of NSW"</span><span class="w"> </span><span class="p">;</span><span class="w">
         </span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w">
         </span><span class="p">[</span><span class="w">
             </span><span class="nn">sdo:</span><span class="n">additionalType</span><span class="w"> </span><span class="nn">sdo:</span><span class="n">volumeNumber</span><span class="w"> </span><span class="p">;</span><span class="w">
@@ -1828,7 +1838,7 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby">Is Defined By</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#CITO">CIO</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#CITO">CITO</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#historyNote">History Note</a></p></td>
@@ -1885,7 +1895,7 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Expected Properties</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:name">name</a>, inbound: <a href="#prov:wasAttributedTo">was attributed to</a>, <a href="#prov:agent">agent</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#sdo:name">name</a>, inbound: <a href="#prov:agent">agent</a>, <a href="#prov:agent">agent</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#example">Example</a></p></td>
@@ -1980,6 +1990,15 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </li>
 <li>
 <p><a href="#sdo:citation">citation</a></p>
+</li>
+<li>
+<p><a href="#prov:qualifiedAttribution">qualified attribution</a></p>
+</li>
+<li>
+<p><a href="#prov:agent">agent</a></p>
+</li>
+<li>
+<p><a href="#prov:hadRole">had role</a></p>
 </li>
 </ul>
 </div>
@@ -2100,7 +2119,7 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#definition">Definition</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A predicate that relates a citation to the using entity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A predicate that relates a Usage to the citing entity</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby">Is Defined By</a></p></td>
@@ -2116,7 +2135,7 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#scopeNote">Scope Note</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This predicate is just a renamed version of <a href="#CITO">CITO</a>'s <code>cito:hasCitingEntity</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This predicate is a renamed version of <a href="#CITO">CITO</a>'s <code>cito:hasCitingEntity</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.w3.org/2002/07/owl#equivalentProperty">Equivalent Property</a></p></td>
@@ -2145,39 +2164,35 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#IRI">IRI</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">``</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nsl:cited</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#prefLabel">Preferred Label</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cited</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#definition">Definition</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A predicate that relates a Usage to the cited entity</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby">Is Defined By</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This model</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_domain">Domain</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#nsl:Usage">Usage</a></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_range">Range</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#rdfs:Resource">Resource</a></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#scopeNote">Scope Note</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This predicate is a renamed version of <a href="#CITO">CITO</a>'s <code>cito:hasCitedEntity</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#example">Example</a></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="content">
-<pre></pre>
-</div>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See example for <code><a href="#nsl:Usage">Usage</a></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -2198,39 +2213,31 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#IRI">IRI</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">``</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cito:cites</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#prefLabel">Preferred Label</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cites</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#definition">Definition</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The citing entity cites the cited entity</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby">Is Defined By</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_domain">Domain</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_range">Range</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#CITO">CITO</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#scopeNote">Scope Note</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is schema.org&#8217;s equivalent to <a href="#SDO">SDO</a>'s <code><a href="#sdo:citation">sdo:citation</a></code>. The NSL model uses this predicate as a shortcut between citing and cited resources</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.w3.org/2002/07/owl#equivalentProperty">Equivalent Property</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cito:hasCitingEntity</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#example">Example</a></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="content">
-<pre></pre>
-</div>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See example for <code><a href="#nsl:Usage">Usage</a></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -2251,39 +2258,27 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#IRI">IRI</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">``</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cito:isCitedBy</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#prefLabel">Preferred Label</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">is cited by</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#definition">Definition</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The cited entity (the subject of the RDF triple) is cited by the citing entity (the object of the triple)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby">Is Defined By</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#CITO">CITO</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_domain">Domain</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_range">Range</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#scopeNote">Scope Note</a></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/owl-primer/#a_InverseObjectProperties">Inverse Of</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="#cito:cites">cites</a></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#example">Example</a></p></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
-<div class="content">
-<pre></pre>
-</div>
-</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See example for <code><a href="#nsl:Usage">Usage</a></code></p></td>
 </tr>
 </tbody>
 </table>
@@ -2320,28 +2315,76 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#scopeNote">Scope Note</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This is schema.org&#8217;s general <em>citation</em> predicate which is a looser form of <a href="#CITO">CITO</a>'s <code><a href="#cito:cites">Section 6.1.2.6</a></code>. The NSL model will use this predicate as a shortcut between citing and cited resources</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This is schema.org&#8217;s equivalent to <a href="#CITO">CITO</a>'s <code><a href="#cito:cites">cito:cites</a></code>. The NSL model uses this predicate as a shortcut between citing and cited resources</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#example">Example</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See the example for <a href="#nsl:Usage">Usage</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="prov:qualifiedAttribution"><a class="anchor" href="#prov:qualifiedAttribution"></a>6.1.2.9. qualified attribution</h5>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#IRI">IRI</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nsl:cited</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#prefLabel">Preferred Label</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">qualified attribution</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#definition">Definition</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Attribution is the ascribing of an entity to an agent. When an entity e is attributed to agent ag, entity e was generated by some unspecified activity that in turn was associated to agent ag. Thus, this relation is useful when the activity is not known, or irrelevant.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby">Is Defined By</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#PROV">PROV</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_domain">Domain</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://www.w3.org/TR/prov-o/#Entity">prov:Entity</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_range">Range</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://www.w3.org/TR/prov-o/#Attribution">prov:Attribution</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#scopeNote">Scope Note</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use this predicate to assign something to an <code><a href="https://www.w3.org/TR/prov-o/#Agent">prov:Agent</a></code> performing a <code><a href="https://www.w3.org/TR/prov-o/#Role">prov:Role</a></code> by joining them in an <code><a href="https://www.w3.org/TR/prov-o/#Attribution">prov:Attribution</a></code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#example">Example</a></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">bibo:</span><span class="w"> </span><span class="nl">&lt;http://purl.org/ontology/bibo/&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">ex:</span><span class="w"> </span><span class="nl">&lt;http://example.com/&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">nsl:</span><span class="w"> </span><span class="nl">&lt;https://linked.data.gov.au/def/nsl/&gt;</span><span class="w">
+<pre class="rouge highlight"><code data-lang="turtle"><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">ex:</span><span class="w"> </span><span class="nl">&lt;http://example.com/&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">prov:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/ns/prov#&gt;</span><span class="w">
 </span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">sdo:</span><span class="w"> </span><span class="nl">&lt;https://schema.org/&gt;</span><span class="w">
-</span><span class="kd">PREFIX</span><span class="w"> </span><span class="nn">xsd:</span><span class="w"> </span><span class="nl">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span><span class="w">
 
-</span><span class="nn">ex:</span><span class="n">tn-518366
-</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">nsl:</span><span class="n">Usage</span><span class="w"> </span><span class="p">;</span><span class="w">
-    </span><span class="nn">nsl:</span><span class="n">citing</span><span class="w"> </span><span class="nn">ex:</span><span class="n">taxonName-94766</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1"># a Taxon Name instance</span><span class="w">
-    </span><span class="nn">nsl:</span><span class="n">cited</span><span class="w"> </span><span class="nn">ex:</span><span class="n">creativeWork-22456</span><span class="w"> </span><span class="p">;</span><span class="w">  </span><span class="c1"># a Creative Work instance</span><span class="w">
-    </span><span class="nn">bibo:</span><span class="n">pages</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="p">;</span><span class="w">
-</span><span class="p">.</span><span class="w">
-
-</span><span class="nn">ex:</span><span class="n">taxonName-94766</span><span class="w"> </span><span class="nn">sdo:</span><span class="n">citation</span><span class="w"> </span><span class="nn">ex:</span><span class="n">creativeWork-22456</span><span class="w"> </span><span class="p">.</span><span class="w">
-</span></code></pre>
+</span><span class="nn">ex:</span><span class="n">book-001
+</span><span class="w">    </span><span class="k">a</span><span class="w"> </span><span class="nn">sdo:</span><span class="n">CreativeWork</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="nn">prov:</span><span class="n">qualifiedAttribution</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="nn">prov:</span><span class="n">agent</span><span class="w"> </span><span class="nn">ex:</span><span class="n">person-a</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="nn">prov:</span><span class="n">hadRole</span><span class="w"> </span><span class="nn">ex:</span><span class="n">author</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="p">]</span><span class="w"> </span><span class="p">,</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+        </span><span class="nn">prov:</span><span class="n">agent</span><span class="w"> </span><span class="nn">ex:</span><span class="n">person-b</span><span class="w"> </span><span class="p">;</span><span class="w">
+        </span><span class="nn">prov:</span><span class="n">hadRole</span><span class="w"> </span><span class="nn">ex:</span><span class="n">editor</span><span class="w"> </span><span class="p">;</span><span class="w">
+    </span><span class="p">]</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span><span class="p">.</span></code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -2349,18 +2392,123 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </table>
 </div>
 <div class="sect4">
-<h5 id="prov:wasAttributedTo"><a class="anchor" href="#prov:wasAttributedTo"></a>6.1.2.9. was attributed to</h5>
-
+<h5 id="prov:agent"><a class="anchor" href="#prov:agent"></a>6.1.2.10. agent</h5>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#IRI">IRI</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>prov:agent</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#prefLabel">Preferred Label</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">agent</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#definition">Definition</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The prov:agent property references an prov:Agent which influenced a resource. This property applies to an prov:AgentInfluence, which is given by a subproperty of prov:qualifiedInfluence from the influenced prov:Entity, prov:Activity or prov:Agent.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby">Is Defined By</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#PROV">PROV</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_domain">Domain</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://www.w3.org/TR/prov-o/#Attribution">prov:Attribution</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_range">Range</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://www.w3.org/TR/prov-o/#Agent">prov:Agent</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#example">Example</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See example for <a href="#prov:qualifiedAttribution">prov:qualifiedAttribution</a></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect4">
-<h5 id="prov:agent"><a class="anchor" href="#prov:agent"></a>6.1.2.10. agent</h5>
-
+<h5 id="prov:hadRole"><a class="anchor" href="#prov:hadRole"></a>6.1.2.11. had role</h5>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 83.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Property</th>
+<th class="tableblock halign-left valign-top">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#IRI">IRI</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>prov:hadRole</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#prefLabel">Preferred Label</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">had role</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#definition">Definition</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A role is the function of an entity or agent with respect to an activity, in the context of a usage, generation, invalidation, association, start, and end.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby">Is Defined By</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#PROV">PROV</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_domain">Domain</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://www.w3.org/TR/prov-o/#Attribution">prov:Attribution</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/rdf12-schema/#ch_range">Range</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://www.w3.org/TR/prov-o/#Role">prov:Role</a></code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.w3.org/TR/skos-reference/#example">Example</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See example for <a href="#prov:qualifiedAttribution">prov:qualifiedAttribution</a></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_background_models"><a class="anchor" href="#_background_models"></a>6.2. Background Models</h3>
-
+<div class="paragraph">
+<p>The <em>background models</em> in this model are all those standard or common ontologies reused by this one. The main <em>background models</em> and their use by this model are given in the table below.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Model</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">How used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#SDO">schema.org</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A general-purpose semantic web model in wide use</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used for many general predicates and classes, such as <a href="#sdo:name">name</a></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_profile_definition"><a class="anchor" href="#_profile_definition"></a>6.3. Profile Definition</h3>
@@ -2615,7 +2763,7 @@ ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2024-04-07 22:33:36 UTC
+Last updated 2024-04-07 23:16:39 UTC
 </div>
 </div>
 </body>
