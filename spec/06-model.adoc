@@ -8,8 +8,6 @@ This section details not only model elements defined in this model but also mode
 .A formal overview of the auNSL Semantic Web Model showing <<Class, Classes>> and <<Predicate, Predicates>> with the Classes defined by this model in green and those inherited from elsewhere in white using notation described in the <<Diagram Conventions, Diagram Conventions section>> . Namespace prefixes for each figure element are given such as ":" & "sdo:" so elements' full IRIs can be understood. See the <<Namespaces, Namespaces>> section for their interpretation. This figure extends <<fig-overview>> above.
 image::../img/owl.svg[auNSL OWL Data Model overview,align="center"]
 
-#TODO: add the real comprehensive figure in above#
-
 ==== Classes
 
 ===== Class Index
@@ -63,7 +61,7 @@ PREFIX sdo: <https://schema.org/>
 | https://www.w3.org/TR/skos-reference/#definition[Definition] | A name applied to Taxa by people at a point in time
 | https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | This model
 | https://www.w3.org/TR/skos-reference/#historyNote[History Note] | Defined by the NSL team
-| Expected Properties | <<cn:isNameFor>>, <<sdo:hasPart>>, <<sdo:citation>>
+| Expected Properties | <<cn:isNameFor>>, <<sdo:citation>>
 | https://www.w3.org/TR/skos-reference/#example[Example]
 a| [source,turtle]
 ----
@@ -143,6 +141,7 @@ ex:name-94766
 a| [source,turtle]
 ----
 PREFIX bibo: <http://purl.org/ontology/bibo/>
+PREFIX cito: <http://purl.org/spar/cito/>
 PREFIX ex: <http://example.com/>
 PREFIX nsl: <https://linked.data.gov.au/def/nsl/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
@@ -155,6 +154,13 @@ ex:tn-518366
     nsl:cited ex:creativeWork-22456 ;  # a Creative Work instance
     bibo:pages 200 ;
 .
+
+# Inferrable from above
+ex:taxonName-94766 cito:cites ex:creativeWork-22456 .
+
+ex:creativeWork-22456 cito:isCitedBy ex:taxonName-94766 .
+
+ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .
 ----
 |===
 
@@ -185,11 +191,11 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     sdo:name "Check List of Northern Territory Plants" ;
     sdo:author "Chippendale, G.M." ;
     sdo:datePublished "1972-04-17"^^xsd:date ;
-    ex:publicationName "Proceedings of the Linnean Society of New South Wales" ;
+    ex:publicationName "Proceedings of the Linnean Society of NSW" ;
     sdo:volumeNumber 64 ;
     sdo:issueNumber 4 ;
     sdo:name [
-        # "Chippendale, G.M. (17 April 1972), Check List of Northern Territory Plants. Proceedings of the Linnean Society of New South Wales 96(4)" ;
+        # "Chippendale, G.M. (17 April 1972), Check List of Northern Territory Plants. Proceedings of the Linnean Society of NSW 96(4)" ;
         a cn:CompoundName ;
         sdo:hasPart [
             sdo:additionalType sdo:name ;
@@ -205,7 +211,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
         ] ,
         [
             sdo:additionalType ex:publicationName ;
-            sdo:value "Proceedings of the Linnean Society of New South Wales" ;
+            sdo:value "Proceedings of the Linnean Society of NSW" ;
         ] ,
         [
             sdo:additionalType sdo:volumeNumber ;
@@ -230,7 +236,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 | <<IRI, IRI>> | `cito:Citation`
 | https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | Citation
 | https://www.w3.org/TR/skos-reference/#definition[Definition] | A conceptual directional link from a citing entity to a cited entity
-| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<CITO, CIO>>
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<CITO, CITO>>
 | https://www.w3.org/TR/skos-reference/#historyNote[History Note] | Used via subclasses (<<nsl:Usage, Usage>>)
 | https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | This class is not expected to be used directly, instead use <<nsl:Usage, Usage>>
 | Expected Properties | <<nsl:citing, citing>>, <<nsl:cited, cited>>
@@ -249,7 +255,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 | https://www.w3.org/TR/skos-reference/#definition[Definition] | An agent is something that bears some form of responsibility for an activity taking place, for the existence of an entity, or for another agent's activity
 | https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<PROV, PROV>>
 | https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | This class is not expected to be used directly, instead use `sdo:Person` & `sdo:Organization`
-| Expected Properties | <<sdo:name, name>>, inbound: <<prov:wasAttributedTo, was attributed to>>, <<prov:agent, agent>>
+| Expected Properties | <<sdo:name, name>>, inbound: <<prov:agent, agent>>, <<prov:agent, agent>>
 | https://www.w3.org/TR/skos-reference/#example[Example] a|
 [source, turtle]
 ----
@@ -294,6 +300,9 @@ ex:book-001
 * <<cito:cites, cites>>
 * <<cito:isCitedBy, is cited by>>
 * <<sdo:citation, citation>>
+* <<prov:qualifiedAttribution, qualified attribution>>
+* <<prov:agent, agent>>
+* <<prov:hadRole, had role>>
 
 [[sdo:name]]
 ===== name
@@ -343,11 +352,11 @@ ex:taxonName-83727 nsl:isNameFor ex:taxon-51851883 .
 
 | <<IRI, IRI>> | `nsl:citing`
 | https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | citing
-| https://www.w3.org/TR/skos-reference/#definition[Definition] | A predicate that relates a citation to the using entity
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | A predicate that relates a Usage to the citing entity
 | https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | This model
 | https://www.w3.org/TR/rdf12-schema/#ch_domain[Domain] | `<<nsl:Usage, Usage>>`
 | https://www.w3.org/TR/rdf12-schema/#ch_range[Range] | `<<rdfs:Resource, Resource>>`
-| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | This predicate is just a renamed version of <<CITO, CITO>>'s `cito:hasCitingEntity`
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | This predicate is a renamed version of <<CITO, CITO>>'s `cito:hasCitingEntity`
 | http://www.w3.org/2002/07/owl#equivalentProperty[Equivalent Property] | `cito:hasCitingEntity`
 | https://www.w3.org/TR/skos-reference/#example[Example] | See example for `<<nsl:Usage, Usage>>`
 |===
@@ -359,16 +368,14 @@ ex:taxonName-83727 nsl:isNameFor ex:taxon-51851883 .
 |===
 | Property | Value
 
-| <<IRI, IRI>> | ``
-| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] |
-| https://www.w3.org/TR/skos-reference/#definition[Definition] |
-| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] |
-| https://www.w3.org/TR/rdf12-schema/#ch_domain[Domain] |
-| https://www.w3.org/TR/rdf12-schema/#ch_range[Range] |
-| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] |
-| https://www.w3.org/TR/skos-reference/#example[Example] a|
-----
-----
+| <<IRI, IRI>> | `nsl:cited`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | cited
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | A predicate that relates a Usage to the cited entity
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | This model
+| https://www.w3.org/TR/rdf12-schema/#ch_domain[Domain] | `<<nsl:Usage, Usage>>`
+| https://www.w3.org/TR/rdf12-schema/#ch_range[Range] | `<<rdfs:Resource, Resource>>`
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | This predicate is a renamed version of <<CITO, CITO>>'s `cito:hasCitedEntity`
+| https://www.w3.org/TR/skos-reference/#example[Example] | See example for `<<nsl:Usage, Usage>>`
 |===
 
 [[cito:cites]]
@@ -378,16 +385,13 @@ ex:taxonName-83727 nsl:isNameFor ex:taxon-51851883 .
 |===
 | Property | Value
 
-| <<IRI, IRI>> | ``
-| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] |
-| https://www.w3.org/TR/skos-reference/#definition[Definition] |
-| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] |
-| https://www.w3.org/TR/rdf12-schema/#ch_domain[Domain] |
-| https://www.w3.org/TR/rdf12-schema/#ch_range[Range] |
-| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] |
-| https://www.w3.org/TR/skos-reference/#example[Example] a|
-----
-----
+| <<IRI, IRI>> | `cito:cites`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | cites
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | The citing entity cites the cited entity
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<CITO, CITO>>
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | This is schema.org's equivalent to <<SDO, SDO>>'s `<<sdo:citation, sdo:citation>>`. The NSL model uses this predicate as a shortcut between citing and cited resources
+| http://www.w3.org/2002/07/owl#equivalentProperty[Equivalent Property] | `cito:hasCitingEntity`
+| https://www.w3.org/TR/skos-reference/#example[Example] | See example for `<<nsl:Usage, Usage>>`
 |===
 
 [[cito:isCitedBy]]
@@ -397,16 +401,12 @@ ex:taxonName-83727 nsl:isNameFor ex:taxon-51851883 .
 |===
 | Property | Value
 
-| <<IRI, IRI>> | ``
-| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] |
-| https://www.w3.org/TR/skos-reference/#definition[Definition] |
-| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] |
-| https://www.w3.org/TR/rdf12-schema/#ch_domain[Domain] |
-| https://www.w3.org/TR/rdf12-schema/#ch_range[Range] |
-| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] |
-| https://www.w3.org/TR/skos-reference/#example[Example] a|
-----
-----
+| <<IRI, IRI>> | `cito:isCitedBy`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | is cited by
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | The cited entity (the subject of the RDF triple) is cited by the citing entity (the object of the triple)
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<CITO, CITO>>
+| https://www.w3.org/TR/owl-primer/#a_InverseObjectProperties[Inverse Of] | `<<cito:cites, cites>>`
+| https://www.w3.org/TR/skos-reference/#example[Example] | See example for `<<nsl:Usage, Usage>>`
 |===
 
 [[sdo:citation]]
@@ -420,36 +420,103 @@ ex:taxonName-83727 nsl:isNameFor ex:taxon-51851883 .
 | https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | citation
 | https://www.w3.org/TR/skos-reference/#definition[Definition] | A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
 | https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<SDO, SDO>>
-| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | This is schema.org's general _citation_ predicate which is a looser form of <<CITO, CITO>>'s `<<cito:cites>>`. The NSL model will use this predicate as a shortcut between citing and cited resources
-| https://www.w3.org/TR/skos-reference/#example[Example]
-a| [source,turtle]
-----
-PREFIX bibo: <http://purl.org/ontology/bibo/>
-PREFIX ex: <http://example.com/>
-PREFIX nsl: <https://linked.data.gov.au/def/nsl/>
-PREFIX prov: <http://www.w3.org/ns/prov#>
-PREFIX sdo: <https://schema.org/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-ex:tn-518366
-    a nsl:Usage ;
-    nsl:citing ex:taxonName-94766 ;  # a Taxon Name instance
-    nsl:cited ex:creativeWork-22456 ;  # a Creative Work instance
-    bibo:pages 200 ;
-.
-
-ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .
-
-----
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | This is schema.org's equivalent to <<CITO, CITO>>'s `<<cito:cites, cito:cites>>`. The NSL model uses this predicate as a shortcut between citing and cited resources
+| https://www.w3.org/TR/skos-reference/#example[Example] | See the example for <<nsl:Usage, Usage>>
 |===
 
-[[prov:wasAttributedTo]]
-===== was attributed to
+//[[prov:wasAttributedTo]]
+//===== was attributed to
+//
+//[cols="1,5"]
+//|===
+//| Property | Value
+//
+//| <<IRI, IRI>> | `nsl:cited`
+//| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | was attributed to
+//| https://www.w3.org/TR/skos-reference/#definition[Definition] | Attribution is the ascribing of an entity to an agent
+//| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<PROV, PROV>>
+//| https://www.w3.org/TR/rdf12-schema/#ch_domain[Domain] | `https://www.w3.org/TR/prov-o/#Entity[prov:Entity]`
+//| https://www.w3.org/TR/rdf12-schema/#ch_range[Range] | `https://www.w3.org/TR/prov-o/#Agent[prov:Agent]`
+//| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | Use this predicate to assign something to a person or an organisation or a group - an agent
+//|===
+
+[[prov:qualifiedAttribution]]
+===== qualified attribution
+
+[cols="1,5"]
+|===
+| Property | Value
+
+| <<IRI, IRI>> | `nsl:cited`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | qualified attribution
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | Attribution is the ascribing of an entity to an agent. When an entity e is attributed to agent ag, entity e was generated by some unspecified activity that in turn was associated to agent ag. Thus, this relation is useful when the activity is not known, or irrelevant.
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<PROV, PROV>>
+| https://www.w3.org/TR/rdf12-schema/#ch_domain[Domain] | `https://www.w3.org/TR/prov-o/#Entity[prov:Entity]`
+| https://www.w3.org/TR/rdf12-schema/#ch_range[Range] | `https://www.w3.org/TR/prov-o/#Attribution[prov:Attribution]`
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | Use this predicate to assign something to an `https://www.w3.org/TR/prov-o/#Agent[prov:Agent]` performing a `https://www.w3.org/TR/prov-o/#Role[prov:Role]` by joining them in an `https://www.w3.org/TR/prov-o/#Attribution[prov:Attribution]`
+| https://www.w3.org/TR/skos-reference/#example[Example] a| [source,turtle]
+----
+PREFIX ex: <http://example.com/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX sdo: <https://schema.org/>
+
+ex:book-001
+    a sdo:CreativeWork ;
+    prov:qualifiedAttribution [
+        prov:agent ex:person-a ;
+        prov:hadRole ex:author ;
+    ] ,
+    [
+        prov:agent ex:person-b ;
+        prov:hadRole ex:editor ;
+    ] ;
+.
+----
+|===
 
 [[prov:agent]]
 ===== agent
 
+[cols="1,5"]
+|===
+| Property | Value
+
+| <<IRI, IRI>> | `prov:agent`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | agent
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | The prov:agent property references an prov:Agent which influenced a resource. This property applies to an prov:AgentInfluence, which is given by a subproperty of prov:qualifiedInfluence from the influenced prov:Entity, prov:Activity or prov:Agent.
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<PROV, PROV>>
+| https://www.w3.org/TR/rdf12-schema/#ch_domain[Domain] | `https://www.w3.org/TR/prov-o/#Attribution[prov:Attribution]`
+| https://www.w3.org/TR/rdf12-schema/#ch_range[Range] | `https://www.w3.org/TR/prov-o/#Agent[prov:Agent]`
+| https://www.w3.org/TR/skos-reference/#example[Example] | See example for <<prov:qualifiedAttribution, prov:qualifiedAttribution>>
+|===
+
+[[prov:hadRole]]
+===== had role
+
+[cols="1,5"]
+|===
+| Property | Value
+
+| <<IRI, IRI>> | `prov:hadRole`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | had role
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | A role is the function of an entity or agent with respect to an activity, in the context of a usage, generation, invalidation, association, start, and end.
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<PROV, PROV>>
+| https://www.w3.org/TR/rdf12-schema/#ch_domain[Domain] | `https://www.w3.org/TR/prov-o/#Attribution[prov:Attribution]`
+| https://www.w3.org/TR/rdf12-schema/#ch_range[Range] | `https://www.w3.org/TR/prov-o/#Role[prov:Role]`
+| https://www.w3.org/TR/skos-reference/#example[Example] | See example for <<prov:qualifiedAttribution, prov:qualifiedAttribution>>
+|===
+
 === Background Models
+
+The _background models_ in this model are all those standard or common ontologies reused by this one. The main _background models_ and their use by this model are given in the table below.
+
+[cols="1,2,2"]
+|===
+| Model | Description | How used
+
+| <<SDO, schema.org>> | A general-purpose semantic web model in wide use | Used for many general predicates and classes, such as <<sdo:name, name>>
+
+|===
 
 === Profile Definition
 
