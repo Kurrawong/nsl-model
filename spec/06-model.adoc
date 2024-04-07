@@ -238,7 +238,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 |===
 
 [[prov:Agent]]
-==== Agent
+===== Agent
 
 [cols="2,7"]
 |===
@@ -253,6 +253,10 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 | https://www.w3.org/TR/skos-reference/#example[Example] a|
 [source, turtle]
 ----
+PREFIX ex: <http://example.com/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX sdo: <https://schema.org/>
+
 # A Creative Work is also a prov:Entity and may be attributed
 ex:book-001
     a sdo:CreativeWork ;
@@ -262,7 +266,6 @@ ex:book-001
 .
 ----
 |===
-
 
 [[rdfs:Resource]]
 ===== Resource
@@ -275,26 +278,23 @@ ex:book-001
 | https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | Resource
 | https://www.w3.org/TR/skos-reference/#definition[Definition] | The class resource, everything
 | https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<RDFSSPEC, RDFS>>
-| https://www.w3.org/TR/skos-reference/#historyNote[History Note] | Used only via subclassing (<<cn:CompoundName, Compound Name>>, <<sdo:CreativeWork, Creative Work>>)
-| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | This class is not expected to be used directly, instead use specialised subclasses
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | This class is not expected to be used directly, instead use specialised subclasses, such as <<sdo:CreativeWork, Creative Work>>
 | Expected Properties | None
 | https://www.w3.org/TR/skos-reference/#example[Example] | No example given as all use is via subclasses
 |===
 
 ==== Predicates
 
-===== Class Index
+===== Predicate Index
 
 * <<sdo:name, name>>
 * <<cn:isNameFor, is name for>>
-* <<sdo:hasPart, has part>>
 * <<nsl:citing, citing>>
 * <<nsl:cited, cited>>
 * <<cito:cites, cites>>
 * <<cito:isCitedBy, is cited by>>
 * <<sdo:citation, citation>>
 
-[discrete]
 [[sdo:name]]
 ===== name
 
@@ -306,7 +306,7 @@ ex:book-001
 | https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | name
 | https://www.w3.org/TR/skos-reference/#definition[Definition] | The name of the item
 | https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<SDO, schema.org>>
-| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | Use this property to assign literal names to anything or to assign a naming resource, such as a `<<cn:CompoundName, Compound Name>>`, to a thing
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | Use this property to assign names to anything: <<prov:Agent, Agents>>, <<sdo:CreativeWork, Creative Work>> etc.
 | https://www.w3.org/TR/skos-reference/#example[Example] | See example for `<<nsl:Taxon, Taxon>>`
 |===
 
@@ -334,21 +334,6 @@ ex:taxonName-83727 nsl:isNameFor ex:taxon-51851883 .
 ----
 |===
 
-[[sdo:hasPart]]
-===== has part
-
-[cols="1,5"]
-|===
-| Property | Value
-
-| <<IRI, IRI>> | `sdo:hasPart`
-| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | has part
-| https://www.w3.org/TR/skos-reference/#definition[Definition] | Indicates an item that is part of this item (in some sense)
-| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<SDO, schema.org>>
-| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | Use this predicate to indicate that a `<<cn:CompoundName, Compound Name>>` has another `<<cn:CompoundName, Compound Name>>` as a part
-| https://www.w3.org/TR/skos-reference/#example[Example] | See example for `<<nsl:TaxonName, Taxon Name>>`
-|===
-
 [[nsl:citing]]
 ===== citing
 
@@ -356,16 +341,15 @@ ex:taxonName-83727 nsl:isNameFor ex:taxon-51851883 .
 |===
 | Property | Value
 
-| <<IRI, IRI>> | ``
-| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] |
-| https://www.w3.org/TR/skos-reference/#definition[Definition] |
-| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] |
-| https://www.w3.org/TR/rdf12-schema/#ch_domain[Domain] |
-| https://www.w3.org/TR/rdf12-schema/#ch_range[Range] |
-| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] |
-| https://www.w3.org/TR/skos-reference/#example[Example] a|
-----
-----
+| <<IRI, IRI>> | `nsl:citing`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | citing
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | A predicate that relates a citation to the using entity
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | This model
+| https://www.w3.org/TR/rdf12-schema/#ch_domain[Domain] | `<<nsl:Usage, Usage>>`
+| https://www.w3.org/TR/rdf12-schema/#ch_range[Range] | `<<rdfs:Resource, Resource>>`
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | This predicate is just a renamed version of <<CITO, CITO>>'s `cito:hasCitingEntity`
+| http://www.w3.org/2002/07/owl#equivalentProperty[Equivalent Property] | `cito:hasCitingEntity`
+| https://www.w3.org/TR/skos-reference/#example[Example] | See example for `<<nsl:Usage, Usage>>`
 |===
 
 [[nsl:cited]]
