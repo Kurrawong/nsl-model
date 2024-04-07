@@ -416,15 +416,30 @@ ex:taxonName-83727 nsl:isNameFor ex:taxon-51851883 .
 |===
 | Property | Value
 
-| <<IRI, IRI>> | ``
-| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] |
-| https://www.w3.org/TR/skos-reference/#definition[Definition] |
-| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] |
-| https://www.w3.org/TR/rdf12-schema/#ch_domain[Domain] |
-| https://www.w3.org/TR/rdf12-schema/#ch_range[Range] |
-| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] |
-| https://www.w3.org/TR/skos-reference/#example[Example] a|
+| <<IRI, IRI>> | `sdo:citation`
+| https://www.w3.org/TR/skos-reference/#prefLabel[Preferred Label] | citation
+| https://www.w3.org/TR/skos-reference/#definition[Definition] | A citation or reference to another creative work, such as another publication, web page, scholarly article, etc.
+| https://www.w3.org/TR/rdf12-schema/#ch_isdefinedby[Is Defined By] | <<SDO, SDO>>
+| https://www.w3.org/TR/skos-reference/#scopeNote[Scope Note] | This is schema.org's general _citation_ predicate which is a looser form of <<CITO, CITO>>'s `<<cito:cites>>`. The NSL model will use this predicate as a shortcut between citing and cited resources
+| https://www.w3.org/TR/skos-reference/#example[Example]
+a| [source,turtle]
 ----
+PREFIX bibo: <http://purl.org/ontology/bibo/>
+PREFIX ex: <http://example.com/>
+PREFIX nsl: <https://linked.data.gov.au/def/nsl/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX sdo: <https://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+ex:tn-518366
+    a nsl:Usage ;
+    nsl:citing ex:taxonName-94766 ;  # a Taxon Name instance
+    nsl:cited ex:creativeWork-22456 ;  # a Creative Work instance
+    bibo:pages 200 ;
+.
+
+ex:taxonName-94766 sdo:citation ex:creativeWork-22456 .
+
 ----
 |===
 
